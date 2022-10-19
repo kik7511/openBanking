@@ -34,7 +34,7 @@
         <div class="row" style="margin-bottom:20px; margin-top:50px; border-bottom: 0.5px solid; border-color:lightgray;">
            	<div class="col">
            		<img src="../../../../resources/img/logo/shinhan_logo.png" style="width:30px; float:left; padding-right:10px;">
-           		<span>신한은행</span>
+           		<input type="text" value="신한은행">
            		<span>110-390-707339</span>
        			<br>
            		<span>계좌잔액</span>

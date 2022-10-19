@@ -7,7 +7,7 @@
 					<div class="inner">
 		            <!-- 20190417 SR-614 기업 헤더 디자인 반영 -->
 						<h1 class="logo">
-							<a href=""><img src="/resources/img/logo_kbank.png" alt="make money, Kbank"></a>
+							<a href=""><img src="/resources/img/Fradel (1).png"></a>
 						</h1>
 						<div id="utill">
 						<!-- 로그인 전 -->	
@@ -25,7 +25,7 @@
 						<ul class="topGnb">
 							<li class="">
 								<a href="#n">계좌관리</a>
-								<div class="depth02" style="width: 1474px; left: -267px;">
+								<div class="depth02" style="width: 1474px; left: -250px;">
 									<ul>
 										<li style="height: 181px;">
 											<a href="#n">조회</a>
@@ -40,86 +40,49 @@
 													<a href="#n">자동이체</a>
 												</li>
 												<li>
-													<a href="#n">대량이체</a>
-												</li>
-												<li>
 													<a href="#n">이체결과</a>
 												</li>
 											</ul>
 										</li>
-										<li style="height: 181px;"><a href="#n">퀵송금</a>
-											<ul>
-												<li>
-													<a href="#n">서비스안내</a>
-												</li>
-											</ul>
-										</li>
 										<li style="height: 181px;">
-											<a href="#n">해외송금</a>
-										</li>
-										<li style="height: 181px;">
-											<a href="#n">간편결제</a>
-											<ul>
-												<li>
-													<a href="#n">결제내역</a>
-												</li>
-											</ul>
+											<a href="#n">계좌등록</a>
 										</li>
 									</ul>
 								</div>
 							</li>
 							<li class="">
 								<a href="#n">카드관리</a>
-								<div class="depth02" style="width: 1474px; left: -267px;">
+								<div class="depth02" style="width: 1474px; left: -250px;">
 									<ul>
 										<li style="height: 219px;">
-											<a href="#n">예금 · 적금</a>
+											<a href="#n">조회</a>
 											<ul>
 												<li>
-													<a href="#n">예금 해지</a>
+													<a href="#n">사용금액조회</a>
 												</li>
 												<li>
-													<a href="#n">만기해지계좌 조회</a>
+													<a href="#n">납부예상금액</a>
 												</li>
 											</ul>
 										</li>
 										<li style="height: 219px;">
-											<a href="#n">대출</a>
-											<ul>
-												<li>
-													<a href="#n">원금/이자 관리</a>
-												</li>
-												<li>
-													<a href="#n">한도 관리</a>
-												</li>
-											</ul>
+											<a href="#n">카드등록</a>
 										</li>
 									</ul>
 								</div>
 							</li>
 							<li class="">
 								<a href="#n">가계부</a>
-								<div class="depth02" style="width: 1474px; left: -267px;">
+								<div class="depth02" style="width: 1474px; left: -250px;">
 									<ul>
 										<li style="height: 219px;">
-											<a href="#n">예금 · 적금</a>
+											<a href="#n">조회</a>
 											<ul>
 												<li>
-													<a href="#n">예금 해지</a>
+													<a href="#n">일정 등록하기</a>
 												</li>
 												<li>
-													<a href="#n">만기해지계좌 조회</a>
-												</li>
-											</ul>
-										</li>
-										<li style="height: 219px;">
-											<a href="#n">대출</a>
-											<ul>
-												<li>
-													<a href="#n">원금/이자 관리</a>
-												</li>
-												<li>
-													<a href="#n">한도 관리</a>
+													<a href="#n">수정하기</a>
 												</li>
 											</ul>
 										</li>

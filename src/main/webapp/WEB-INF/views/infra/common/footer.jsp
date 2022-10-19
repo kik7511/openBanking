@@ -55,3 +55,26 @@
 			</div><!-- //#footer -->
 		</div>
 	</div>
+	
+	<script>
+	$('a:contains("계좌관리")').mouseover(function(){
+		$(this).parent('li').addClass('on');
+	});
+	$('a:contains("계좌관리")').mouseout(function(){ 
+		$(this).parent('li').removeClass('on');
+	});
+	
+	$('a:contains("카드관리")').mouseover(function(){
+		$(this).parent('li').addClass('on');
+	});
+	$('a:contains("카드관리")').mouseout(function(){ 
+		$(this).parent('li').removeClass('on');
+	});
+	
+	$('a:contains("가계부")').mouseover(function(){
+		$(this).parent('li').addClass('on');
+	});
+	$('a:contains("가계부")').mouseout(function(){ 
+		$(this).parent('li').removeClass('on');
+	});
+	</script>

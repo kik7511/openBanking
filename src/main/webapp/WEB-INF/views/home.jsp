@@ -17,6 +17,7 @@
 		#container_inner #content {width:100% !important;}
 		#content, .content {float:none; width:100% !important;}
 		#content .sub_cont_wrap {width:940px; margin:0 auto;}
+
 	</style>
 </head>
 <body>

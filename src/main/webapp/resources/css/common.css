@@ -3809,7 +3809,7 @@ html.mobile div[id^="CMMMBJ0400000100V"] body{background:#000}
 	body{background:#fff}
 	#wrap{background:#fff}
 	.header{position:relative;border-bottom:1px solid #dcdcdc}
-	#container{position:relative; min-height:680px; /*background:url(/resources/img/bg_container.gif) repeat-x*/}
+	#container{position:relative; min-height:580px; /*background:url(/resources/img/bg_container.gif) repeat-x*/}
 	#container_inner{position:relative;width:940px;margin:0 auto;padding:0px 0 100px}
 	#container_inner #lnb,
 	#container_inner #lnb .lnb{display:block}

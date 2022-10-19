@@ -12,5 +12,12 @@ public class MemberController {
 		
 		return "infra/member/user/login";
 	}
+	
+	@RequestMapping(value="accountBook")
+	public String accountBookView() throws Exception {
+		
+		return "infra/member/user/accountBook";
+	}
+
 
 }

@@ -12,9 +12,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
 <title>로그인</title>
+<%@include file = "../../common/link.jsp" %>	
 <style>
 	body {
 		font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	#wrap {
+		margin: 50px 0 50px 0;
 	}
 	
 	.login-wrap {
@@ -28,7 +33,7 @@
 	
 	.login-tit {
 		font-size : 23px;
-		margin-left: 350px;
+		margin-left: 380px;
 		color : #454D5B
 	}
 	
@@ -40,7 +45,7 @@
 	}
 	
 	.text-input {
-		width : 280px;
+		width : 300px !important;
 		height: 35px;
 		border : none;
 		background-color: #F3F3F3;
@@ -52,6 +57,7 @@
 		margin: auto;
 		justify-content: center;
 	}
+	
 
 	#loginBtn {
 		height: 100%;
@@ -65,7 +71,7 @@
 		margin : auto;
 		margin-top : 30px;
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: space-between;
 	}
 	
 	.btn {
@@ -79,16 +85,21 @@
 </style>
 </head>
 <body>
+	<%@include file = "../../common/header.jsp" %>
 	<div id="wrap">
 		<span class="login-tit">로그인</span>
 		<div class="login-wrap">
 			<div class="login-box">
 				<div class="input-wrap">
 					<div class="input-box">
-						<span style="margin-right: 14px;">아이디</span>
-						<input type="text" class="text-input" style="margin-bottom: 10px;"><br>
-						<span>비밀번호</span>
-						<input type="password" class="text-input">
+						<div style="display: flex;">
+							<span style="width:30%; margin-top:9px; text-align: center;">아이디</span>
+							<input type="text" class="text-input" style="margin-bottom: 10px;">
+						</div>
+						<div style="display: flex;">
+							<span style="width:30%; margin-top:9px; text-align: center;">비밀번호</span>
+							<input type="password" class="text-input">
+						</div>
 					</div>
 					<div>
 						<button type="button" id="loginBtn" style="margin-left: 10px;">로그인</button>
@@ -100,14 +111,9 @@
 					<button type="button" class="btn">회원가입</button>
 				</div>
 			</div>
-		
-		
 		</div>
-	
-	
-	
-	
 	</div>
+	<%@include file = "../../common/footer.jsp" %>
 	
 
 </body>

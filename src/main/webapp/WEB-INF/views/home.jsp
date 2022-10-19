@@ -16,6 +16,11 @@
 	  .layerTooltip {position:relative; display:inline-block; margin:0 !important;}
 	  .layerTooltip .tip {display:none; position:absolute; top:-3px; left:0; width:100px; margin-left:0 !important; padding:5px; color:#000; font-size:10px; background-color:rgba(0, 0, 0, 0);}
 	  .layerTooltip.on .tip {display:block;}
+	  #container_inner {width:100% !important;}
+	  #container_inner #content {width:100% !important;}
+	  #content, .content {float:none; width:100% !important;}
+	  #content .sub_cont_wrap {width:940px; margin:0 auto;}
+	  
  	</style>
 </head>
 <body>
@@ -43,7 +48,7 @@
 				<div class="gnb">
 					<div class="inner">
 						<ul class="topGnb">
-							<li class="on">
+							<li class="">
 								<a href="#n">조회 · 이체</a>
 								<div class="depth02" style="width: 1474px; left: -267px;">
 									<ul>
@@ -129,7 +134,17 @@
 	
 	<div id = "container" style="width: 100%">
 		<div id = "container_inner">
-			
+			<div id = "content" style="width: 940px;">
+				<div class="topSwiperBanner">
+					<ul>
+						<li>
+							<a class="banner">
+								<img src="/resources/img/220812_pc_cs_220718 (1).png">
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 	

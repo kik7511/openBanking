@@ -49,7 +49,7 @@
 					<div class="inner">
 						<ul class="topGnb">
 							<li class="">
-								<a href="#n">조회 · 이체</a>
+								<a href="#n">계좌관리</a>
 								<div class="depth02" style="width: 1474px; left: -267px;">
 									<ul>
 										<li style="height: 181px;">
@@ -94,7 +94,36 @@
 								</div>
 							</li>
 							<li class="">
-								<a href="#n">뱅킹</a>
+								<a href="#n">카드관리</a>
+								<div class="depth02" style="width: 1474px; left: -267px;">
+									<ul>
+										<li style="height: 219px;">
+											<a href="#n">예금 · 적금</a>
+											<ul>
+												<li>
+													<a href="#n">예금 해지</a>
+												</li>
+												<li>
+													<a href="#n">만기해지계좌 조회</a>
+												</li>
+											</ul>
+										</li>
+										<li style="height: 219px;">
+											<a href="#n">대출</a>
+											<ul>
+												<li>
+													<a href="#n">원금/이자 관리</a>
+												</li>
+												<li>
+													<a href="#n">한도 관리</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="">
+								<a href="#n">가계부</a>
 								<div class="depth02" style="width: 1474px; left: -267px;">
 									<ul>
 										<li style="height: 219px;">
@@ -144,6 +173,15 @@
 						</li>
 					</ul>
 				</div>
+				<div class="quickMenuArticle">
+				<ul class="listQuickMenu"> 
+					<li><a href="#n" id="btnSearchAll"><span class="icoSearch">조회하기</span></a></li>
+					<li><a href="#n" id="btnSearchEche"><span class="icoTransfer">이체하기</span></a></li>
+					<li><a href="#n" id="btnSearchDae"><span class="icoLoan">대출</span></a></li>
+					<li><a href="#n" id="btnSearchBank"><span class="icoBank">뱅킹관리</span></a></li>
+				</ul>
+				<div class="bg">&nbsp;</div>
+			</div>
 			</div>
 		</div>
 	</div>

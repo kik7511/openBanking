@@ -21,50 +21,6 @@ html.mobile *{outline:none;}
 
 .blind {visibility:hidden; position:absolute; left:-9999em; width:1px; height:1px; margin:0; padding:0; background:none; font-size:0; line-height:0; text-indent:-9999em}
 
-select,
-input[type="tel"],
-input[type="text"],
-input[type="email"],
-input[type="password"]{height:38px;display:inline-block;width:100%;border:0;border-radius:0;-moz-box-sizing:border-box;box-sizing:border-box;font-size:14px;line-height:1.3;background:#f3f3f3;-webkit-appearance:none}
-select{padding:0 11px;}
-input[type="tel"],
-input[type="text"],
-input[type="email"],
-input[type="password"]{padding:0 31px 0 11px;}
-input[type="password"]{/*padding:9px 11px;*/background:#f3f3f3;height:38px;/*border:1px solid #e7d8db*/}
-select{height:38px;min-width:70px;padding:9px 10px 10px 10px;border-radius:0;line-height:1.3;-webkit-appearance:none}
-select::-ms-expand{display:none}
-input[type="radio"],
-input[type="checkbox"]{vertical-align:middle;}
-input[type="text"]:focus,
-input[type="tel"]:focus,
-input[type="password"]:focus{padding:0px 31px 0 10px;height:38px;border:1px solid #454d5b !important; box-sizing:border-box;}
-input[disabled],
-input[readonly],
-input[disabled="disabled"],
-input[readonly="readonly"]{color:#817970;background:#f3f1ed}
-input[type="text"][disabled] + .btn_clear,
-input[type="text"][readonly] + .btn_clear,
-input[type="text"][disabled="disabled"] + .btn_clear,
-input[type="text"][readonly="readonly"] + .btn_clear{display:none !important}
-
-input[type="search"]::-ms-clear,
-input[type="number"]::-ms-clear,
-input[type="tel"]::-ms-clear,
-input[type="text"]::-ms-clear,
-input[type="email"]::-ms-clear,
-input[type="password"]::-ms-clear{display:none}
-
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
-	display: none;
-}
-
-
-textarea {border-radius:0; -webkit-appearance:none}
-
 label + label{margin-right:15px}
 label:first-child{margin-right:15px;}
 

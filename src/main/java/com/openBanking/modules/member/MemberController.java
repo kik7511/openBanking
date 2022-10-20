@@ -20,10 +20,4 @@ public class MemberController {
 	}
 
 
-	@RequestMapping(value="detailedCheck")
-	public String detailedCheck() throws Exception {
-
-		return "infra/member/user/detailedCheck";
-	}
-
 }

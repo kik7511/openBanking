@@ -20,7 +20,8 @@
 			#content .sub_cont_wrap {width:940px; margin:0 auto;}
 			.underbar {border-bottom: 2px solid black; padding: 5px; width: 190px; padding-bottom: 10px;}
 			.blank {height: 30px; background-color: white;}
-			.border_yellow{border-left: 2.5px solid yellow}
+			.border_yellow {}
+			.context_content {padding: 2px;}
 		</style>
 	</head>
 	<body>
@@ -58,6 +59,16 @@
 				  <div style="margin-top: 11px;">
 				  	<span style="font-size: 18px;">조회</span>
 				  	<div class="border_yellow">
+				  		<div style="text-align: right; padding: 20px;"><span style="font-size: 15px;">관리</span></div>
+				  		<div class="context_content"><span style="font-size: 20px;">MY 입출금통장</span></div>
+				  		<div class="context_content"><span style="font-size: 14px; color: gray;">110-133-242800</span></div>
+				  		<div style="padding-top: 13px;padding-bottom: 13px;">
+				  			<span style="font-size: 25px;"><strong>0</strong></span>
+				  			<span style="font-size: 22px;">원</span>
+			  			</div>
+			  			<div align="right" style="padding-bottom: 10px; padding-top: 10px;">
+			  				<button type="button" class="btn btn-primary"><span style="color: white;">이체하기</span></button>
+			  			</div>
 				  	</div> 			
 				 </div>
 				</div>	

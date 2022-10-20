@@ -18,4 +18,10 @@ public class AccountController {
 
 		return "infra/account/user/detailedCheck";
 	}
+	
+	@RequestMapping(value="accountTransfer")
+	public String accountTransfer() throws Exception {
+	    
+	    return "infra/account/user/accountTransfer";
+	}
 }

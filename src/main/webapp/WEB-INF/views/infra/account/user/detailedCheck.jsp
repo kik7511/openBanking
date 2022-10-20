@@ -23,9 +23,9 @@
 <body>
 <div id="wrap">
 	<%@include file = "../../common/header.jsp" %>	
-	
+	<%@include file = "../../common/font.jsp" %>
 	<!-- main -->
-    <div class="container" style="width: 600px; margin-left:610px;" >
+    <div class="container" style="width: 600px; margin:auto;" >
         <div class="row" style="margin-top: 50px;">
             <div class="col">
                 <header style="font-size: 2em">계좌</header>
@@ -33,12 +33,12 @@
         </div>
       <div class="row" style="padding: 10px 0;border-bottom: 0.5px solid; border-color:lightgray;">
        	<div class="col">
-     		<lable>신한은행</lable>
      		<img src="../../../../resources/img/logo/shinhan_logo.png" style="width:50px; float:left; padding-right:10px; margin-top:10px;">
+     		<lable>신한은행</lable>
      		<input type="text" value="110-330-908337" style="width:300px; background: none;">
  			<br>
-     		<span>계좌잔액</span>
-     		<input type="text" value="310,214원" style="border-style: none; width:300px; background: none;">
+     		<lable>계좌잔액</lable>
+     		<input type="text" value="310,214원" style="width:300px; background: none;">
        	</div>
         </div>
         <div class="row" style="padding: 10px 0;border-bottom: 0.5px solid; border-color:lightgray;">
@@ -47,7 +47,7 @@
        		<lable>국민은행</lable>
        		<input type="text" value="110-330-908337" style="width:300px; background: none;">
        		<br>
-       		<span>계좌잔액</span>
+       		<lable>계좌잔액</lable>
        		<input type="text" value="109,900원" style="border-style: none; width:300px; background: none;">
           </div>
        </div>
@@ -57,7 +57,7 @@
        		<lable>카카오뱅크</lable>
        		<input type="text" value="3333-04-435321" style="width:300px; background: none;">
        		<br>
-       		<span>계좌잔액</span>
+       		<lable>계좌잔액</lable>
        		<input type="text" value="782,310원" style="border-style: none; width:300px; background: none;">
           </div>
         </div>
@@ -67,7 +67,7 @@
 	       		<lable>토스뱅크</lable>
 	       		<input type="text" value="1000-04-23421" style="width:300px; background: none;">
 	       		<br>
-	       		<span>계좌잔액</span>
+	       		<lable>계좌잔액</lable>
 	       		<input type="text" value="2,122,310" style="border-style: none; width:300px; background: none;">
             </div>
         </div>
@@ -77,7 +77,7 @@
 	       		<lable>농협</lable>
 	       		<input type="text" value="212123-04-435321" style="width:300px; background: none;">
 	       		<br>
-	       		<span>계좌잔액</span>
+	       		<lable>계좌잔액</lable>
 	       		<input type="text" value="212,310원" style="border-style: none; width:300px; background: none;">
             </div>
         </div>

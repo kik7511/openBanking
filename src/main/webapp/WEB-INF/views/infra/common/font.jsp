@@ -10,7 +10,7 @@
 		font-family: 'Noto Sans KR', sans-serif;
 	}
 	
-	a {
+	a, a:hover {
 		color : black;
 		text-decoration : none;
 	}

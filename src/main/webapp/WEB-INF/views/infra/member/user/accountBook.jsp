@@ -7,18 +7,9 @@
 <title>가계부</title>
 <%@include file = "../../common/link.jsp" %>
 
-<!-- bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
 <!-- fullCalendar -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
-
-<!-- 제이쿼리 -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-
-<!-- fontawesome -->
-<script src="https://kit.fontawesome.com/9a0994e5cb.js" crossorigin="anonymous"></script>
 
 <!-- font -->
 <%@include file = "../../common/font.jsp" %>
@@ -59,6 +50,71 @@
 		left: 870px;
     	top: 28px;
 	}
+	
+	.modal {
+		position:fixed	
+	}
+	.modal-content {
+		width : 700px;
+		border : 0px;
+		border-radius: 15px;
+	}
+	
+	.modal-header {
+		border : 0px;
+		padding: 15px;
+		
+	}
+	
+	.modal-header #next-btn {
+		border : 0px;
+		background-color: white;
+	}
+	
+	.modal-body {
+		width : 100%;
+		float: left;
+		padding: 0 30px 50px 30px;
+	}
+	
+	.modal-input-text {
+		height : 30px;
+		
+	}
+	
+	.section {
+		border-bottom: 1px solid #ced4da;
+		padding : 20px 0 20px 0;
+	}
+	
+	.tit {
+		width : 30%;
+	}
+	
+	.optionBtn {
+		width : 80px;
+		height: 35px;
+		border : 1px solid #ced4da;
+		background-color: white;
+		border-radius: 5px;
+		margin-right: 10px;
+	}
+	
+	.form-select {
+		width : 30%;
+	}
+	
+	.form-control {
+		border : none;
+	}
+	
+	#saveBtn {
+		width : 100%;
+		background-color: #57BA83;
+		margin-top: 30px;
+		color : white;
+	}
+	
 
 </style>
 
@@ -131,7 +187,6 @@
 			</div>
 		</div>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<!-- modal -->
 	
 	<script>

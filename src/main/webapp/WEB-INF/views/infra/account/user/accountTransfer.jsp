@@ -17,9 +17,18 @@
 		#container_inner #content {width:100% !important;}
 		#content, .content {float:none; width:100% !important;}
 		#content .sub_cont_wrap {width:940px; margin:0 auto;}
-		
+		#wrap {width:900px; margin: auto; margin-bottom: 30px; height: 600px;}
+		.layerTooltip {position:relative; display:inline-block; margin:0 !important;}
+		.layerTooltip .tip {display:none; position:absolute; top:-3px; left:0; width:100px; margin-left:0 !important; padding:5px; color:#000; font-size:10px; background-color:rgba(0, 0, 0, 0);}
+		.layerTooltip.on .tip {display:block;}
+		#container_inner {width:100% !important;}
+		#container_inner #content {width:100% !important;}
+		#content, .content {float:none; width:100% !important;}
+		#content .sub_cont_wrap {width:940px; margin:0 auto;}
+		.underbar {border-bottom: 2px solid black; padding: 5px; width: 190px; padding-bottom: 10px;}
+		.blank {height: 30px; background-color: white;}
 		/* 버튼css */
-		.btn {
+		.btn_AT {
 		    border: 0;
 		    line-height: 2.5;
 		    padding: 0 20px;
@@ -37,11 +46,11 @@
 		                inset -2px -2px 3px rgba(0, 0, 0, .6);
 		}
 		
-		.btn:hover {
+		.btn_AT:hover {
 		    background-color: #454d5b;
 		}
 		
-		.btn:active {
+		.btn_AT:active {
 		    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
 		                inset 2px 2px 3px rgba(0, 0, 0, .6);
 		}
@@ -53,6 +62,43 @@
 	<%@include file = "../../common/header.jsp" %>	
 	<%@include file = "../../common/font.jsp" %>
 	<!-- main S -->
+	<div class="blank"></div>
+		<div class="flex-shrink-0 p-3 bg-white" style="width: 200px; float: left; height: 100%">
+		    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+		      <span class="fs-5 fw-semibold" style="padding-left: 15px;">이체</span>
+		    </a>
+		    <ul class="list-unstyled ps-0">
+		      <li class="mb-1">
+		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+		          이체하기
+		        </button>
+		      </li>
+		      <li class="border-top my-3"></li>
+		      <li class="mb-1">
+		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+		          자동이체
+		        </button>
+		      </li>
+		      <li class="border-top my-3"></li>
+		      <li class="mb-1">
+		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+		          대량이체
+		        </button>
+		      </li>
+		      <li class="border-top my-3"></li>
+		      <li class="mb-1">
+		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+		          이체결과
+		        </button>
+		      </li>
+		      <li class="border-top my-3"></li>
+		      <li class="mb-1">
+		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+		          Account
+		        </button>
+		      </li>
+		    </ul>
+		  </div>
 	<div style="width:600px; margin:auto;">
 		<div class="row" style="margin-top: 30px;">
 			<div class="col">
@@ -102,13 +148,13 @@
 		</div>
 		<div class="row" style="padding:20px; margin-left:150px;">
 			<div class="col">
-				<button class="btn" type="button" style="width:100px;">취소</button>
-				<button class="btn" type="button">이체하기</button>
+				<button class="btn_AT" type="button" style="width:100px;">취소</button>
+				<button class="btn_AT" type="button">이체하기</button>
 			</div>
 		</div>	
 	</div>
    	<!-- main E-->
-	<%@include file = "../../common/footer.jsp" %>	
 </div>
+<%@include file = "../../common/footer.jsp" %>	
 </body>
 </html>

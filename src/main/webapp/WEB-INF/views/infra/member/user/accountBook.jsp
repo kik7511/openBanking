@@ -5,6 +5,7 @@
 <head>
 <meta  charset="UTF-8" name="viewport" content="width=device-width, user-scalable=0">
 <title>가계부</title>
+
 <%@include file = "../../common/link.jsp" %>
 
 <!-- fullCalendar -->

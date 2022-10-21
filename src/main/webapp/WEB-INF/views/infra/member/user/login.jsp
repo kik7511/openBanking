@@ -13,6 +13,7 @@
 
 <title>로그인</title>
 <%@include file = "../../common/link.jsp" %>	
+<%@include file = "../../common/font.jsp" %>
 <style>
 	body {
 		font-family: 'Noto Sans KR', sans-serif;

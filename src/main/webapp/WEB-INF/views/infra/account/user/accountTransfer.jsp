@@ -55,6 +55,76 @@
 		                inset 2px 2px 3px rgba(0, 0, 0, .6);
 		}
 		/* 버튼css */
+		.mWidth {
+			width : 600px;
+			margin : auto;
+			
+		}
+		.blankHeight{
+			margin-top : 20px;
+		}
+		
+		.underLine {
+			border-bottom : 1px solid;
+			border-color : lightgray;
+		}
+		
+		.input_box {
+		    font-size: 1rem;
+		    font-weight: 400;
+		    line-height: 1.5;
+		    color: #212529;
+		    background-color: #fff;
+		    background-clip: padding-box;
+		    border: 1px solid #ced4da;
+		    appearance: none;
+		    border-radius: 0.375rem;
+		    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+		}
+		
+		.input_select {
+		    width: 100%;
+		    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+		    font-size: 1rem;
+		    font-weight: 400;
+		    line-height: 1.5;
+		    color: #212529;
+		    background-color: #fff;
+		    background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e);
+		    background-repeat: no-repeat;
+		    background-position: right 0.75rem center;
+		    background-size: 16px 12px;
+		    border: 1px solid #ced4da;
+		    border-radius: 0.375rem;
+		    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+		    appearance: none;
+		}
+		
+		.inputBOx_myAccount {
+			width : 500px;
+			margin-bottom : 3px;
+			border-style : none;
+		}
+		
+		.inputBox_possible {
+			margin-top : 3px;
+			border-style:none;
+		}
+		
+		.inputBox_sendAccount {
+			width : 400px;
+			border-style : none;
+		}
+		
+		.inputBox_won {
+			width : 500px;
+			border-style : none;
+		}
+		
+		.underBtn{
+			padding : 20px;
+			margin-left : 150px;
+		}
 	</style>
 </head>
 <body>
@@ -62,10 +132,10 @@
 	<%@include file = "../../common/header.jsp" %>	
 	<%@include file = "../../common/font.jsp" %>
 	<!-- main S -->
-	<div class="blank"></div>
+		<div class="blank"></div>
 		<div class="flex-shrink-0 p-3 bg-white" style="width: 200px; float: left; height: 100%">
 		    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-		      <span class="fs-5 fw-semibold" style="padding-left: 15px;">이체</span>
+		      <span class="fs-5 fw-semibold" style="padding-left: 15px;">이체하기</span>
 		    </a>
 		    <ul class="list-unstyled ps-0">
 		      <li class="mb-1">
@@ -73,80 +143,97 @@
 		          이체하기
 		        </button>
 		      </li>
-		      <li class="border-top my-3"></li>
+		       <li class="border-top my-1"></li>
 		      <li class="mb-1">
 		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
 		          자동이체
 		        </button>
 		      </li>
-		      <li class="border-top my-3"></li>
+		       <li class="border-top my-1"></li>
 		      <li class="mb-1">
 		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
 		          대량이체
 		        </button>
 		      </li>
-		      <li class="border-top my-3"></li>
+		      <li class="border-top my-1"></li>
 		      <li class="mb-1">
-		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
 		          이체결과
 		        </button>
 		      </li>
-		      <li class="border-top my-3"></li>
-		      <li class="mb-1">
-		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-		          Account
-		        </button>
-		      </li>
+		       <li class="border-top my-1"></li>
 		    </ul>
 		  </div>
-	<div style="width:600px; margin:auto;">
-		<div class="row" style="margin-top: 30px;">
+	<div class="mWidth">
+		<div class="row blankHeight">
 			<div class="col">
 				<h2>이체하기</h2>
 			</div>		
 		</div>
-		<div class="row" style="margin-top : 20px;">
+		<div class="row blankHeight">
 			<div class="col">
-				<lable>
+				<span>
 					<i class="fa-solid fa-wallet"></i>출금계좌
-				</lable>
-				<br>
-				<input type="text" value="My 입출금 통장 100-133-242800" style="width:500px; border-bottom: 1px solid; border-color:lightgray; background: none;">
+				</span>
+			</div>
+		</div>
+		<div class="row underLine">
+			<div class="col mt-2">
+				<input type="text" class="input_box inputBox_myAccount" value="" placeholder="My 입출금 통장 100-133-242800">
 			</div>
 		</div>
 		<div class="row">
-			<div class="col">
-				<input type="text" value="입금가능금액 0원" style="background: none;">
+			<div class="col-4">
+				<input type="text" class="input_box inputBox_possible" value="" placeholder="입금가능금액 0원">
 			</div>
-			<div class="col offset-5 mt-1">
-				<button type="button">잔액/한도></button>
-			</div>
-		</div>
-		<div class="row" style="margin-top : 20px;">
-			<div class="col">
-				<lable>
-					<i class="fa-sharp fa-solid fa-circle-user"></i>받는사람
-				</lable>
-				<br>
-				<input type="text" value="계좌번호" style="width:500px; border-bottom: 1px solid; border-color:lightgray; background: none;">
+			<div class="col offset-6 mt-1">
+				<button type="button">잔액/한도</button>
 			</div>
 		</div>
 		<div class="row" style="margin-top : 20px;">
 			<div class="col">
-				<lable>
+				<span>받는사람</span>
+					<div class="row underLine">
+						<div class="col-3 mt-2">
+							<select class="form-select" style="border-style:none">
+								<option>은행</option>
+								<option>국민</option>
+								<option>신한</option>
+								<option>농협</option>
+								<option>하나</option>
+								<option>우리</option>
+								<option>카카오</option>
+								<option>토스</option>
+								<option>신협</option>
+								<option>새마을금고</option>
+								<option>수협</option>
+								<option>SC</option>
+							</select>
+						</div>
+						<div class="col-7 mt-3">
+							<input type="text" class="input_box inputBox_sendAccount" value="" placeholder="계좌번호">
+						</div>
+					</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top : 20px;">
+			<div class="col">
+				<span>
 					<i class="fa-sharp fa-solid fa-won-sign"></i>금액
-				</lable>
-				<br>
-				<input type="text" value="원" style="width:500px; border-bottom: 1px solid; border-color:lightgray; background: none;">
+				</span>
+			</div
+		<div class="row">
+			<div class="col mt-2 underLine">
+				<input type="text" class="input_box inputBox_won" value="" placeholder="원">
 			</div>
-			<div class="form-check offset-8">
+			<div class="form-check offset-10">
 			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 			  <label class="form-check-label" for="flexCheckDefault">
-			   마우스 입력
+			  	 마우스 입력
 			  </label>
 			</div>
 		</div>
-		<div class="row" style="padding:20px; margin-left:150px;">
+		<div class="row underBtn">
 			<div class="col">
 				<button class="btn_AT" type="button" style="width:100px;">취소</button>
 				<button class="btn_AT" type="button">이체하기</button>

@@ -13,10 +13,10 @@ public class AccountController {
 		return "infra/account/user/accountList";
 	}
 	
-	@RequestMapping(value="detailedCheck")
+	@RequestMapping(value="accountCheck")
 	public String detailedCheck() throws Exception {
 
-		return "infra/account/user/detailedCheck";
+		return "infra/account/user/accountCheck";
 	}
 	
 	@RequestMapping(value="accountTransfer")

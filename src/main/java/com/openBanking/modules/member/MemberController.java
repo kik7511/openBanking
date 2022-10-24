@@ -19,6 +19,18 @@ public class MemberController {
 		return "infra/member/user/accountBook";
 	}
 	
+	@RequestMapping(value="signup")
+	public String signupView() throws Exception {
+		
+		return "infra/member/user/signup";
+	}
+	
+	@RequestMapping(value="signupCompleted")
+	public String signupCompletedView() throws Exception {
+		
+		return "infra/member/user/signupCompleted";
+	}
+	
 	@RequestMapping(value="passwordModForm")
 	public String passwordModForm() throws Exception {
 		

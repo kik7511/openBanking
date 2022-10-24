@@ -18,6 +18,10 @@
 		#container_inner #content {width:100% !important;}
 		#content, .content {float:none; width:100% !important;}
 		#content .sub_cont_wrap {width:940px; margin:0 auto;}
+		.login_pc{height: 460px;}
+		#slide>ul>li{position: absolute;}
+		li{left: 0px}
+		.banner-img{height: 460px; width: 1903px;}
 	</style>
 </head>
 <body>
@@ -27,10 +31,17 @@
 		<div id = "container_inner">
 			<div id = "content" style="width: 940px;">
 				<div>
-					<div class="content login_pc" style="background-color: #00BFFF">
-						<a class="banner">
-							<img src="/resources/img/background.jpg" style="height: 460px;" >
-						</a>
+					<div class="content login_pc">
+						<!-- <a class="banner">
+							<img src="/resources/img/bg1.jpg" id="bannerImage" style="height: 460px;" >
+						</a> -->
+						
+						<div id="slide" class="content login_pc">
+							<ul>
+								<li><a class="banner"><img class="banner-img" src="/resources/img/bg1.jpg" style="height: 460px; width: 1903px;"></a></li>
+								<li><a class="banner"><img class="banner-img" src="/resources/img/bg2.jpg" style="height: 460px; width: 1903px;"></a></li>
+	               			</ul>
+						</div>
 					</div>
 						<div class="quickMenuArticle">
 						<ul class="listQuickMenu"> 
@@ -47,6 +58,19 @@
 	</div>
 	
 	<%@include file = "infra/common/footer.jsp" %>	
+	
+	<script>
+		$(document).ready(function(){
+			$('#slide>ul>li').hide();
+			$('#slide>ul>li:first-child').show();
+
+			setInterval(function(){
+			    $('#slide>ul>li:first-child').fadeOut()
+			    .next().fadeIn().end(1000)
+			    .appendTo('#slide>ul');
+			}, 5000);
+		});
+	</script>
 </div>
 </body>
 </html>

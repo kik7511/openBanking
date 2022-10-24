@@ -30,6 +30,12 @@ public class MemberController {
 		
 		return "infra/member/user/signupCompleted";
 	}
+	
+	@RequestMapping(value="passwordModForm")
+	public String passwordModForm() throws Exception {
+		
+		return "infra/member/user/passwordModForm";
+	}
 
 
 }

@@ -10,15 +10,7 @@
 	<title>openBanking</title>
 	<%@include file = "infra/common/link.jsp" %>	
 	<%@include file = "infra/common/font.jsp" %>
-	<style type="text/css">
-		.layerTooltip {position:relative; display:inline-block; margin:0 !important;}
-		.layerTooltip .tip {display:none; position:absolute; top:-3px; left:0; width:100px; margin-left:0 !important; padding:5px; color:#000; font-size:10px; background-color:rgba(0, 0, 0, 0);}
-		.layerTooltip.on .tip {display:block;}
-		#container_inner {width:100% !important;}
-		#container_inner #content {width:100% !important;}
-		#content, .content {float:none; width:100% !important;}
-		#content .sub_cont_wrap {width:940px; margin:0 auto;}
-	</style>
+	<link rel="stylesheet" type="text/css" href="/resources/css/home.css">
 </head>
 <body>
 <div id="wrap">
@@ -36,7 +28,6 @@
 						<ul class="listQuickMenu"> 
 							<li><a href="#n" id="btnSearchAll"><span class="icoSearch">조회하기</span></a></li>
 							<li><a href="#n" id="btnSearchEche"><span class="icoTransfer">이체하기</span></a></li>
-							<!-- <li><a href="#n" id="btnSearchDae"><span class="icoLoan">대출</span></a></li> -->
 							<li><a href="#n" id="btnSearchBank"><span class="icoBank">가계부관리</span></a></li>
 						</ul>
 						<div class="bg">&nbsp;</div>

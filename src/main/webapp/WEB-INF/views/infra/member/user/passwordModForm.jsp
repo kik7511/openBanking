@@ -2,31 +2,14 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>	
 
 <html lang="ko">
 	<head>
 		<title>openBanking</title>
 		<%@include file = "../../common/link.jsp" %>
 		<%@include file = "../../common/font.jsp" %>
-		<style type="text/css">
-			#wrap {width:900px; margin: auto; margin-bottom: 30px; height: 500px;}
-			.layerTooltip {position:relative; display:inline-block; margin:0 !important;}
-			.layerTooltip .tip {display:none; position:absolute; top:-3px; left:0; width:100px; margin-left:0 !important; padding:5px; color:#000; font-size:10px; background-color:rgba(0, 0, 0, 0);}
-			.layerTooltip.on .tip {display:block;}
-			#container_inner {width:100% !important;}
-			#container_inner #content {width:100% !important;}
-			#content, .content {float:none; width:100% !important;}
-			#content .sub_cont_wrap {width:940px; margin:0 auto;}
-			.underbar {border-bottom: 2px solid black; padding: 5px; width: 190px; padding-bottom: 10px;}
-			.blank {height: 30px; background-color: white;}
-			.context_content {padding: 2px;}
-			.passwordMod {padding-bottom: 30px; margin-top: 60px; border-bottom: 1px solid gray;}
-			.passwordSpan {padding-left: 75px;}
-			.spanInfo {padding-left: 9px; font-size: 13px;}  
-			.input_text {border: 1px solid black; padding: 5px; text-align: center; border-radius: 5px;}
-			.passwordtext {margin-bottom: 13px; margin-top: 13px; display:flex; justify-content: space-between; width: 500px; padding-bottom: 13px;}
-		</style>
+		<link rel="stylesheet" type="text/css" href="/resources/css/passwordMod.css">
 	</head>
 	<body>
 		<%@include file = "../../common/header.jsp" %>

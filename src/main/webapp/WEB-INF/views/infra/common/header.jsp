@@ -25,7 +25,7 @@
 						<ul class="topGnb">
 							<li class="">
 								<a href="#n">계좌관리</a>
-								<div class="depth02" style="width: 1474px; left: -250px;">
+								<div class="depth02" style="width: 1903px; left: -482px;">
 									<ul>
 										<li style="height: 181px;">
 											<a href="#n">조회</a>
@@ -51,8 +51,8 @@
 								</div>
 							</li>
 							<li class="">
-								<a href="#n">카드관리</a>
-								<div class="depth02" style="width: 1474px; left: -250px;">
+								<a href="#n" class="main-menu">카드관리</a>
+								<div class="depth02" style="width: 1903px; left: -482px;">
 									<ul>
 										<li style="height: 219px;">
 											<a href="#n">조회</a>
@@ -72,8 +72,8 @@
 								</div>
 							</li>
 							<li class="">
-								<a href="#n">가계부</a>
-								<div class="depth02" style="width: 1474px; left: -250px;">
+								<a href="#n" class="main-menu">가계부</a>
+								<div class="depth02" style="width: 1903px; left: -482px;">
 									<ul>
 										<li style="height: 219px;">
 											<a href="#n">조회</a>

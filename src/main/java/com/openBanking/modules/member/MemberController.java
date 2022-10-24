@@ -31,10 +31,28 @@ public class MemberController {
 		return "infra/member/user/signupCompleted";
 	}
 	
+	@RequestMapping(value="findpw")
+	public String findpwView() throws Exception {
+		
+		return "infra/member/user/findPw";
+	}
+	
+	@RequestMapping(value="findid")
+	public String findidView() throws Exception {
+		
+		return "infra/member/user/findId";
+	}
+	
 	@RequestMapping(value="passwordModForm")
 	public String passwordModForm() throws Exception {
 		
 		return "infra/member/user/passwordModForm";
+	}
+	
+	@RequestMapping(value="test")
+	public String test() throws Exception {
+		
+		return "infra/member/user/test";
 	}
 
 

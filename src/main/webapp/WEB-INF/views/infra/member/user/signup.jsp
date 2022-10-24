@@ -11,74 +11,37 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<title>로그인</title>
+
+<link rel="stylesheet" href="/resources/css/member.css">
+
+<title>회원가입</title>
 <%@include file = "../../common/link.jsp" %>	
 <%@include file = "../../common/font.jsp" %>
 <style>
-	#wrap {
-		margin: 50px 0 50px 0;
-	}
-	
-	.table {
-		margin : 10px 0 20px 0;
-		width : 500px;
-	}
-	
-	.table .text-input {
-		border : 1px solid #DADADA;
-		padding: 2px;
-	}
-  		
-	.tit {
-		font-size : 23px;
-		margin-left: 380px;
-		color : #454D5B
-	}
-	
-	.signup-wrap {
-		width : 1200px;
-		margin : auto;
-		padding-bottom : 50px;
-		border-top: 2px solid #454D5B;
-		border-bottom: 1px solid #CDD7E7;
-		
-	}
-  		
-	.table th {
-		background-color: #F7F8F9;
-		text-align: center;
-	}
-  		
-	#idCheck, #reset {
-		display:block;
-		border : 1px solid #DADADA;
-		height: 26px;
-	}
-  		
-	.table caption {
-		caption-side: top;
-		color : black;
-	}
-  		
-	.table label {
-		padding: inherit;
-	}
-  		
-	.signupBtn {
-		border : 1px solid #BEB4AF;
-		width : 200px;
-		color : white;
-		background-color : #BEB4AF;
-		border : 0px;
-		border-radius: 0px;
-	}
-	
-	.signupBtn:hover {
-		color : white;
-		background-color : #BEB4AF;
-		border : 0px;
-	}
-	
+.table {
+	margin : 10px 0 20px 0;
+	width : 500px;
+}
+
+.table caption {
+	caption-side: top;
+	color : black;
+}
+
+.table label {
+	padding: inherit;
+}
+
+.table .text-input {
+	border : 1px solid #DADADA;
+	padding: 2px;
+}
+
+.table th {
+	background-color: #F7F8F9;
+	text-align: center;
+}
+
 </style>
 </head>
 <body>
@@ -162,7 +125,7 @@
 					</table>
 				</section>
 				<section class="d-flex justify-content-center">
-					<button type="button" class="btn signupBtn" onclick="location.href='signup'">회원가입</button>
+					<button type="button" class="btn next-btn" onclick="location.href='signupCompleted'">회원가입</button>
 				</section>
 			</form>
 		</div>		

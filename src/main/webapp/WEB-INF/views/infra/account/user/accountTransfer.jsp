@@ -55,6 +55,7 @@
 		                inset 2px 2px 3px rgba(0, 0, 0, .6);
 		}
 		/* 버튼css */
+		
 		.mWidth {
 			width : 600px;
 			margin : auto;
@@ -121,10 +122,25 @@
 			border-style : none;
 		}
 		
-		.underBtn{
+		.underBtn {
 			padding : 20px;
 			margin-left : 150px;
 		}
+		
+		.calculator {
+			width : 15%;
+			position: absolute; 
+			top: 48%;
+			left : 32%;
+		}
+		
+		.mouse_click {
+			width : 15%;
+			position: absolute; 
+			top: 79%;
+			left : -3%;
+		}
+		
 	</style>
 </head>
 <body>
@@ -186,8 +202,10 @@
 			<div class="col-4">
 				<input type="text" class="input_box inputBox_possible" value="" placeholder="입금가능금액 0원">
 			</div>
-			<div class="col offset-6 mt-1">
-				<button type="button">잔액/한도</button>
+			<div class="col calculator offset-5 mt-1">
+				<button type="button">
+					<i class="fas fa-thin fa-calculator"></i>잔액/한도
+				</button>
 			</div>
 		</div>
 		<div class="row" style="margin-top : 20px;">
@@ -226,11 +244,10 @@
 			<div class="col mt-2 underLine">
 				<input type="text" class="input_box inputBox_won" value="" placeholder="원">
 			</div>
-			<div class="form-check offset-10">
-			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-			  <label class="form-check-label" for="flexCheckDefault">
-			  	 마우스 입력
-			  </label>
+			<div class="col mouse_click offset-9 mt-1">
+				<button type="button">
+					<i class="fas fa-regular fa-computer-mouse"></i>마우스 입력
+				</button>
 			</div>
 		</div>
 		<div class="row underBtn">

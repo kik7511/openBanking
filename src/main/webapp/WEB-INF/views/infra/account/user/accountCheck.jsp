@@ -9,6 +9,7 @@
 <head>
 	<title>openBanking</title>
 	<%@include file = "../../common/link.jsp" %>	
+	 <link rel="stylesheet" href="../../resources/css/accountCheck.css">
 	<style type="text/css">
 		.layerTooltip {position:relative; display:inline-block; margin:0 !important;}
 		.layerTooltip .tip {display:none; position:absolute; top:-3px; left:0; width:100px; margin-left:0 !important; padding:5px; color:#000; font-size:10px; background-color:rgba(0, 0, 0, 0);}
@@ -17,46 +18,6 @@
 		#container_inner #content {width:100% !important;}
 		#content, .content {float:none; width:100% !important;}
 		#content .sub_cont_wrap {width:940px; margin:0 auto;}
-		
-		
-		.container_option {
-			width : 600px;
-			margin : auto;
-		}
-		
-		.height{
-			margin-top : 50px;
-		}
-		
-		.account_view {
-			padding : 10px;
-			border-bottom : 0.5px solid;
-			border-color : lightgray;
-		}
-		
-		.card_view {
-			margin-bottom : 20px;
-			border-bottom : 0.5px solid;
-			border-color : lightgray;
-		}
-		
-		.input_account {
-			width : 300px;
-			background : none;
-		}
-		
-		.logo_style {
-		 width:50px; 
-			float : left; 
-			padding-right : 10px; 
-			margin-top : 10px;"
-		}
-		
-		.middle_line {
-			border-top : 1px solid;
-			padding-top : 30px;
-		}
-		
 	</style>
 </head>
 <body>

@@ -22,6 +22,7 @@
 		.input_account {
 			width : 300px;
 			background : none;
+			border-style : none;
 		}
 		
 		.logo_style {

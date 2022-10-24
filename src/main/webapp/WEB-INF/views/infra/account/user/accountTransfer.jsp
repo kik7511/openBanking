@@ -127,25 +127,25 @@
 			margin-left : 150px;
 		}
 		
-		.calculator {
+		 .calculator {
 			width : 15%;
 			position: absolute; 
-			top: 48%;
-			left : 32%;
+			top: 30%;
+			left : 30%;
 		}
 		
 		.mouse_click {
 			width : 15%;
 			position: absolute; 
-			top: 79%;
-			left : -3%;
-		}
+			top: 63%;
+			left : -4.5%;
+		} 
 		
 	</style>
 </head>
 <body>
-<div id="wrap">
-	<%@include file = "../../common/header.jsp" %>	
+<%@include file = "../../common/header.jsp" %>
+	<div id="wrap">
 	<%@include file = "../../common/font.jsp" %>
 	<!-- main S -->
 		<div class="blank"></div>
@@ -154,111 +154,114 @@
 		      <span class="fs-5 fw-semibold" style="padding-left: 15px;">이체하기</span>
 		    </a>
 		    <ul class="list-unstyled ps-0">
-		      <li class="mb-1">
-		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-		          이체하기
-		        </button>
-		      </li>
-		       <li class="border-top my-1"></li>
-		      <li class="mb-1">
-		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-		          자동이체
-		        </button>
-		      </li>
-		       <li class="border-top my-1"></li>
-		      <li class="mb-1">
-		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-		          대량이체
-		        </button>
-		      </li>
-		      <li class="border-top my-1"></li>
-		      <li class="mb-1">
-		        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-		          이체결과
-		        </button>
+		      	<li class="mb-1">
+		       	 	<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+		          		이체하기
+		        	</button>
+		      	</li>
+		       	<li class="border-top my-1"></li>
+		      	<li class="mb-1">
+		        	<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+		          		자동이체
+		        	</button>
+		     	</li>
+		      	<li class="border-top my-1"></li>
+		      	<li class="mb-1">
+		        	<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+		        		대량이체
+		        	</button>
+		      	</li>
+		     	<li class="border-top my-1"></li>
+		      	<li class="mb-1">
+		        	<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+		          		이체결과
+		        	</button>
 		      </li>
 		       <li class="border-top my-1"></li>
 		    </ul>
-		  </div>
-	<div class="mWidth">
-		<div class="row blankHeight">
-			<div class="col">
-				<h2>이체하기</h2>
-			</div>		
-		</div>
-		<div class="row blankHeight">
-			<div class="col">
-				<span>
-					<i class="fa-solid fa-wallet"></i>출금계좌
-				</span>
+	  	</div>
+		<div class="mWidth">
+			<div class="row blankHeight">
+				<div class="col">
+					<h2>이체하기</h2>
+				</div>		
 			</div>
-		</div>
-		<div class="row underLine">
-			<div class="col mt-2">
-				<input type="text" class="input_box inputBox_myAccount" value="" placeholder="My 입출금 통장 100-133-242800">
+			<div class="row blankHeight">
+				<div class="col">
+					<span>
+						<i class="fa-solid fa-wallet"></i>출금계좌
+					</span>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-4">
-				<input type="text" class="input_box inputBox_possible" value="" placeholder="입금가능금액 0원">
+			<div class="row underLine">
+				<div class="col mt-2">
+					<input type="text" class="input_box inputBox_myAccount" value="" placeholder="My 입출금 통장 100-133-242800">
+				</div>
 			</div>
-			<div class="col calculator offset-5 mt-1">
-				<button type="button">
-					<i class="fas fa-thin fa-calculator"></i>잔액/한도
-				</button>
+			<div class="row">
+				<div class="col-4">
+					<input type="text" class="input_box inputBox_possible" value="" placeholder="입금가능금액 0원">
+				</div>
+				<div class="col calculator offset-5 mt-1">
+					<button type="button">
+						<i class="fas fa-thin fa-calculator"></i>잔액/한도
+					</button>
+				</div>
 			</div>
-		</div>
-		<div class="row" style="margin-top : 20px;">
-			<div class="col">
-				<span>받는사람</span>
-					<div class="row underLine">
-						<div class="col-3 mt-2">
-							<select class="form-select" style="border-style:none">
-								<option>은행</option>
-								<option>국민</option>
-								<option>신한</option>
-								<option>농협</option>
-								<option>하나</option>
-								<option>우리</option>
-								<option>카카오</option>
-								<option>토스</option>
-								<option>신협</option>
-								<option>새마을금고</option>
-								<option>수협</option>
-								<option>SC</option>
-							</select>
-						</div>
-						<div class="col-7 mt-3">
-							<input type="text" class="input_box inputBox_sendAccount" value="" placeholder="계좌번호">
+			<div class="row" style="margin-top : 20px;">
+				<div class="col">
+					<span>받는사람</span>
+						<div class="row underLine">
+							<div class="col-3 mt-2">
+								<select class="form-select" style="border-style:none">
+									<option>은행</option>
+									<option>국민</option>
+									<option>신한</option>
+									<option>농협</option>
+									<option>하나</option>
+									<option>우리</option>
+									<option>카카오</option>
+									<option>토스</option>
+									<option>신협</option>
+									<option>새마을금고</option>
+									<option>수협</option>
+									<option>SC</option>
+								</select>
+							</div>
+							<div class="col-7 mt-3">
+								<input type="text" class="input_box inputBox_sendAccount" value="" placeholder="계좌번호">
+							</div>
 						</div>
 					</div>
+				</div>
+				<div class="row" style="margin-top : 20px;">
+					<div class="col">
+						<span>
+							<i class="fa-sharp fa-solid fa-won-sign"></i>금액
+						</span>
+					</div>
+				<div class="row underLine" style="margin-left:2px;">
+					<div class="col mt-2">
+						<input type="text" class="input_box inputBox_won" value="" placeholder="원">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col mouse_click offset-9 mt-1">
+						<button type="button">
+							<i class="fas fa-regular fa-computer-mouse"></i>마우스 입력
+						</button>
+					</div>
+				</div>
+				<div class="row underBtn">
+					<div class="col">
+						<button class="btn_AT" type="button" style="width:100px;">취소</button>
+						<button class="btn_AT" type="button">이체하기</button>
+					</div>
+				</div>	
 			</div>
+	   	<!-- main E-->
 		</div>
-		<div class="row" style="margin-top : 20px;">
-			<div class="col">
-				<span>
-					<i class="fa-sharp fa-solid fa-won-sign"></i>금액
-				</span>
-			</div>
-		<div class="row">
-			<div class="col mt-2 underLine">
-				<input type="text" class="input_box inputBox_won" value="" placeholder="원">
-			</div>
-			<div class="col mouse_click offset-9 mt-1">
-				<button type="button">
-					<i class="fas fa-regular fa-computer-mouse"></i>마우스 입력
-				</button>
-			</div>
-		</div>
-		<div class="row underBtn">
-			<div class="col">
-				<button class="btn_AT" type="button" style="width:100px;">취소</button>
-				<button class="btn_AT" type="button">이체하기</button>
-			</div>
-		</div>	
 	</div>
-   	<!-- main E-->
-</div>
 <%@include file = "../../common/footer.jsp" %>	
 </body>
 </html>

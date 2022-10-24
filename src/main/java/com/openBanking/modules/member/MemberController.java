@@ -36,6 +36,12 @@ public class MemberController {
 		
 		return "infra/member/user/passwordModForm";
 	}
+	
+	@RequestMapping(value="test")
+	public String test() throws Exception {
+		
+		return "infra/member/user/test";
+	}
 
 
 }

@@ -10,7 +10,7 @@
 		font-family: 'Noto Sans KR', sans-serif;
 	}
 	
-	a, a:hover {
+	a, a:hover, .nav-link, .nav-link:hover {
 		color : black;
 		text-decoration : none;
 	}

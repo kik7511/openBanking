@@ -10,84 +10,28 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/resources/css/member.css">
 
-<title>회원가입</title>
+<title>로그인</title>
 <%@include file = "../../common/link.jsp" %>	
 <%@include file = "../../common/font.jsp" %>
 <style>
-	#wrap {
-		margin: 50px 0 50px 0;
-	}
-	
-	.login-wrap {
-		width : 1200px;
-		margin : auto;
-		padding-bottom : 50px;
-		border-top: 2px solid #454D5B;
-		border-bottom: 1px solid #CDD7E7;
-		
-	}
-	
-	.tit {
-		font-size : 23px;
-		margin-left: 380px;
-		color : #454D5B
-	}
-	
-	.login-wrap .login-box {
-		width : 700px;
-		height : 100%;
-		margin : auto;
-		margin-top: 50px;
-	}
-	
-	.login-wrap .login-box .input-wrap .input-box .text-input {
+
+	.text-input {
 		width : 300px !important;
 		height: 35px;
 		border : none;
 		background-color: #F3F3F3;
 	}
-	
-	.login-wrap .login-box .input-wrap {
-		display: flex;
-		width : 100%;
-		margin: auto;
-		justify-content: center;
-	}
-	
-
-	#loginBtn {
-		height: 100%;
-		width: 100px;
-		background-color: #0F0060;
-		color : white;
-	}
-	
-	.login-wrap .login-box .btn-wrap {
-		width: 70%;
-		margin : auto;
-		margin-top : 30px;
-		display: flex;
-		justify-content: space-between;
-	}
-	
-	.login-wrap .login-box .btn-wrap .btn {
-		width : 140px;
-		height : 35px;
-		border : 1px solid #A7A19A;
-		background-color: white;
-		color : #A7A19A;
-		border-radius: 0px;
-		font-size: 15px;
-	}
 </style>
+
 </head>
 <body>
 	<%@include file = "../../common/header.jsp" %>
 	<div id="wrap">
 		<span class="tit">로그인</span>
 		<div class="login-wrap">
-			<div class="login-box">
+			<div class="form-box">
 				<div class="input-wrap">
 					<div class="input-box">
 						<div style="display: flex;">
@@ -106,7 +50,7 @@
 				<div class="btn-wrap">
 					<button type="button" class="btn">아이디 찾기</button>
 					<button type="button" class="btn">비밀번호 찾기</button>
-					<button type="button" class="btn" onclick="location.href='signupCompleted'">회원가입</button>
+					<button type="button" class="btn" onclick="location.href='signup'">회원가입</button>
 				</div>
 			</div>
 		</div>

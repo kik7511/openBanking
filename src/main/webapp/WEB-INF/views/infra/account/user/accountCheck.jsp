@@ -36,7 +36,7 @@
 		}
 		
 		.logo_style {
-			style : width:50px; 
+			width:50px; 
 			float : left; 
 			padding-right : 10px; 
 			margin-top : 10px;"
@@ -57,9 +57,9 @@
         </div>
      	<div class="row account_view">
        	<div class="col">
-     		<img src="../../../../resources/img/logo/shinhan_logo.png" style="width:50px; float:left; padding-right:10px; margin-top:10px;">
+     		<img src="../../../../resources/img/logo/shinhan_logo.png" class="logo_style">
      		<lable>신한은행</lable>
-     		<input type="text" value="110-330-908337" style="width:300px; background: none;">
+     		<input type="text" value="110-330-908337" class="input_account">
  			<br>
      		<lable>계좌잔액</lable>
      		<input type="text" value="310,214원" style="width:300px; background: none;">

@@ -57,24 +57,24 @@
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script>
-	$('a:contains("계좌관리")').mouseover(function(){
+	$('a:contains("계좌관리"), .depth02').mouseover(function(){
 		$(this).parent('li').addClass('on');
 	});
-	$('a:contains("계좌관리")').mouseout(function(){ 
+	$('a:contains("계좌관리"), .depth02').mouseout(function(){ 
 		$(this).parent('li').removeClass('on');
 	});
 	
-	$('a:contains("카드관리")').mouseover(function(){
+	$('a:contains("카드관리"), .depth02').mouseover(function(){
 		$(this).parent('li').addClass('on');
 	});
-	$('a:contains("카드관리")').mouseout(function(){ 
+	$('a:contains("카드관리"), .depth02').mouseout(function(){ 
 		$(this).parent('li').removeClass('on');
 	});
 		
-	$('a:contains("가계부")').mouseover(function(){
+	$('a:contains("가계부"), .depth02').mouseover(function(){
 		$(this).parent('li').addClass('on');
 	});
-	$('a:contains("가계부")').mouseout(function(){ 
+	$('a:contains("가계부"), .depth02').mouseout(function(){ 
 		$(this).parent('li').removeClass('on');
 	});
 	

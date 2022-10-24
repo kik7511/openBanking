@@ -26,8 +26,8 @@
 	<link rel="stylesheet" type="text/css" href="/resources/css/home.css">
 </head>
 <body>
+<%@include file = "infra/common/header.jsp" %>	
 <div id="wrap">
-	<%@include file = "infra/common/header.jsp" %>	
 	<div id = "container" style="width: 100%">
 		<div id = "container_inner">
 			<div id = "content" style="width: 940px;">

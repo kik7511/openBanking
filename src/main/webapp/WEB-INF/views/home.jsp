@@ -26,9 +26,9 @@
 					</div>
 						<div class="quickMenuArticle">
 						<ul class="listQuickMenu"> 
-							<li><a href="#n" id="btnSearchAll"><span class="icoSearch">조회하기</span></a></li>
-							<li><a href="#n" id="btnSearchEche"><span class="icoTransfer">이체하기</span></a></li>
-							<li><a href="#n" id="btnSearchBank"><span class="icoBank">가계부관리</span></a></li>
+							<li><a href="/account/accountList" id="btnSearchAll"><span class="icoSearch">조회하기</span></a></li>
+							<li><a href="/account/accountTransfer" id="btnSearchEche"><span class="icoTransfer">이체하기</span></a></li>
+							<li><a href="/member/accountBook" id="btnSearchBank"><span class="icoBank">가계부관리</span></a></li>
 						</ul>
 						<div class="bg">&nbsp;</div>
 				</div>

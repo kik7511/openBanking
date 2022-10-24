@@ -52,48 +52,48 @@
     	top: 28px;
 	}
 	
-	.modal {
+	#accountBookModal {
 		position:fixed	
 	}
 	
-	.modal-content {
+	#accountBookModal .modal-content {
 		width : 700px;
 		border : 0px;
 		border-radius: 15px;
 	}
 	
-	.modal-header {
+	#accountBookModal .modal-content .modal-header {
 		border : 0px;
 		padding: 15px;
 		
 	}
 	
-	.modal-header #next-btn {
+	#accountBookModal .modal-content .modal-header #next-btn {
 		border : 0px;
 		background-color: white;
 	}
 	
-	.modal-body {
+	#accountBookModal.modal-content .modal-body {
 		width : 100%;
 		float: left;
 		padding: 0 30px 50px 30px;
 	}
 	
-	.modal-input-text {
+	#accountBookModal .modal-content .modal-input-text {
 		height : 30px;
 		
 	}
 	
-	.modal-body-section {
+	#accountBookModal .modal-content .modal-body-section {
 		border-bottom: 1px solid #ced4da;
 		padding : 20px 0 20px 0;
 	}
 	
-	.tit {
+	#accountBookModal .modal-content .modal-body-section .tit {
 		width : 30%;
 	}
 	
-	.optionBtn {
+	#accountBookModal .modal-content .modal-body-section .optionBtn {
 		width : 80px;
 		height: 35px;
 		border : 1px solid #ced4da;
@@ -102,11 +102,11 @@
 		margin-right: 10px;
 	}
 	
-	.form-select {
+	#accountBookModal .modal-content .modal-body-section .form-select {
 		width : 30%;
 	}
 	
-	.modal-body>div>.form-control {
+	#accountBookModal .modal-content .modal-body div .form-control {
 		border : none;
 		background-color: white;
 	}

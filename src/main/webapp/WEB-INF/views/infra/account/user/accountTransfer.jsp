@@ -221,7 +221,7 @@
 				<span>
 					<i class="fa-sharp fa-solid fa-won-sign"></i>금액
 				</span>
-			</div
+			</div>
 		<div class="row">
 			<div class="col mt-2 underLine">
 				<input type="text" class="input_box inputBox_won" value="" placeholder="원">

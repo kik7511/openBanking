@@ -12,7 +12,7 @@
 						<div id="utill">
 						<!-- 로그인 전 -->	
 							<div class="login_before">
-								<span class="login"><a href="">로그인</a></span>
+								<span class="login"><a href="/member/login">로그인</a></span>
 							</div>
 						<!-- //로그인 전 -->
 			

@@ -21,8 +21,9 @@
 			.underbar {border-bottom: 2px solid black; padding: 5px; width: 190px; padding-bottom: 10px;}
 			.blank {height: 30px; background-color: white;}
 			.context_content {padding: 2px;}
-			.passwordMod {padding-bottom: 30px; padding-top: 30px;}
-			.passwordSpan {padding-left: 75px;} 
+			.passwordMod {padding-bottom: 30px; margin-top: 60px; border-bottom: 1px solid gray;}
+			.passwordSpan {padding-left: 75px;}
+			.spanInfo {padding-left: 9px; font-size: 13px;}  
 			.input_text {border: 1px solid black; padding: 5px; text-align: center; border-radius: 5px;}
 			.passwordtext {margin-bottom: 13px; margin-top: 13px; display:flex; justify-content: space-between; width: 500px; padding-bottom: 13px;}
 		</style>
@@ -50,8 +51,15 @@
 				      <li class="border-top my-3"></li>
 				    </ul>
 				  </div>
-				  <div style="margin-top: 11px;">
-				  	<span style="font-size: 15px; font-weight: bold; padding-left: 40px;">소중한 내 정보를 최신으로 관리하세요.</span>
+				  <div style="margin-top: 30px;">
+				  	<span style="font-size: 15px; font-weight: bold;">소중한 내 정보를 최신으로 관리하세요.</span>
+				  	<div style="margin-top: 11px; margin-bottom: 5px; padding-left: 75px; border-bottom: 1px solid gray;">
+				  		<ul>
+				  			<li><span class="spanInfo">비밀번호는 영문 + 숫자 조합 10자리~20자리 입니다.</span></li>
+				  			<li><span class="spanInfo">비밀번호는 같은 문자를 5번 이상 연속으로 사용할 수 없습니다.</span></li>
+				  			<li><span class="spanInfo">비밀번호는 대문자 혹은 소문자 1개 이상으로 조합되어야 합니다.</span></li>
+				  		</ul>
+				  	</div>
 				  	<div class="passwordMod">
 					  	<div class="passwordtext">
 					  		<span class="passwordSpan">새 비밀번호</span>
@@ -63,7 +71,7 @@
 					  	</div>	
 			  		</div> 
 			 	 </div>
-			 	 <div align="center">
+			 	 <div align="center" style="margin-top: 30px;">
 			 	 	<button type="button" class="btn btn-primary">변경하기</button>
 			 	 </div>
 			</div>	

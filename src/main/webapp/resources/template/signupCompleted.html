@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 구글폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/member.css">
+
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../css/kbankform.css">
+<link rel="stylesheet" type="text/css" href="../css/reset.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="../demos/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/9a0994e5cb.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/df50a53180.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>	
+	
+<title>회원가입 완료</title>
+
+<style>
+	body {
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	a, a:hover, .nav-link, .nav-link:hover {
+		color : black;
+		text-decoration : none;
+	}
+	.home-btn, .login-btn {
+		border : 1px solid #DADADA;
+		width : 200px;
+		color : white;
+		background-color : #BEB4AF;
+		border : 0px;
+		border-radius: 0px;
+	}
+	
+	.home-btn:hover, .login-btn:hover {
+		color : white;
+		background-color : #BEB4AF;
+		border : 0px;
+		
+	}
+
+</style>
+</head>
+<body>
+	<div id="header">
+		<div id="">
+			<div class="header_new pc" style="width: 100%;">
+				<div class="top">
+					<div class="inner">
+		            <!-- 20190417 SR-614 기업 헤더 디자인 반영 -->
+						<h1 class="logo">
+							<a href=""><img src="../img/Fradel (1).png"></a>
+						</h1>
+						<div id="utill">
+						<!-- 로그인 전 -->	
+							<div class="login_before">
+								<span class="login"><a href="/member/login">로그인</a></span>
+							</div>
+						<!-- //로그인 전 -->
+			
+           				</div>
+						<!-- //20190417 SR-614 기업 헤더 디자인 반영 -->
+					</div>
+				</div>
+				<div class="gnb">
+					<div class="inner">
+						<ul class="topGnb">
+							<li class="">
+								<a href="#n">계좌관리</a>
+								<div class="depth02" style="width: 1903px; left: -482px;">
+									<ul>
+										<li style="height: 181px;">
+											<a href="#n">조회</a>
+										</li>
+										<li style="height: 181px;">
+											<a href="#n">이체</a>
+											<ul>
+												<li>
+													<a href="#n">이체하기</a>
+												</li>
+												<li>
+													<a href="#n">자동이체</a>
+												</li>
+												<li>
+													<a href="#n">이체결과</a>
+												</li>
+											</ul>
+										</li>
+										<li style="height: 181px;">
+											<a href="#n">계좌등록</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="">
+								<a href="#n" class="main-menu">카드관리</a>
+								<div class="depth02" style="width: 1903px; left: -482px;">
+									<ul>
+										<li style="height: 219px;">
+											<a href="#n">조회</a>
+											<ul>
+												<li>
+													<a href="#n">사용금액조회</a>
+												</li>
+												<li>
+													<a href="#n">납부예상금액</a>
+												</li>
+											</ul>
+										</li>
+										<li style="height: 219px;">
+											<a href="#n">카드등록</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="">
+								<a href="#n" class="main-menu">가계부</a>
+								<div class="depth02" style="width: 1903px; left: -482px;">
+									<ul>
+										<li style="height: 219px;">
+											<a href="#n">조회</a>
+											<ul>
+												<li>
+													<a href="#n">일정 등록하기</a>
+												</li>
+												<li>
+													<a href="#n">수정하기</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>	
+						<div>
+							<div class="bar" style="opacity: 0; left: 30px; width: 76px;"></div> <!-- left 160씩 이동 -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+	<div id="wrap">
+		<span class="tit">회원가입 완료</span>
+		<div class="signup-wrap">
+			<section class="text-center">
+				<p class="mt-5">회원가입을 환영합니다.<br>
+				이제부터 다양한 혜택과 서비스를 이용하실 수 있습니다.</p>
+				<button type="button" class="btn home-btn mt-5" onclick="location.href='/'">메인으로</button>
+				<button type="button" class="btn login-btn mt-5" onclick="location.href='login'">로그인 하기</button>
+			</section>
+		</div>
+	</div>
+	<div id="footer" class="dark">
+		<div id="CMMTPL0300000000V">
+			<div id="ContentsDim"></div> 
+			<div>
+				<div class="footer pc dark" style="width: 100%;">
+					<div>
+						<!-- <p class="cs_center"><strong class="txtHide txtHelp">24·365 고객센터</strong><span>은행 1522-1000</span><span class="line">카드 1522-1155</span><span class="line overCs"><em>해외 82-2-3778-9111</em></span></p> -->
+						<!-- 2017-09-11 -->
+						<div class="cs_center">
+							<h2>고객센터</h2> <!--  <em>24·365</em> 삭제  CF 33825 -->
+							<ul>
+								<li>은행 1522-1000</li>
+								<li>카드 1522-1155</li>
+								<li class="etc">해외 82-2-3778-9111</li>
+							</ul>
+						</div>
+						<!-- //2017-09-11 -->
+						
+						<!-- 2017-04-06 추가 -->
+						<ul class="list_sns">
+							<li><a href="" target="_blank" title="케이뱅크 페이스북 새창으로 열기"><img src="../img/sns_facebook_p.png" alt="페이스북"></a></li>
+							<li><a href="" target="_blank" title="케이뱅크 블로그 새창으로 열기"><img src="../img/sns_blog_p.png" alt="블로그"></a></li>
+							<li><a href="" target="_blank" title="케이뱅크 유튜브 새창으로 열기"><img src="../img/sns_youtube_p.png" alt="유튜브"></a></li>
+						</ul>
+						<!-- //2017-04-06 추가 -->			
+						<ul>
+							<li><a>은행소개</a></li>
+							<li><a>개인정보처리방침</a></li>
+							<li><a>신용정보활용체제</a></li>
+							<li><a>약관자료실</a></li>
+							<li><a>상품공시실</a></li>
+							<li><a>보호금융상품등록부</a></li>
+							<li><a>경영공시실</a></li>
+							<li><a>사고신고</a></li>
+							<li><a>전자민원</a></li>
+							<li><a>금융소비자보호</a></li>
+						</ul>
+						<!-- 2016-10-26 수정 끝 -->
+						<div class="layerTooltip">
+							<p>Copyright Kbank. All rights reserved.</p><!-- 2016-12-27 텍스트 수정 -->
+							<div class="tip">INB2201 - 운영</div>
+						</div>
+						<ul class="markAwardItems">
+							<li class="markAwardItem markIsmsp"> <!-- 20210615 SR-1451 수정 -->
+								<div class="maItemWrap">
+									<i class="maIconImg"></i>
+									<p class="maContTxt">인증범위: 인터넷뱅킹 및 스마트폰뱅킹 서비스<br>유효기간: 2021.05.31~2024.05.30</p> <!-- 20210615 SR-1451 수정 -->
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div><!-- //footer -->
+			</div><!-- //#footer -->
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script>
+	$('a:contains("계좌관리"), .depth02').mouseover(function(){
+		$(this).parent('li').addClass('on');
+	});
+	$('a:contains("계좌관리"), .depth02').mouseout(function(){ 
+		$(this).parent('li').removeClass('on');
+	});
+	
+	$('a:contains("카드관리"), .depth02').mouseover(function(){
+		$(this).parent('li').addClass('on');
+	});
+	$('a:contains("카드관리"), .depth02').mouseout(function(){ 
+		$(this).parent('li').removeClass('on');
+	});
+		
+	$('a:contains("가계부"), .depth02').mouseover(function(){
+		$(this).parent('li').addClass('on');
+	});
+	$('a:contains("가계부"), .depth02').mouseout(function(){ 
+		$(this).parent('li').removeClass('on');
+	});
+	
+	
+	</script>
+
+	<script>
+	</script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

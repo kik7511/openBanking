@@ -1,0 +1,270 @@
+<html lang="ko">
+	<head>
+		<title>openBanking</title>
+		<%@include file = "../../common/link.jsp" %>
+		<%@include file = "../../common/font.jsp" %>
+		<link rel="stylesheet" type="text/css" href="/resources/css/accountList.css">
+	</head>
+	<body>
+		<div id="header">
+		<div id="">
+			<div class="header_new pc" style="width: 100%;">
+				<div class="top">
+					<div class="inner">
+		            <!-- 20190417 SR-614 기업 헤더 디자인 반영 -->
+						<h1 class="logo">
+							<a href=""><img src="/resources/img/Fradel (1).png"></a>
+						</h1>
+						<div id="utill">
+						<!-- 로그인 전 -->	
+							<div class="login_before">
+								<span class="login"><a href="/member/login">로그인</a></span>
+							</div>
+						<!-- //로그인 전 -->
+			
+           				</div>
+						<!-- //20190417 SR-614 기업 헤더 디자인 반영 -->
+					</div>
+				</div>
+				<div class="gnb">
+					<div class="inner">
+						<ul class="topGnb">
+							<li class="">
+								<a href="#n">계좌관리</a>
+								<div class="depth02" style="width: 1903px; left: -482px;">
+									<ul>
+										<li style="height: 181px;">
+											<a href="#n">조회</a>
+										</li>
+										<li style="height: 181px;">
+											<a href="#n">이체</a>
+											<ul>
+												<li>
+													<a href="#n">이체하기</a>
+												</li>
+												<li>
+													<a href="#n">자동이체</a>
+												</li>
+												<li>
+													<a href="#n">이체결과</a>
+												</li>
+											</ul>
+										</li>
+										<li style="height: 181px;">
+											<a href="#n">계좌등록</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="">
+								<a href="#n" class="main-menu">카드관리</a>
+								<div class="depth02" style="width: 1903px; left: -482px;">
+									<ul>
+										<li style="height: 219px;">
+											<a href="#n">조회</a>
+											<ul>
+												<li>
+													<a href="#n">사용금액조회</a>
+												</li>
+												<li>
+													<a href="#n">납부예상금액</a>
+												</li>
+											</ul>
+										</li>
+										<li style="height: 219px;">
+											<a href="#n">카드등록</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="">
+								<a href="#n" class="main-menu">가계부</a>
+								<div class="depth02" style="width: 1903px; left: -482px;">
+									<ul>
+										<li style="height: 219px;">
+											<a href="#n">조회</a>
+											<ul>
+												<li>
+													<a href="#n">일정 등록하기</a>
+												</li>
+												<li>
+													<a href="#n">수정하기</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>	
+						<div>
+							<div class="bar" style="opacity: 0; left: 30px; width: 76px;"></div> <!-- left 160씩 이동 -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+			<div id="wrap">
+				<div class="blank"></div>
+				<div class="flex-shrink-0 p-3 bg-white" style="width: 200px; float: left; height: 100%">
+				    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+				      <span class="fs-5 fw-semibold" style="padding-left: 15px;">조회</span>
+				    </a>
+				    <ul class="list-unstyled ps-0">
+				      <li class="mb-1">
+				        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+				          Home
+				        </button>
+				      </li>
+				      <li class="mb-1">
+				        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+				          Dashboard
+				        </button>
+				      </li>
+				      <li class="mb-1">
+				        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+				          Orders
+				        </button>
+				      </li>
+				      <li class="border-top my-3"></li>
+				      <li class="mb-1">
+				        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+				          Account
+				        </button>
+				      </li>
+				    </ul>
+				  </div>
+				  <div style="margin-top: 11px;">
+				  	<span style="font-size: 18px;">조회</span>
+				  	<div class="border_yellow">
+				  		<div style="text-align: right; padding: 20px;"><span style="font-size: 15px;">관리</span></div>
+				  		<div class="context_content"><span style="font-size: 20px;">MY 입출금통장</span></div>
+				  		<div class="context_content"><span style="font-size: 14px; color: gray;">110-133-242800</span></div>
+				  		<div style="padding-top: 13px;padding-bottom: 13px;">
+				  			<span style="font-size: 25px;"><strong>0</strong></span>
+				  			<span style="font-size: 22px;">원</span>
+			  			</div>
+			  			<div align="right" style="padding-bottom: 10px; padding-top: 10px;">
+			  				<button type="button" class="btn btn-primary"><span style="color: white;">이체하기</span></button>
+			  			</div>
+			  			<div align="right" style="padding-bottom: 10px; padding-top: 10px;">
+			  				<button type="button" class="btn btn-light"><span style="color: gray; border-radius: 3px;">엑셀 다운로드</span></button>
+				  		</div>	
+				  		<div style="background-color: #F2F2F2; height: 55px; margin-top: 10px;">
+				  			<i class="fa-solid fa-magnifying-glass fa-1x" style="padding-left: 25px;padding-top: 22px"></i>
+				  		</div>
+				  		<div>
+				  			<ul>
+				  				<li style="border-bottom: 1px solid gray">
+				  					<div style="margin-top: 35px; margin-bottom: 15px;">
+				  						<span style="font-size: 17px; padding-left: 20px;" class="">09.24 | 05:48</span>
+				  					</div>
+				  					<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+				  						<div style="margin-left: 20px;"><span>이자</span></div>
+				  						<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">+0</span><span style="font-weight: bolder; color: purple;">원</span></div>
+				  					</div>
+				  					<div style="display:flex; justify-content: space-between; margin-bottom: 15px;">
+				  						<div style="margin-left: 20px; font-size: 11px;"><span>이자</span></div>
+				  						<div style="margin-right: 20px;"><span style="margin-right: 5px; font-size: 11px; color: gray;">잔액</span><span style="font-size: 11px; color: gray">0</span><span style="font-size: 11px; color: gray;">원</span></div>
+				  					</div>
+				  				</li>
+				  				<li style="border-bottom: 1px solid gray">
+				  					<div style="margin-top: 35px; margin-bottom: 15px;">
+				  						<span style="font-size: 17px; padding-left: 20px;" class="">09.24 | 05:48</span>
+				  					</div>
+				  					<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+				  						<div style="margin-left: 20px;"><span>이자</span></div>
+				  						<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">+0</span><span style="font-weight: bolder; color: purple;">원</span></div>
+				  					</div>
+				  					<div style="display:flex; justify-content: space-between; margin-bottom: 15px;">
+				  						<div style="margin-left: 20px; font-size: 11px;"><span>이자</span></div>
+				  						<div style="margin-right: 20px;"><span style="margin-right: 5px; font-size: 11px; color: gray;">잔액</span><span style="font-size: 11px; color: gray">0</span><span style="font-size: 11px; color: gray;">원</span></div>
+				  					</div>
+				  				</li>
+				  			</ul>
+				  		</div>
+			  		</div> 			
+			 	</div>
+			</div>	
+			<div id="footer" class="dark">
+		<div id="CMMTPL0300000000V">
+			<div id="ContentsDim"></div> 
+			<div>
+				<div class="footer pc dark" style="width: 100%;">
+					<div>
+						<!-- <p class="cs_center"><strong class="txtHide txtHelp">24·365 고객센터</strong><span>은행 1522-1000</span><span class="line">카드 1522-1155</span><span class="line overCs"><em>해외 82-2-3778-9111</em></span></p> -->
+						<!-- 2017-09-11 -->
+						<div class="cs_center">
+							<h2>고객센터</h2> <!--  <em>24·365</em> 삭제  CF 33825 -->
+							<ul>
+								<li>은행 1522-1000</li>
+								<li>카드 1522-1155</li>
+								<li class="etc">해외 82-2-3778-9111</li>
+							</ul>
+						</div>
+						<!-- //2017-09-11 -->
+						
+						<!-- 2017-04-06 추가 -->
+						<ul class="list_sns">
+							<li><a href="" target="_blank" title="케이뱅크 페이스북 새창으로 열기"><img src="/resources/img/sns_facebook_p.png" alt="페이스북"></a></li>
+							<li><a href="" target="_blank" title="케이뱅크 블로그 새창으로 열기"><img src="/resources/img/sns_blog_p.png" alt="블로그"></a></li>
+							<li><a href="" target="_blank" title="케이뱅크 유튜브 새창으로 열기"><img src="/resources/img/sns_youtube_p.png" alt="유튜브"></a></li>
+						</ul>
+						<!-- //2017-04-06 추가 -->			
+						<ul>
+							<li><a>은행소개</a></li>
+							<li><a>개인정보처리방침</a></li>
+							<li><a>신용정보활용체제</a></li>
+							<li><a>약관자료실</a></li>
+							<li><a>상품공시실</a></li>
+							<li><a>보호금융상품등록부</a></li>
+							<li><a>경영공시실</a></li>
+							<li><a>사고신고</a></li>
+							<li><a>전자민원</a></li>
+							<li><a>금융소비자보호</a></li>
+						</ul>
+						<!-- 2016-10-26 수정 끝 -->
+						<div class="layerTooltip">
+							<p>Copyright Kbank. All rights reserved.</p><!-- 2016-12-27 텍스트 수정 -->
+							<div class="tip">INB2201 - 운영</div>
+						</div>
+						<ul class="markAwardItems">
+							<li class="markAwardItem markIsmsp"> <!-- 20210615 SR-1451 수정 -->
+								<div class="maItemWrap">
+									<i class="maIconImg"></i>
+									<p class="maContTxt">인증범위: 인터넷뱅킹 및 스마트폰뱅킹 서비스<br>유효기간: 2021.05.31~2024.05.30</p> <!-- 20210615 SR-1451 수정 -->
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div><!-- //footer -->
+			</div><!-- //#footer -->
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script>
+	$('a:contains("계좌관리"), .depth02').mouseover(function(){
+		$(this).parent('li').addClass('on');
+	});
+	$('a:contains("계좌관리"), .depth02').mouseout(function(){ 
+		$(this).parent('li').removeClass('on');
+	});
+	
+	$('a:contains("카드관리"), .depth02').mouseover(function(){
+		$(this).parent('li').addClass('on');
+	});
+	$('a:contains("카드관리"), .depth02').mouseout(function(){ 
+		$(this).parent('li').removeClass('on');
+	});
+		
+	$('a:contains("가계부"), .depth02').mouseover(function(){
+		$(this).parent('li').addClass('on');
+	});
+	$('a:contains("가계부"), .depth02').mouseout(function(){ 
+		$(this).parent('li').removeClass('on');
+	});
+	
+	
+	</script>
+	</body>
+</html>

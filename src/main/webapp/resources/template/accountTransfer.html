@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<title>openBanking</title>
+	<link rel="stylesheet" type="text/css" href="..//css/common.css">
+	<link rel="stylesheet" type="text/css" href="..//css/kbankform.css">
+	<link rel="stylesheet" type="text/css" href="..//css/reset.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="..//demos/style.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/9a0994e5cb.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/df50a53180.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<!-- 구글폰트 -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	<style type="text/css">
+			body {
+				font-family: 'Noto Sans KR', sans-serif;
+			}
+			
+			a, a:hover, .nav-link, .nav-link:hover {
+				color : black;
+				text-decoration : none;
+			}
+			
+		.layerTooltip {position:relative; display:inline-block; margin:0 !important;}
+		.layerTooltip .tip {display:none; position:absolute; top:-3px; left:0; width:100px; margin-left:0 !important; padding:5px; color:#000; font-size:10px; background-color:rgba(0, 0, 0, 0);}
+		.layerTooltip.on .tip {display:block;}
+		#container_inner {width:100% !important;}
+		#container_inner #content {width:100% !important;}
+		#content, .content {float:none; width:100% !important;}
+		#content .sub_cont_wrap {width:940px; margin:0 auto;}
+		#wrap {width:900px; margin: auto; margin-bottom: 30px; height: 600px;}
+		.layerTooltip {position:relative; display:inline-block; margin:0 !important;}
+		.layerTooltip .tip {display:none; position:absolute; top:-3px; left:0; width:100px; margin-left:0 !important; padding:5px; color:#000; font-size:10px; background-color:rgba(0, 0, 0, 0);}
+		.layerTooltip.on .tip {display:block;}
+		#container_inner {width:100% !important;}
+		#container_inner #content {width:100% !important;}
+		#content, .content {float:none; width:100% !important;}
+		#content .sub_cont_wrap {width:940px; margin:0 auto;}
+		.underbar {border-bottom: 2px solid black; padding: 5px; width: 190px; padding-bottom: 10px;}
+		.blank {height: 30px; background-color: white;}
+		/* 버튼css */
+		.btn_AT {
+		    border: 0;
+		    line-height: 2.5;
+		    padding: 0 20px;
+		    font-size: 1rem;
+		    text-align: center;
+		    color: #fff;
+		    text-shadow: 1px 1px 1px #000;
+		    border-radius: 10px;
+		    background-color: #454d5b;
+		    background-image: linear-gradient(to top left,
+		                                      rgba(0, 0, 0, .2),
+		                                      rgba(0, 0, 0, .2) 30%,
+		                                      rgba(0, 0, 0, 0));
+		    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+		                inset -2px -2px 3px rgba(0, 0, 0, .6);
+		}
+		
+		.btn_AT:hover {
+		    background-color: #454d5b;
+		}
+		
+		.btn_AT:active {
+		    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+		                inset 2px 2px 3px rgba(0, 0, 0, .6);
+		}
+		/* 버튼css */
+		
+		.mWidth {
+			width : 600px;
+			margin : auto;
+			
+		}
+		.blankHeight{
+			margin-top : 20px;
+		}
+		
+		.underLine {
+			border-bottom : 1px solid;
+			border-color : lightgray;
+		}
+		
+		.input_box {
+		    font-size: 1rem;
+		    font-weight: 400;
+		    line-height: 1.5;
+		    color: #212529;
+		    background-color: #fff;
+		    background-clip: padding-box;
+		    border: 1px solid #ced4da;
+		    appearance: none;
+		    border-radius: 0.375rem;
+		    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+		}
+		
+		.input_select {
+		    width: 100%;
+		    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+		    font-size: 1rem;
+		    font-weight: 400;
+		    line-height: 1.5;
+		    color: #212529;
+		    background-color: #fff;
+		   /*  background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e);
+		    background-repeat: no-repeat;
+		    background-position: right 0.75rem center;
+		    background-size: 16px 12px;
+		    border: 1px solid #ced4da;
+		    border-radius: 0.375rem;
+		    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+		    appearance: none; */
+		}
+		
+		.inputBOx_myAccount {
+			width : 500px;
+			margin-bottom : 3px;
+			border-style : none;
+		}
+		
+		.inputBox_possible {
+			margin-top : 3px;
+			border-style:none;
+		}
+		
+		.inputBox_sendAccount {
+			width : 400px;
+			border-style : none;
+		}
+		
+		.inputBox_won {
+			width : 500px;
+			border-style : none;
+		}
+		
+		.underBtn {
+			padding : 20px;
+			margin-left : 150px;
+		}
+		
+		 .calculator {
+			width : 15%;
+			position: absolute; 
+			top: 30%;
+			left : 30%;
+		}
+		
+		.mouse_click {
+			width : 15%;
+			position: absolute; 
+			top: 63%;
+			left : -4.5%;
+		} 
+		
+	</style>
+</head>
+<body>
+<div id="header">
+		<div id="">
+			<div class="header_new pc" style="width: 100%;">
+				<div class="top">
+					<div class="inner">
+		            <!-- 20190417 SR-614 기업 헤더 디자인 반영 -->
+						<h1 class="logo">
+							<a href=""><img src="..//img/Fradel (1).png"></a>
+						</h1>
+						<div id="utill">
+						<!-- 로그인 전 -->	
+							<div class="login_before">
+								<span class="login"><a href="/member/login">로그인</a></span>
+							</div>
+						<!-- //로그인 전 -->
+			
+           				</div>
+						<!-- //20190417 SR-614 기업 헤더 디자인 반영 -->
+					</div>
+				</div>
+				<div class="gnb">
+					<div class="inner">
+						<ul class="topGnb">
+							<li class="">
+								<a href="#n">계좌관리</a>
+								<div class="depth02" style="width: 1903px; left: -482px;">
+									<ul>
+										<li style="height: 181px;">
+											<a href="#n">조회</a>
+										</li>
+										<li style="height: 181px;">
+											<a href="#n">이체</a>
+											<ul>
+												<li>
+													<a href="#n">이체하기</a>
+												</li>
+												<li>
+													<a href="#n">자동이체</a>
+												</li>
+												<li>
+													<a href="#n">이체결과</a>
+												</li>
+											</ul>
+										</li>
+										<li style="height: 181px;">
+											<a href="#n">계좌등록</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="">
+								<a href="#n" class="main-menu">카드관리</a>
+								<div class="depth02" style="width: 1903px; left: -482px;">
+									<ul>
+										<li style="height: 219px;">
+											<a href="#n">조회</a>
+											<ul>
+												<li>
+													<a href="#n">사용금액조회</a>
+												</li>
+												<li>
+													<a href="#n">납부예상금액</a>
+												</li>
+											</ul>
+										</li>
+										<li style="height: 219px;">
+											<a href="#n">카드등록</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="">
+								<a href="#n" class="main-menu">가계부</a>
+								<div class="depth02" style="width: 1903px; left: -482px;">
+									<ul>
+										<li style="height: 219px;">
+											<a href="#n">조회</a>
+											<ul>
+												<li>
+													<a href="#n">일정 등록하기</a>
+												</li>
+												<li>
+													<a href="#n">수정하기</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>	
+						<div>
+							<div class="bar" style="opacity: 0; left: 30px; width: 76px;"></div> <!-- left 160씩 이동 -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+	<div id="wrap">
+	<!-- main S -->
+		<div class="blank"></div>
+		<div class="flex-shrink-0 p-3 bg-white" style="width: 200px; float: left; height: 100%">
+		    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+		      <span class="fs-5 fw-semibold" style="padding-left: 15px;">이체하기</span>
+		    </a>
+		    <ul class="list-unstyled ps-0">
+		      	<li class="mb-1">
+		       	 	<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+		          		이체하기
+		        	</button>
+		      	</li>
+		       	<li class="border-top my-1"></li>
+		      	<li class="mb-1">
+		        	<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+		          		자동이체
+		        	</button>
+		     	</li>
+		      	<li class="border-top my-1"></li>
+		      	<li class="mb-1">
+		        	<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+		        		대량이체
+		        	</button>
+		      	</li>
+		     	<li class="border-top my-1"></li>
+		      	<li class="mb-1">
+		        	<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+		          		이체결과
+		        	</button>
+		      </li>
+		       <li class="border-top my-1"></li>
+		    </ul>
+	  	</div>
+		<div class="mWidth">
+			<div class="row blankHeight">
+				<div class="col">
+					<h2>이체하기</h2>
+				</div>		
+			</div>
+			<div class="row blankHeight">
+				<div class="col">
+					<span>
+						<i class="fa-solid fa-wallet"></i>출금계좌
+					</span>
+				</div>
+			</div>
+			<div class="row underLine">
+				<div class="col mt-2">
+					<input type="text" class="input_box inputBox_myAccount" value="" placeholder="My 입출금 통장 100-133-242800">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-4">
+					<input type="text" class="input_box inputBox_possible" value="" placeholder="입금가능금액 0원">
+				</div>
+				<div class="col calculator offset-5 mt-1">
+					<button type="button">
+						<i class="fas fa-thin fa-calculator"></i>잔액/한도
+					</button>
+				</div>
+			</div>
+			<div class="row" style="margin-top : 20px;">
+				<div class="col">
+					<span>받는사람</span>
+						<div class="row underLine">
+							<div class="col-3 mt-2">
+								<select class="form-select" style="border-style:none">
+									<option>은행</option>
+									<option>국민</option>
+									<option>신한</option>
+									<option>농협</option>
+									<option>하나</option>
+									<option>우리</option>
+									<option>카카오</option>
+									<option>토스</option>
+									<option>신협</option>
+									<option>새마을금고</option>
+									<option>수협</option>
+									<option>SC</option>
+								</select>
+							</div>
+							<div class="col-7 mt-3">
+								<input type="text" class="input_box inputBox_sendAccount" value="" placeholder="계좌번호">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-top : 20px;">
+					<div class="col">
+						<span>
+							<i class="fa-sharp fa-solid fa-won-sign"></i>금액
+						</span>
+					</div>
+				<div class="row underLine" style="margin-left:2px;">
+					<div class="col mt-2">
+						<input type="text" class="input_box inputBox_won" value="" placeholder="원">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col mouse_click offset-9 mt-1">
+						<button type="button">
+							<i class="fas fa-regular fa-computer-mouse"></i>마우스 입력
+						</button>
+					</div>
+				</div>
+				<div class="row underBtn">
+					<div class="col">
+						<button class="btn_AT" type="button" style="width:100px;">취소</button>
+						<button class="btn_AT" type="button">이체하기</button>
+					</div>
+				</div>	
+			</div>
+	   	<!-- main E-->
+		</div>
+	</div>
+<div id="footer" class="dark">
+		<div id="CMMTPL0300000000V">
+			<div id="ContentsDim"></div> 
+			<div>
+				<div class="footer pc dark" style="width: 100%;">
+					<div>
+						<!-- <p class="cs_center"><strong class="txtHide txtHelp">24·365 고객센터</strong><span>은행 1522-1000</span><span class="line">카드 1522-1155</span><span class="line overCs"><em>해외 82-2-3778-9111</em></span></p> -->
+						<!-- 2017-09-11 -->
+						<div class="cs_center">
+							<h2>고객센터</h2> <!--  <em>24·365</em> 삭제  CF 33825 -->
+							<ul>
+								<li>은행 1522-1000</li>
+								<li>카드 1522-1155</li>
+								<li class="etc">해외 82-2-3778-9111</li>
+							</ul>
+						</div>
+						<!-- //2017-09-11 -->
+						
+						<!-- 2017-04-06 추가 -->
+						<ul class="list_sns">
+							<li><a href="" target="_blank" title="케이뱅크 페이스북 새창으로 열기"><img src="..//img/sns_facebook_p.png" alt="페이스북"></a></li>
+							<li><a href="" target="_blank" title="케이뱅크 블로그 새창으로 열기"><img src="..//img/sns_blog_p.png" alt="블로그"></a></li>
+							<li><a href="" target="_blank" title="케이뱅크 유튜브 새창으로 열기"><img src="..//img/sns_youtube_p.png" alt="유튜브"></a></li>
+						</ul>
+						<!-- //2017-04-06 추가 -->			
+						<ul>
+							<li><a>은행소개</a></li>
+							<li><a>개인정보처리방침</a></li>
+							<li><a>신용정보활용체제</a></li>
+							<li><a>약관자료실</a></li>
+							<li><a>상품공시실</a></li>
+							<li><a>보호금융상품등록부</a></li>
+							<li><a>경영공시실</a></li>
+							<li><a>사고신고</a></li>
+							<li><a>전자민원</a></li>
+							<li><a>금융소비자보호</a></li>
+						</ul>
+						<!-- 2016-10-26 수정 끝 -->
+						<div class="layerTooltip">
+							<p>Copyright Kbank. All rights reserved.</p><!-- 2016-12-27 텍스트 수정 -->
+							<div class="tip">INB2201 - 운영</div>
+						</div>
+						<ul class="markAwardItems">
+							<li class="markAwardItem markIsmsp"> <!-- 20210615 SR-1451 수정 -->
+								<div class="maItemWrap">
+									<i class="maIconImg"></i>
+									<p class="maContTxt">인증범위: 인터넷뱅킹 및 스마트폰뱅킹 서비스<br>유효기간: 2021.05.31~2024.05.30</p> <!-- 20210615 SR-1451 수정 -->
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div><!-- //footer -->
+			</div><!-- //#footer -->
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script>
+	$('a:contains("계좌관리"), .depth02').mouseover(function(){
+		$(this).parent('li').addClass('on');
+	});
+	$('a:contains("계좌관리"), .depth02').mouseout(function(){ 
+		$(this).parent('li').removeClass('on');
+	});
+	
+	$('a:contains("카드관리"), .depth02').mouseover(function(){
+		$(this).parent('li').addClass('on');
+	});
+	$('a:contains("카드관리"), .depth02').mouseout(function(){ 
+		$(this).parent('li').removeClass('on');
+	});
+		
+	$('a:contains("가계부"), .depth02').mouseover(function(){
+		$(this).parent('li').addClass('on');
+	});
+	$('a:contains("가계부"), .depth02').mouseout(function(){ 
+		$(this).parent('li').removeClass('on');
+	});
+	
+	
+	</script>
+</body>
+</html>

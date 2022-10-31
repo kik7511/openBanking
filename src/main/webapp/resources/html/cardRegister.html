@@ -1,46 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-
-<!-- 구글폰트 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/member.css">
-
-<title>로그인</title>
-
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-<link rel="stylesheet" type="text/css" href="../css/kbankform.css">
-<link rel="stylesheet" type="text/css" href="../css/reset.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<script src="https://kit.fontawesome.com/9a0994e5cb.js" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/df50a53180.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-<style>
-	body {
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	
-	a, a:hover, .nav-link, .nav-link:hover {
-		color : black;
-		text-decoration : none;
-	}
-	.text-input {
-		width : 300px !important;
-		height: 35px;
-		border : none;
-		background-color: #F3F3F3;
-	}
-</style>
-
-</head>
-<body>
-	<div id="header">
+<html lang="ko">
+	<head>
+		<title>openBanking</title>
+		<link rel="stylesheet" type="text/css" href="../css/common.css">
+		<link rel="stylesheet" type="text/css" href="../css/kbankform.css">
+		<link rel="stylesheet" type="text/css" href="../css/reset.css">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="../demos/style.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+		<script src="https://kit.fontawesome.com/9a0994e5cb.js" crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/df50a53180.js" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+				<!-- 구글폰트 -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/accountList.css">
+		<style>
+			body {
+				font-family: 'Noto Sans KR', sans-serif;
+			}
+			
+			a, a:hover, .nav-link, .nav-link:hover {
+				color : black;
+				text-decoration : none;
+			}
+			
+			.input_holder { margin-bottom: 10px; margin-top: 10px; }
+		</style>
+	</head>
+	<body>
+		<div id="header">
 		<div id="">
 			<div class="header_new pc" style="width: 100%;">
 				<div class="top">
@@ -138,34 +128,42 @@
 			</div>
 		</div>
 	</div> 
-	<div id="wrap" style="margin-bottom: 150px;">
-		<span class="tit">로그인</span>
-		<div class="login-wrap" style="padding-bottom: 65px; padding-top: 20px;">
-			<div class="form-box">
-				<div class="input-wrap">
-					<div class="input-box">
-						<div style="display: flex;">
-							<span style="width:30%; margin-top:9px; text-align: center;">아이디</span>
-							<input type="text" class="text-input" style="margin-bottom: 10px;">
-						</div>
-						<div style="display: flex;">
-							<span style="width:30%; margin-top:9px; text-align: center;">비밀번호</span>
-							<input type="password" class="text-input">
-						</div>
-					</div>
-					<div>
-						<button type="button" id="loginBtn" style="margin-left: 10px;">로그인</button>
-					</div>
-				</div>
-				<div class="btn-wrap">
-					<button type="button" class="btn">아이디 찾기</button>
-					<button type="button" class="btn">비밀번호 찾기</button>
-					<button type="button" class="btn" onclick="location.href='signup'">회원가입</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="footer" class="dark">
+			<div id="wrap" style="display: block;">
+				<div class="blank"></div>
+				<div class="flex-shrink-0 p-3 bg-white" style="width: 200px; float: left; height: 100%">
+				    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+				      <span class="fs-5 fw-semibold" style="padding-left: 15px;">등록</span>
+				    </a>
+				  </div>
+				  <div style="margin-top: 11px; margin-bottom: 40px;">
+				  	<span style="font-size: 18px;">카드등록하기</span>
+		 		</div>
+		 		<div class="border_yellow">
+			  		<div class="context_content" style="background-color: #F2F2F2; padding: 10px;">
+			  			<div class="input_holder">
+			  				<label for="input" style="padding-left: 22px;">생년월일</label>
+		  					<input type="text" id="input" placeholder="생년월일 입력(예.1998-11-05)" style="margin-left: 150px; padding-right: 35px;">
+			  			</div>
+			  			<div class="input_holder">
+			  				<label for="input" style="padding-left: 22px;">성별</label>
+		  					<input type="text" id="input" placeholder="생년월일 입력(예.1998-11-05)" style="margin-left: 150px; padding-right: 35px;">
+			  			</div>
+			  			<div class="input_holder">
+			  				<label for="input" style="padding-left: 22px;">카드번호</label>
+		  					<input type="text" id="input" placeholder="생년월일 입력(예.1998-11-05)" style="margin-left: 150px; padding-right: 35px;">
+			  			</div>
+			  			<div class="input_holder">
+			  				<label for="input" style="padding-left: 22px;">cvc번호</label>
+		  					<input type="password" id="input" placeholder="생년월일 입력(예.1998-11-05)" style="margin-left: 150px; padding-right: 35px;">
+			  			</div>
+			  			<div class="input_holder">
+			  				<label for="input" style="padding-left: 22px;">카드비밀번호</label>
+		  					<input type="password" id="input" placeholder="생년월일 입력(예.1998-11-05)" style="margin-left: 150px; padding-right: 35px;">
+			  			</div>
+			  		</div>
+		  		</div>
+			</div>	
+			<div id="footer" class="dark">
 		<div id="CMMTPL0300000000V">
 			<div id="ContentsDim"></div> 
 			<div>
@@ -185,9 +183,9 @@
 						
 						<!-- 2017-04-06 추가 -->
 						<ul class="list_sns">
-							<li><a href="" target="_blank" title="케이뱅크 페이스북 새창으로 열기"><img src="/resources/img/sns_facebook_p.png" alt="페이스북"></a></li>
-							<li><a href="" target="_blank" title="케이뱅크 블로그 새창으로 열기"><img src="/resources/img/sns_blog_p.png" alt="블로그"></a></li>
-							<li><a href="" target="_blank" title="케이뱅크 유튜브 새창으로 열기"><img src="/resources/img/sns_youtube_p.png" alt="유튜브"></a></li>
+							<li><a href="" target="_blank" title="케이뱅크 페이스북 새창으로 열기"><img src="../img/sns_facebook_p.png" alt="페이스북"></a></li>
+							<li><a href="" target="_blank" title="케이뱅크 블로그 새창으로 열기"><img src="../img/sns_blog_p.png" alt="블로그"></a></li>
+							<li><a href="" target="_blank" title="케이뱅크 유튜브 새창으로 열기"><img src="../img/sns_youtube_p.png" alt="유튜브"></a></li>
 						</ul>
 						<!-- //2017-04-06 추가 -->			
 						<ul>
@@ -245,10 +243,5 @@
 	
 	
 	</script>
-	
-	<script>
-	</script>
-	
-
-</body>
+	</body>
 </html>

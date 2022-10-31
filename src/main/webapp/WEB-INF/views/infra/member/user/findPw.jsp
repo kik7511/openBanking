@@ -32,6 +32,44 @@
 		padding: 2px;
 	}
 	
+	.nav-tabs .nav-link {
+		width : 50%
+	}
+	
+	.nav-tabs .nav-link.active {
+		border-color: #0F0060 #0F0060 #fff;
+	}
+	
+	.nav-tabs .nav-link {
+		border: 1px solid #EBEBEB;
+		border-radius: 0px;
+	}
+	
+	.tab-content {
+		margin-top: 50px;
+	}
+	
+	.next-btn {
+		border : 1px solid #0F0060;
+		width : 200px;
+		color : white;
+		background-color : #0F0060;
+		border : 0px;
+		border-radius: 0px;
+	}
+	
+	.next-btn:hover {
+		color : white;
+		background-color : #0F0060;
+		border : 0px;
+	}
+	
+	.btn-sm {
+		display:block;
+		border : 1px solid #DADADA;
+		height: 26px;
+	}
+	
 </style>
 </head>
 <body>

@@ -23,7 +23,7 @@
 				<div class="gnb">
 					<div class="inner">
 						<ul class="topGnb">
-							<li class="">
+							<li class="topGnb-li">
 								<a href="#n">계좌관리</a>
 								<div class="depth02" style="width: 1903px; left: -482px;">
 									<ul>
@@ -32,7 +32,7 @@
 										</li>
 										<li style="height: 181px;">
 											<a href="#n">이체</a>
-											<ul>
+											<ul style="padding-left: 0px;">
 												<li>
 													<a href="#n">이체하기</a>
 												</li>
@@ -50,13 +50,13 @@
 									</ul>
 								</div>
 							</li>
-							<li class="">
+							<li class="topGnb-li">
 								<a href="#n" class="main-menu">카드관리</a>
 								<div class="depth02" style="width: 1903px; left: -482px;">
 									<ul>
 										<li style="height: 219px;">
-											<a href="#n">조회</a>
-											<ul>
+											<a href="#n">카드</a>
+											<ul style="padding-left: 0px;">
 												<li>
 													<a href="#n">사용금액조회</a>
 												</li>
@@ -71,13 +71,13 @@
 									</ul>
 								</div>
 							</li>
-							<li class="">
+							<li class="topGnb-li">
 								<a href="#n" class="main-menu">가계부</a>
-								<div class="depth02" style="width: 1903px; left: -482px;">
+								<!-- <div class="depth02" style="width: 1903px; left: -482px;">
 									<ul>
 										<li style="height: 219px;">
-											<a href="#n">조회</a>
-											<ul>
+											<a href="#n">가계부</a>
+											<ul style="padding-left: 0px;">
 												<li>
 													<a href="#n">일정 등록하기</a>
 												</li>
@@ -87,7 +87,7 @@
 											</ul>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</li>
 						</ul>	
 						<div>

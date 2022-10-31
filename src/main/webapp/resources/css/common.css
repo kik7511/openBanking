@@ -497,7 +497,7 @@ html.mobile .gnb_m .gnb_info .info a{padding:4px 10px}
 .header_new.pc .gnb {width:100%;}
 .header_new.pc .gnb .inner {height:69px;}
 .header_new.pc .gnb .topGnb {margin:0 0 0 30px;}
-.header_new.pc .gnb .topGnb >li {float:left; margin:0; width:160px;}
+.header_new.pc .gnb .topGnb >li {float:left; margin:0; width:160px; padding-bottom: 5px;}
 .header_new.pc .gnb .topGnb >li >a {height:100%; font-size:18px; line-height:68px; text-align:left; letter-spacing:inherit;}
 .header_new.pc .gnb .topGnb >li.on >a {color:#0f0060;}
 .header_new.pc .gnb .depth02 {display:none; position:absolute; top:70px; padding:20px 0 25px; box-shadow: 0px 5px 10px rgba(0,0,0,0.1); background:#fff;}

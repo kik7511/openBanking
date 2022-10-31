@@ -27,7 +27,7 @@
 </head>
 <body>
 <%@include file = "infra/common/header.jsp" %>	
-<div id="wrap">
+<div id="wrap" style="margin-top: -15;">
 	<div id = "container" style="width: 100%">
 		<div id = "container_inner">
 			<div id = "content" style="width: 940px;">

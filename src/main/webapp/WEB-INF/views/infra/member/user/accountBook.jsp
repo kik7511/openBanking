@@ -23,7 +23,7 @@
 	
 	#calendar {
 		width : 100%;
-		height : 650px !important;
+		height : 630px !important;
 	}
 	
 	.fc-button-group {

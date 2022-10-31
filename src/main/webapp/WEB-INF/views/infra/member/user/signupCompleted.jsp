@@ -16,21 +16,21 @@
 <title>회원가입 완료</title>
 
 <style>
-	.home-btn, .login-btn {
-		border : 1px solid #DADADA;
-		width : 200px;
-		color : white;
-		background-color : #BEB4AF;
-		border : 0px;
-		border-radius: 0px;
-	}
+.home-btn, .login-btn {
+	border : 1px solid #DADADA;
+	width : 200px;
+	color : white;
+	background-color : #0F0060;
+	border : 0px;
+	border-radius: 0px;
+}
+
+.home-btn:hover, .login-btn:hover {
+	color : white;
+	background-color : #0F0060;
+	border : 0px;
 	
-	.home-btn:hover, .login-btn:hover {
-		color : white;
-		background-color : #BEB4AF;
-		border : 0px;
-		
-	}
+}
 
 </style>
 </head>

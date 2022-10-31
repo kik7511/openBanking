@@ -42,6 +42,27 @@
 	text-align: center;
 }
 
+.next-btn {
+	border : 1px solid #BEB4AF;
+	width : 200px;
+	color : white;
+	background-color : #0F0060;
+	border : 0px;
+	border-radius: 0px;
+}
+
+.next-btn:hover {
+	color : white;
+	background-color : #0F0060;
+	border : 0px;
+}
+
+.btn-sm {
+	display:block;
+	border : 1px solid #DADADA;
+	height: 26px;
+}
+
 </style>
 </head>
 <body>
@@ -101,7 +122,7 @@
 							</td>
 						</tr>
 						<tr>
-							<th style="padding-top: 65px;">주소</th>
+							<th style="padding-top: 55px;">주소</th>
 							<td id="addressWrap">
 								<div class="d-flex">
 									<input type="text" class="text-input mb-2 mr-2" name="postcode" id="postcode" placeholder="우편번호">

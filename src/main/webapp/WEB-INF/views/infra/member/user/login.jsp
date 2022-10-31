@@ -48,8 +48,8 @@
 					</div>
 				</div>
 				<div class="btn-wrap">
-					<button type="button" class="btn">아이디 찾기</button>
-					<button type="button" class="btn">비밀번호 찾기</button>
+					<button type="button" class="btn" onclick="location.href='findid'">아이디 찾기</button>
+					<button type="button" class="btn" onclick="location.href='findpw'">비밀번호 찾기</button>
 					<button type="button" class="btn" onclick="location.href='signup'">회원가입</button>
 				</div>
 			</div>

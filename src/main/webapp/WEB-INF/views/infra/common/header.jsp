@@ -13,6 +13,7 @@
 						<!-- 로그인 전 -->	
 							<div class="login_before">
 								<span class="login"><a href="/member/login">로그인</a></span>
+								<span class="login"><a href="/member/signup">회원가입</a></span>
 							</div>
 						<!-- //로그인 전 -->
 			
@@ -28,13 +29,13 @@
 								<div class="depth02" style="width: 1903px; left: -482px;">
 									<ul>
 										<li style="height: 181px;">
-											<a href="#n">조회</a>
+											<a href="/account/accountList">조회</a>
 										</li>
 										<li style="height: 181px;">
 											<a href="#n">이체</a>
 											<ul style="padding-left: 0px;">
 												<li>
-													<a href="#n">이체하기</a>
+													<a href="/account/accountTransfer">이체하기</a>
 												</li>
 												<li>
 													<a href="#n">자동이체</a>
@@ -72,7 +73,7 @@
 								</div>
 							</li>
 							<li class="topGnb-li">
-								<a href="#n" class="main-menu">가계부</a>
+								<a href="/member/accountBook" class="main-menu">가계부</a>
 								<!-- <div class="depth02" style="width: 1903px; left: -482px;">
 									<ul>
 										<li style="height: 219px;">

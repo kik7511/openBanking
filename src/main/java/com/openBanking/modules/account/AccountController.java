@@ -30,4 +30,10 @@ public class AccountController {
 	    
 	    return "infra/card/user/cardView";
 	}
+	
+	@RequestMapping(value="cardForm")
+	public String cardForm() throws Exception {
+	    
+	    return "infra/card/user/cardForm";
+	}
 }

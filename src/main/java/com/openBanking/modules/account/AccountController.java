@@ -24,4 +24,10 @@ public class AccountController {
 	    
 	    return "infra/account/user/accountTransfer";
 	}
+	
+	@RequestMapping(value="cardView")
+	public String cardView() throws Exception {
+	    
+	    return "infra/card/user/cardView";
+	}
 }

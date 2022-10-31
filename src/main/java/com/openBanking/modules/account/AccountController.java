@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value= "/account/")
 public class AccountController {
 	
-	@RequestMapping(value="accountList")
-	public String accountList() throws Exception {
+	@RequestMapping(value="accountView")
+	public String accountView() throws Exception {
 		
-		return "infra/account/user/accountList";
+		return "infra/account/user/accountView";
 	}
 	
-	@RequestMapping(value="accountCheck")
-	public String detailedCheck() throws Exception {
+	@RequestMapping(value="accountList")
+	public String accountList() throws Exception {
 
-		return "infra/account/user/accountCheck";
+		return "infra/account/user/accountList";
 	}
 	
 	@RequestMapping(value="accountTransfer")

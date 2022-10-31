@@ -9,8 +9,41 @@
 	<title>openBanking</title>
 	<%@include file = "../../common/link.jsp" %>
 	<%@include file = "../../common/font.jsp" %>
-	<link rel="stylesheet" type="text/css" href="/resources/css/accountList.css">
-	
+	<link rel="stylesheet" type="text/css" href="/resources/css/cardList.css">
+	<style>
+		.total_list {
+			font-size : 50px;
+		}
+		
+	/* 	.total_menu{
+			align : right;
+			padding-bottom : 10px;
+			padding-top : 10px;
+		} */
+		
+		.total_menu_btn {
+			color : gray;
+			border-radius : 3px;
+		}
+		
+		.list_date {
+			font-size : 15px;
+			padding-left : 20px;
+			
+		}
+		
+		.list_display {
+			display : flex;
+			justify-content : space-between;
+			margin-bottom : 5px;
+		}
+		
+		/* .list_useNmae {
+			margin_left: 20px;
+		} */
+		
+		
+	</style>
 </head>
 <body>
 	<%@include file = "../../common/header.jsp" %>
@@ -26,15 +59,15 @@
 		  		<div style="text-align: right; padding: 20px;"><span style="font-size: 15px;">관리</span></div>
 		  		<div class="context_content" style="text-align:center;"><span style="font-size: 25px;">총이용금액</span></div>
 		  		<div style="padding-top: 13px;padding-bottom: 13px; text-align:center;">
-		  			<span style="font-size: 50px;"><strong>775,364</strong></span>
-		  			<span style="font-size: 50px;">원</span>
+		  			<span class="total_list"><strong>775,364</strong></span>
+		  			<span class="total_list">원</span>
 	  			</div>
 	  			<div align="right" style="padding-bottom: 10px; padding-top: 10px;">
 	  				<button type="button" class="btn next-btn"><span style="color: white;">납부하기</span></button>
 	  			</div>
 	  			<div align="right" style="padding-bottom: 10px; padding-top: 10px;">
-	  				<button type="button" class="btn btn-light"><span style="color: gray; border-radius: 3px;"><i class="fas fa-light fa-print"></i>출력</span></button>
-	  				<button type="button" class="btn btn-light"><span style="color: gray; border-radius: 3px;"><i class="fas fa-thin fa-file-arrow-down"></i>엑셀 다운로드</span></button>
+	  				<button type="button" class="btn btn-light total_menu_btn"><span><i class="fas fa-light fa-print"></i>출력</span></button>
+	  				<button type="button" class="btn btn-light total_menu_btn"><span><i class="fas fa-thin fa-file-arrow-down"></i>엑셀 다운로드</span></button>
 		  		</div>	
 		  		<div style="background-color: #F2F2F2; height: 55px; margin-top: 10px;">
 		  			<i class="fa-solid fa-magnifying-glass fa-1x" style="padding-left: 25px;padding-top: 22px"></i>
@@ -43,9 +76,9 @@
 		  			<ul>
 		  				<li style="border-bottom: 1px solid gray">
 		  					<div style="margin-top: 15px; margin-bottom: 15px;">
-		  						<span style="font-size: 15px; padding-left: 20px;" class="">2022.10.31 08:36</span>
+		  						<span class="list_date">2022.10.31 08:36</span>
 		  					</div>
-		  					<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+		  					<div class="list_display">
 		  						<div style="margin-left: 20px;"><span>(주)발트페이먼츠</span></div>
 		  						<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">5,000</span><span style="font-weight: bolder; color: purple;">원</span></div>
 		  					</div>
@@ -56,9 +89,9 @@
 		  				</li>
 		  				<li style="border-bottom: 1px solid gray">
 		  					<div style="margin-top: 15px; margin-bottom: 15px;">
-		  						<span style="font-size: 15px; padding-left: 20px;" class="">2022.10.31 08:36</span>
+		  						<span class="list_date">2022.10.31 08:36</span>
 		  					</div>
-		  					<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+		  					<div class="list_display">
 		  						<div style="margin-left: 20px;"><span>(주)발트페이먼츠</span></div>
 		  						<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">5,000</span><span style="font-weight: bolder; color: purple;">원</span></div>
 		  					</div>
@@ -69,9 +102,9 @@
 		  				</li>
 		  				<li style="border-bottom: 1px solid gray">
 		  					<div style="margin-top: 15px; margin-bottom: 15px;">
-		  						<span style="font-size: 15px; padding-left: 20px;" class="">2022.10.31 08:36</span>
+		  						<span class="list_date">2022.10.31 08:36</span>
 		  					</div>
-		  					<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+		  					<div class="list_display">
 		  						<div style="margin-left: 20px;"><span>(주)발트페이먼츠</span></div>
 		  						<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">5,000</span><span style="font-weight: bolder; color: purple;">원</span></div>
 		  					</div>
@@ -82,9 +115,9 @@
 		  				</li>
 		  				<li style="border-bottom: 1px solid gray">
 		  					<div style="margin-top: 15px; margin-bottom: 15px;">
-		  						<span style="font-size: 15px; padding-left: 20px;" class="">2022.10.31 08:36</span>
+		  						<span class="list_date">2022.10.31 08:36</span>
 		  					</div>
-		  					<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+		  					<div class="list_display">
 		  						<div style="margin-left: 20px;"><span>(주)발트페이먼츠</span></div>
 		  						<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">5,000</span><span style="font-weight: bolder; color: purple;">원</span></div>
 		  					</div>

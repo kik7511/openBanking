@@ -17,6 +17,9 @@ public class Member {
 	private Integer ifmmMarketingNy;
 	private String ifmmEmail;
 	private Integer ifmmEmailAddress;
+	
+//	------------------------------
+	
 	public String getIfmmSeq() {
 		return ifmmSeq;
 	}

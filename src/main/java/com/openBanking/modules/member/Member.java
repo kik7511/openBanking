@@ -17,6 +17,7 @@ public class Member {
 	private Integer ifmmMarketingNy;
 	private String ifmmEmail;
 	private Integer ifmmEmailAddress;
+	private Integer ifmmTel;
 	
 //	------------------------------
 	
@@ -116,6 +117,13 @@ public class Member {
 	public void setIfmmEmailAddress(Integer ifmmEmailAddress) {
 		this.ifmmEmailAddress = ifmmEmailAddress;
 	}
+	public Integer getIfmmTel() {
+		return ifmmTel;
+	}
+	public void setIfmmTel(Integer ifmmTel) {
+		this.ifmmTel = ifmmTel;
+	}
+
 	
 	
 }

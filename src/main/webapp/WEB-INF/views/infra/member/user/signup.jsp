@@ -66,6 +66,7 @@
 </style>
 </head>
 <body>
+	<form method="post" id="" name="form">
 	<%@include file = "../../common/header.jsp" %>
 	<div id="wrap">
 		<span class="tit">회원가입</span>
@@ -76,21 +77,21 @@
 						<caption>회원정보를 입력해주세요.</caption>
 						<tr>
 							<th class="col-5">이름</th>
-							<td><input type="text" class=text-input name="name" id="name" autocomplete="off"></td>
+							<td><input type="text" class=text-input name="ifmmName" id="ifmmName" autocomplete="off"></td>
 						</tr>
 						<tr>
 							<th>생년월일</th>
-							<td><input type="text" class="text-input" name="birth" id="birth" placeholder="YYYYMMDD"></td>
+							<td><input type="date" class="text-input" name=ifmmDob id="datepicker" placeholder="YYYYMMDD"></td>
 						</tr>
 						<tr>
 							<th>휴대폰 번호</th>
-							<td><input type="text" class="text-input"name="phone" id="phone"></td>
+							<td><input type="text" class="text-input"name="ifmmTel" id="ifmmTel"></td>
 						</tr>
 						<tr>
 							<th>아이디</th>
 							<td>
 								<div class="d-flex">
-									<input type="text" class="text-input mr-2" name="loginId" id="loginId">
+									<input type="text" class="text-input mr-2" name="ifmmId" id="ifmmId">
 									<button type="button" id="idCheck" class="btn btn-sm">중복확인</button>
 								</div>
 								<small class="text-danger d-none idFail">중복된 아이디 입니다.</small>
@@ -99,7 +100,7 @@
 						</tr>
 						<tr>
 							<th>비밀번호</th>
-							<td><input type="password" class="text-input" name="password" id="password"></td>
+							<td><input type="password" class="text-input" name="ifmmPassword" id="ifmmPassword"></td>
 						</tr>
 						<tr>
 							<th>비밀번호 확인</th>
@@ -112,9 +113,9 @@
 							<th>이메일 주소</th>
 							<td>
 								<div class="d-flex">
-									<input type="text" class="text-input col-6" name="email" id="email">
+									<input type="text" class="text-input col-6" name="ifmmEmail" id="ifmmEmail">
 									<span style="margin : 0 4px 0 4px;">@</span>
-									<select class="text-input col-5" name="domain" id="domain">
+									<select class="text-input col-5" name="ifmmEmailAddress" id="ifmmEmailAddress">
 										<option value="0">선택</option>
 											<option></option>
 									</select>
@@ -125,12 +126,12 @@
 							<th style="padding-top: 55px;">주소</th>
 							<td id="addressWrap">
 								<div class="d-flex">
-									<input type="text" class="text-input mb-2 mr-2" name="postcode" id="postcode" placeholder="우편번호">
+									<input type="text" class="text-input mb-2 mr-2" name="ifmmPostNumber" id="ifmmPostNumber" placeholder="우편번호">
 									<button type="button" id="reset" class="btn btn-sm"><i class="fa-solid fa-trash"></i></button>
 								</div>
-								<input type="text" class="text-input mb-2" name="address" id="address" placeholder="주소">
+								<input type="text" class="text-input mb-2" name="ifmmAddress" id="ifmmAddress" placeholder="주소">
 								<div class="d-flex mb-2">
-									<input type="text" class="text-input col-7 mr-2" name="detailAddress" id="detailAddress" placeholder="상세주소">
+									<input type="text" class="text-input col-7 mr-2" name="ifmmAddressDetail" id="ifmmAddressDetail" placeholder="상세주소">
 									<input type="text" class="text-input col-5" name="extraAddress" id="extraAddress" placeholder="참고항목">
 								</div>
 							</td>
@@ -138,20 +139,22 @@
 						<tr>
 							<th>마케팅 활용을 위한 개인정보 수집 이용 안내(선택)</th>
 							<td>
-								<label class="mr-2">동의<input type="radio" class="ml-1" name="marketingAgree" value="1"></label>
-								<label>비동의<input type="radio" class="ml-1" name="marketingAgree" value="0"></label>
+								<label class="mr-2">동의<input type="radio" class="ml-1" name="marketing" id="marketing" value="1"></label>
+								<label>비동의<input type="radio" class="ml-1" name="ifmmMarketingNy" value="0"></label>
+								<input type="hidden" name="ifmmMarketingNy" value="">
 							</td>
 						</tr>
 						
 					</table>
 				</section>
 				<section class="d-flex justify-content-center">
-					<button type="button" class="btn next-btn" onclick="location.href='signupCompleted'">회원가입</button>
+					<button type="button" class="btn next-btn" id="btnSave">회원가입</button>
 				</section>
 			</form>
 		</div>		
 	</div>
 	<%@include file = "../../common/footer.jsp" %>
+	</form>
 	
 	<!-- 카카오 주소 api -->
 	<div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
@@ -163,6 +166,24 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	
 	<script>
+		
+		var goUrlInst = "/member/memberInst";
+		var form =$("form[name=form]");
+		
+		//마케팅수신동의 
+		setCheckboxValue = function(obj, targetObj) {
+			   if(obj.is(":checked")){
+				   targetObj.val("1");
+			    } else {
+			    	targetObj.val("0");
+			    }
+			}
+		<!-- insert -->
+		$("#btnSave").on("click", function(){
+		   		 setCheckboxValue($("#marketing"), $("#ifmmMarketingNy"));
+		   		 form.attr("action", goUrlInst).submit();
+		});
+		<!-- insert end-->
 		function execDaumPostcode() {
 	        new daum.Postcode({
 	            oncomplete: function(data) {
@@ -191,9 +212,9 @@
 	                    document.getElementById("sample6_extraAddress").value = '';
 	                }
 	
-	                document.getElementById('postcode').value = data.zonecode;
-	                document.getElementById("address").value = addr;
-	                document.getElementById("detailAddress").focus();
+	                document.getElementById('ifmmPostNumber').value = data.zonecode;
+	                document.getElementById("ifmmAddress").value = addr;
+	                document.getElementById("ifmmAddressDetail").focus();
 	                
 	                geocoder.addressSearch(addr, callback);
 	            }
@@ -209,7 +230,7 @@
 	    };
 	
 		 $(document).ready(function(){
-			$("#postcode").on("click", function(){
+			$("#ifmmPostNumber").on("click", function(){
 				execDaumPostcode();
 			})
 			
@@ -218,6 +239,26 @@
 			    input.val('');
 	    	})
 	    })
+	    
+	    <!-- DatePicker start -->
+		 $.datepicker.setDefaults({
+		        dateFormat: 'yy-mm-dd',
+		        prevText: '이전 달',
+		        nextText: '다음 달',
+		        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+		        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+		        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		        showMonthAfterYear: true,
+		        yearSuffix: '년'
+		    });
+		 
+		  $( function() {
+		    $( "#datepicker").datepicker();
+		  } );
+	  <!-- DatePicker end -->
+	  
 	</script>
 	
 

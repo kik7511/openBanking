@@ -14,9 +14,9 @@ public class MemberDao {
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.openBanking.infra.modules.member.MemberMapper";
+	private static String namespace = "com.openBanking.modules.member.MemberMapper";
 	
 	public int memberInst(Member dto) {
-		return sqlSession.insert(namespace + ".memberInsert", dto);
+		return sqlSession.insert(namespace + ".memberInst", dto);
 	}
 }

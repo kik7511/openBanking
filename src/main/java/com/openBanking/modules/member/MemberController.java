@@ -63,7 +63,7 @@ public class MemberController {
 	@RequestMapping(value="memberInst")
 	public String memberInst(Member dto) throws Exception {
 		service.memberInst(dto);
-		return "infra/member/user/signup";
+		return "redirect:/member/signupCompleted";
 	}
 
 

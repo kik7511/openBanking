@@ -9,7 +9,7 @@
 	<title>openBanking</title>
 	<%@include file = "../../common/link.jsp" %>
 	<%@include file = "../../common/font.jsp" %>
-	<link rel="stylesheet" type="text/css" href="/resources/css/accountList.css">
+	<link rel="stylesheet" type="text/css" href="/resources/css/accountView.css">
 </head>
 <body>
 	<%@include file = "../../common/header.jsp" %>
@@ -19,7 +19,7 @@
 		      <span class="fs-5 fw-semibold" style="padding-left: 15px;">조회</span>
 		    </a>
 		</div>
-		  <div style="margin-top: 11px; width:90%">
+		  <div style="margin-top: 11px; width : 600px;">
 		  	<span style="font-size : 23px; color : #454D5B;">조회</span>
 		  	<div class="border_yellow">
 		  		<div style="text-align: right; padding: 20px;"><span style="font-size: 15px;">관리</span></div>

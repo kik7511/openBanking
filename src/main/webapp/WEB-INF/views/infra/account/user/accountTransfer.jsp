@@ -34,7 +34,7 @@
 		}
 		
 		.inputBox_won {
-			width : 500px;
+			width : 200px;
 			border-style : none;
 		}
 		
@@ -98,7 +98,7 @@
 		      </li> -->
 		    </ul>
 		  </div>
-		<div>
+		<div style="width : 600px;">
 			<span style="font-size : 23px; color : #454D5B;">이체</span>
 			<div style="margin : 20px 0 40px 0;">
 				<div style="margin-bottom: 15px;"><i class="fa-solid fa-wallet"></i>출금계좌</div>
@@ -137,7 +137,7 @@
 			<div style="margin : 0 0 40px 0;">
 				<div style="margin-bottom: 15px;"><i class="fa-solid fa-won-sign"></i>금액</div>
 				<div class="row underLine">
-					<div class="col"><input type="text" class="input_box inputBox_won" value="" placeholder="원"></div>
+					<div class="col"><input type="text" class="input_box inputBox_won" value="" placeholder="가격" onkeyup="inputNumberFormat(this)">원</div>
 				</div>
 			</div>
 			<div style="display: flex; justify-content: center;">
@@ -148,5 +148,21 @@
 		</div>
 	</div>
 <%@include file = "../../common/footer.jsp" %>	
+
+<script>
+	function inputNumberFormat(obj) {
+	    obj.value = comma(uncomma(obj.value));
+	}
+	
+	function comma(str) {
+	    str = String(str);
+	    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+	}
+	
+	function uncomma(str) {
+	    str = String(str);
+	    return str.replace(/[^\d]+/g, '');
+	}
+</script>
 </body>
 </html>

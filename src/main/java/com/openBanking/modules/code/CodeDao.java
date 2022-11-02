@@ -20,6 +20,11 @@ public class CodeDao {
 	public List<Code> selectList() {
 		return sqlSession.selectList(namespace + ".selectList", "");
 	}
+	
+//	for cache
+	public List<Code> selectListCachedCodeArrayList(){ 
+		return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null); 
+	}
 
 	
 	

@@ -1,5 +1,8 @@
 package com.openBanking.modules.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Code {
 
 	private String ccSeq;
@@ -8,6 +11,9 @@ public class Code {
 	private String ccUseNy;
 	private String ccOrder;
 	private String ccDelNy;
+	
+//	for cache
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
 	
 //	--------------------------------
 	

@@ -16,8 +16,22 @@
 			,ccUseNy
 			,ccOrder
 			,ccDelNy
-		from cc
+		from CC
 		where 1=1
 	</select>
+	
+	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+		SELECT 
+			ccSeq
+			, ccName
+			, ccgSeq
+			, ccOrder
+		FROM
+			CC
+		WHERE 1=1
+			AND ccDelNy = 0
+		    AND ccUseNy = 1
+    </select>	
+
 
 </mapper>	

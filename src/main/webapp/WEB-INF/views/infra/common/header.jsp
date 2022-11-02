@@ -59,7 +59,7 @@
 											<a href="#n">카드</a>
 											<ul style="padding-left: 0px;">
 												<li>
-													<a href="#n">사용금액조회</a>
+													<a href="/account/cardView">사용금액조회</a>
 												</li>
 												<li>
 													<a href="#n">납부예상금액</a>
@@ -67,7 +67,7 @@
 											</ul>
 										</li>
 										<li style="height: 219px;">
-											<a href="#n">카드등록</a>
+											<a href="/account/cardForm">카드등록</a>
 										</li>
 									</ul>
 								</div>

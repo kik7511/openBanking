@@ -49,7 +49,12 @@
 			SELECT last_insert_id()
 		</selectKey>
     </insert> 
-    
+	
+	<select id="checkId" resultType="int">
+		SELECT COUNT(*)
+			FROM infraMember
+			WHERE 1=1
+				AND ifmmId = #{ifmmId}
+	</select>	
 	    
-    
 </mapper>	   

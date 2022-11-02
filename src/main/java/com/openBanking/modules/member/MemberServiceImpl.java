@@ -16,4 +16,9 @@ public class MemberServiceImpl implements MemberService{
 		dto.setIfmmPassword(UtilSecurity.encryptSha256(dto.getIfmmPassword()));
 		return dao.memberInst(dto);
 	}
+	
+	@Override
+	public int checkId(Member dto) throws Exception{
+		return dao.checkId(dto);
+	}
 }

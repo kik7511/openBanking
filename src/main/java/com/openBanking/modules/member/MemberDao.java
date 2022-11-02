@@ -19,4 +19,9 @@ public class MemberDao {
 	public int memberInst(Member dto) {
 		return sqlSession.insert(namespace + ".memberInst", dto);
 	}
+	
+	public int checkId(Member dto) {
+		int result = sqlSession.selectOne(namespace + ".checkId", dto);
+		return result;
+	}
 }

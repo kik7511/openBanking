@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <link rel="stylesheet" href="/resources/css/member.css">
-
+<script src="/resources/js/validation.js"></script>
 <title>회원가입</title>
 <%@include file = "../../common/link.jsp" %>	
 <%@include file = "../../common/font.jsp" %>
@@ -68,19 +68,21 @@
 </style>
 </head>
 <body>
-	<form method="post" id="" name="form">
 	<%@include file = "../../common/header.jsp" %>
 	<c:set var="listCodeifmmEmailAddress" value="${CodeServiceImpl.selectListCachedCode('4')}" />
 	<div id="wrap">
 		<span class="tit">회원가입</span>
 		<div class="signup-wrap">
-			<form autocomplete="off">
+			<form autocomplete="off"  method="post" id="form" name="form">
 				<section class="d-flex justify-content-center">
 					<table class="table">
 						<caption>회원정보를 입력해주세요.</caption>
 						<tr>
 							<th class="col-5">이름</th>
-							<td><input type="text" class=text-input name="ifmmName" id="ifmmName" autocomplete="off"></td>
+							<td>
+								<input type="text" class=text-input name="ifmmName" id="ifmmName" autocomplete="off">
+								<small class="text-danger" id="name_msg" style="display: none"></small>
+							</td>
 						</tr>
 						<tr>
 							<th>생년월일</th>
@@ -97,6 +99,7 @@
 									<input type="text" class="text-input mr-2" name="ifmmId" id="ifmmId">
 									<button type="button" id="idCheck" class="btn btn-sm">중복확인</button>
 								</div>
+								<small class="text-danger" id="id_msg" style="display: none"></small>
 								<small class="text-danger d-none idFail">중복된 아이디 입니다.</small>
 								<small class="text-success d-none idSuccess">사용가능한 아이디 입니다.</small>
 							</td>
@@ -110,6 +113,7 @@
 							<td>
 								<input type="password" class="text-input" id="passwordRe"><br>
 								<small class="text-danger d-none pwFail">비밀번호가 일치하지 않습니다.</small>
+								<small class="text-success d-none pwSuccess">비밀번호가 일치합니다.</small>
 							</td>
 						</tr>
 						<tr>
@@ -118,11 +122,11 @@
 								<div class="d-flex">
 									<input type="text" class="text-input col-6" name="ifmmEmail" id="ifmmEmail">
 									<span style="margin : 0 4px 0 4px;">@</span>
-									<select class="text-input col-5" name="	ifmmEmailAddress" id="ifmmEmailAddress">
+									<select class="text-input col-5" name="ifmmEmailAddress" id="ifmmEmailAddress">
 										<option value="0">::선택::</option>
 											<c:forEach items="${listCodeifmmEmailAddress}" var="listifmmEmailAddress" varStatus="statusifmmEmailAddress">
 												<option value="${listifmmEmailAddress.ccSeq} ">
-													<c:if test="${list.ifmmEmailAddress eq listifmmEmailAddress.ccSeq}"></c:if>${listifmmEmailAddress.ccName}
+													<c:if test="${list.ifmmEmailAddress eq listifmmEmailAddress.ccSeq}">selected</c:if>${listifmmEmailAddress.ccName}
 												</option>
 											</c:forEach>
 									</select>
@@ -148,7 +152,7 @@
 							<td>
 								<label class="mr-2">동의<input type="radio" class="ml-1" name="marketing" id="marketing" value="1"></label>
 								<label>비동의<input type="radio" class="ml-1" name="ifmmMarketingNy" value="0"></label>
-								<input type="hidden" name="ifmmMarketingNy" value="">
+								<input type="hidden" name="ifmmMarketingNy" id="ifmmMarketingNy" value="0">
 							</td>
 						</tr>
 						
@@ -161,7 +165,6 @@
 		</div>		
 	</div>
 	<%@include file = "../../common/footer.jsp" %>
-	</form>
 	
 	<!-- 카카오 주소 api -->
 	<div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
@@ -176,6 +179,7 @@
 		
 		var goUrlInst = "/member/memberInst";
 		var form =$("form[name=form]");
+		var seq = $("input:hidden[name=ifmmSeq]");			/* #-> */
 		
 		//마케팅수신동의 
 		setCheckboxValue = function(obj, targetObj) {
@@ -185,10 +189,24 @@
 			    	targetObj.val("0");
 			    }
 			}
+		
+		validationUpdt = function() {
+            if (!id_regex($('input[name=ifmmId]'), $('input[name=ifmmId]').val(), "입력 필요!", $('#id_msg'))) {
+            	return false;
+            } else if(!name_regex($('input[name=ifmmName]'), $('input[name=ifmmName').val(), "입력 필요!", $('#name_msg'))) {
+                return false;
+            }else{
+            	return true;
+            } 
+		}; 
+		
 		<!-- insert -->
 		$("#btnSave").on("click", function(){
-		   		 setCheckboxValue($("#marketing"), $("#ifmmMarketingNy"));
-		   		 form.attr("action", goUrlInst).submit();
+			if(validationUpdt() == false) return false;
+	   		/* if(ckeckId() == false) return false;
+	   		if(ckeckPwd() == false) return false; */
+	   		 setCheckboxValue($("#marketing"), $("#ifmmMarketingNy"));
+	   		 form.attr("action", goUrlInst).submit();
 		});
 		<!-- insert end-->
 		function execDaumPostcode() {
@@ -248,26 +266,87 @@
 	    })
 	    
 	    <!-- DatePicker start -->
-		 $.datepicker.setDefaults({
-		        dateFormat: 'yy-mm-dd',
-		        prevText: '이전 달',
-		        nextText: '다음 달',
-		        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-		        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-		        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		        showMonthAfterYear: true,
-		        yearSuffix: '년'
-		    });
 		 
-		  $( function() {
-		    $( "#datepicker").datepicker();
-		  } );
+		 $(document).ready(function () {
+			    $.datepicker.regional['ko'] = {
+			        closeText: '닫기',
+			        prevText: '이전달',
+			        nextText: '다음달',
+			        currentText: '오늘',
+			        monthNames: ['1월(JAN)','2월(FEB)','3월(MAR)','4월(APR)','5월(MAY)','6월(JUN)',
+			        '7월(JUL)','8월(AUG)','9월(SEP)','10월(OCT)','11월(NOV)','12월(DEC)'],
+			        monthNamesShort: ['1월','2월','3월','4월','5월','6월',
+			        '7월','8월','9월','10월','11월','12월'],
+			        dayNames: ['일','월','화','수','목','금','토'],
+			        dayNamesShort: ['일','월','화','수','목','금','토'],
+			        dayNamesMin: ['일','월','화','수','목','금','토'],
+			        weekHeader: 'Wk',
+			        dateFormat: 'yy-mm-dd',
+			        firstDay: 0,
+			        showMonthAfterYear: true,
+			        changeMonth: true,
+			        changeYear: true,
+			        yearRange: 'c-99:c+99',
+			    };	
+			    $.datepicker.setDefaults($.datepicker.regional['ko']);
+		
+			    $('#datepicker').datepicker();
+			    });
 	  <!-- DatePicker end -->
+	  	
+	  $("#idCheck").on("click", function ckeckId(){
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,dataType:"json" 
+				,url: "/member/checkId"
+				,data : { "ifmmId" : $("#ifmmId").val() }
+				,success: function(response) {
+					$("#id_msg").css("display", "none")
+					if(response.rt == "success") {
+						$("small.idSuccess").removeClass('d-none');
+						return true;
+					} else {
+						$("small.idFail").removeClass('d-none');
+						passwordRe.focus();
+						return false;
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+	});
+	  
+	  
+	  $("#passwordRe").on("focusout", function checkPwd(){
+			var password = $("#ifmmPassword");
+			var passwordRe = $("#passwordRe");
+			
+			if(password != '' && passwordRe == ''){
+				null;
+			}else if(password != "" || passwordRe != ""){
+				if(password.val() == passwordRe.val()){
+					$(".pwFail").addClass('d-none');
+					$(".pwSuccess").removeClass('d-none');
+					return true;
+				}else{
+					$(".pwSuccess").addClass('d-none');
+					$(".pwFail").removeClass('d-none');
+					$("#ifmmPassword").val("");
+					$("#passwordRe").val("");
+					password.focus();
+					return false;
+				}
+			}
+		});
+	  
+	  $("#ifmmName").on("focusout", function(){
+		  $("#name_msg").css("display", "none");  
+	  });
 	  
 	</script>
-	
 
 </body>
 </html>

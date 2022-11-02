@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%-- <jsp:useBean id="CodeServiceImpl" class="com.openBanking.modules.code.CodeServiceImpl" /> --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:useBean id="CodeServiceImpl" class="com.openBanking.modules.code.CodeServiceImpl" />
 
 <!DOCTYPE html>
 <html>
@@ -70,7 +70,7 @@
 <body>
 	<form method="post" id="" name="form">
 	<%@include file = "../../common/header.jsp" %>
-	<%-- <c:set var="listCodeifmmEmail" value="${CodeServiceImpl.selectListCachedCode('4')}" /> --%>
+	<c:set var="listCodeifmmEmailAddress" value="${CodeServiceImpl.selectListCachedCode('4')}" />
 	<div id="wrap">
 		<span class="tit">회원가입</span>
 		<div class="signup-wrap">
@@ -118,11 +118,11 @@
 								<div class="d-flex">
 									<input type="text" class="text-input col-6" name="ifmmEmail" id="ifmmEmail">
 									<span style="margin : 0 4px 0 4px;">@</span>
-									<select class="text-input col-5" name="ifmmEmailAddress" id="ifmmEmailAddress">
+									<select class="text-input col-5" name="	ifmmEmailAddress" id="ifmmEmailAddress">
 										<option value="0">::선택::</option>
-											<c:forEach items="${listCodeifmmEamil}" var="listifmmEmail" varstatus="statusifmmEamil">
-												<option value="${listifmmEamil.seq} ">
-													<c:if test="${item.ifmmEmail eq listifmmEmail.seq}"></c:if>${listifmmEmail.ccgSeq}
+											<c:forEach items="${listCodeifmmEmailAddress}" var="listifmmEmailAddress" varStatus="statusifmmEmailAddress">
+												<option value="${listifmmEmailAddress.ccSeq} ">
+													<c:if test="${list.ifmmEmailAddress eq listifmmEmailAddress.ccSeq}"></c:if>${listifmmEmailAddress.ccName}
 												</option>
 											</c:forEach>
 									</select>

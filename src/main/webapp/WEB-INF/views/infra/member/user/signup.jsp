@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%-- <jsp:useBean id="CodeServiceImpl" class="com.openBanking.modules.code.CodeServiceImpl" /> --%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,6 +70,7 @@
 <body>
 	<form method="post" id="" name="form">
 	<%@include file = "../../common/header.jsp" %>
+	<%-- <c:set var="listCodeifmmEmail" value="${CodeServiceImpl.selectListCachedCode('4')}" /> --%>
 	<div id="wrap">
 		<span class="tit">회원가입</span>
 		<div class="signup-wrap">
@@ -116,8 +119,12 @@
 									<input type="text" class="text-input col-6" name="ifmmEmail" id="ifmmEmail">
 									<span style="margin : 0 4px 0 4px;">@</span>
 									<select class="text-input col-5" name="ifmmEmailAddress" id="ifmmEmailAddress">
-										<option value="0">선택</option>
-											<option></option>
+										<option value="0">::선택::</option>
+											<c:forEach items="${listCodeifmmEamil}" var="listifmmEmail" varstatus="statusifmmEamil">
+												<option value="${listifmmEamil.seq} ">
+													<c:if test="${item.ifmmEmail eq listifmmEmail.seq}"></c:if>${listifmmEmail.ccgSeq}
+												</option>
+											</c:forEach>
 									</select>
 								</div>
 							</td>

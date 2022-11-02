@@ -346,6 +346,10 @@
 		  $("#name_msg").css("display", "none");  
 	  });
 	  
+	  $("#ifmmId").on("focusout", function(){
+		  $("#id_msg").css("display", "none");  
+	  });
+	  
 	</script>
 
 </body>

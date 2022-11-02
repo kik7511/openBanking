@@ -1,11 +1,15 @@
 package com.openBanking.modules.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value= "/member/")
 public class MemberController {
+	
+	@Autowired
+	MemberServiceImpl service;
 	
 	@RequestMapping(value="login")
 	public String loginView() throws Exception {
@@ -53,6 +57,13 @@ public class MemberController {
 	public String test() throws Exception {
 		
 		return "infra/member/user/test";
+	}
+	
+//	insert member
+	@RequestMapping(value="memberInst")
+	public String memberInst(Member dto) throws Exception {
+		service.memberInst(dto);
+		return "redirect:/member/signupCompleted";
 	}
 
 

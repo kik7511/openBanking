@@ -8,6 +8,48 @@
 
     <resultMap id="resultMapObj" type="com.openBanking.modules.member.Member"></resultMap>
     
+    <insert id="memberInst">
+    	INSERT INTO infraMember (
+    		ifmmName
+    		,ifmmId
+    		,ifmmPassword
+    		,ifmmDob
+    		,ifmmTelecom
+    		,ifmmTelFirst
+    		,ifmmTelLast
+    		,ifmmPostNumber
+    		,ifmmAddress
+    		,ifmmAddressDetail
+    		,ifmmGender
+    		,ifmmPrivacyNy
+    		,ifmmMarketingNy
+    		,ifmmEmail
+    		,ifmmEmailAddress
+    		,ifmmTel
+   		)
+    	VALUES(
+    		#{ifmmName}
+    		,#{ifmmId}
+    		,#{ifmmPassword}
+    		,#{ifmmDob}
+    		,#{ifmmTelecom}
+    		,#{ifmmTelFirst}
+    		,#{ifmmTelLast}
+    		,#{ifmmPostNumber}
+    		,#{ifmmAddress}
+    		,#{ifmmAddressDetail}
+    		,#{ifmmGender}
+    		,#{ifmmPrivacyNy}
+    		,#{ifmmMarketingNy}
+    		,#{ifmmEmail}
+    		,#{ifmmEmailAddress}
+    		,#{ifmmTel}
+    	)	
+   		<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+    </insert> 
+    
 	    
     
 </mapper>	   

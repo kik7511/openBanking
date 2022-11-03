@@ -7,7 +7,7 @@
 					<div class="inner">
 		            <!-- 20190417 SR-614 기업 헤더 디자인 반영 -->
 						<h1 class="logo">
-							<a href=""><img src="/resources/img/Fradel (1).png"></a>
+							<a href="/"><img src="/resources/img/Fradel (1).png"></a>
 						</h1>
 						<div id="utill">
 						<c:choose>

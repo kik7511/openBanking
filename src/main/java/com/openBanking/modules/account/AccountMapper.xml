@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.openBanking.modules.account.AccountMapper">
+
+    <resultMap id="resultMapObj" type="com.openBanking.modules.account.Account"></resultMap>
+    
+    <select id="selectList" resultMap="resultMapObj">
+    	select
+    		seq
+    		,ifmmSeq
+    		,availablamt
+    		,bankName
+    		,balanceAmt
+    		,availableAmt
+    		,accountType
+    		,productName
+    		,accountIssueDate
+    		,maturityDate
+    		,lastTranDate
+    		,accountNumber
+   		from account
+   		where 1=1
+    </select>
+    
+    <insert id="accountBookInst">
+    	INSERT INTO accountBook (
+    		seq
+    		,memberSeq
+    		,type
+    		,category
+    		,client
+    		,methodOfPayment
+    		,date
+    		,memo
+   		)
+    	VALUES(
+    		#{seq}
+    		,#{memberSeq}
+    		,#{type}
+    		,#{category}
+    		,#{client}
+    		,#{methodOfPayment}
+    		,#{date}
+    		,#{memo}
+    	)	
+   		<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+    </insert> 
+	
+	    
+</mapper>	   

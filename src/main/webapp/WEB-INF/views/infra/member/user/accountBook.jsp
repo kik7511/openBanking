@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:useBean id="CodeServiceImpl" class="com.openBanking.modules.code.CodeServiceImpl" />
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,6 +126,7 @@
 </head>
 <body>
 	<%@include file = "../../common/header.jsp" %>
+	<c:set var="listCodecategory" value="${CodeServiceImpl.selectListCachedCode('14')}" />
 	<div id="wrap">
 		<a id="createdBtn" data-bs-toggle="modal" href="#accountBookModal" role="button"><i class="fa-regular fa-calendar-plus"></i></a>
 		<div id="calendar">
@@ -152,19 +156,11 @@
 						<span class="tit">카테고리</span>
 						<select class="form-select">
 							<option>미분류</option>
-							<option>식비</option>
-							<option>카페/간식</option>
-							<option>술/유흥</option>
-							<option>생활</option>
-							<option>온라인쇼핑</option>
-							<option>패션/쇼핑</option>
-							<option>뷰티/미용</option>
-							<option>교통</option>
-							<option>주거/통신</option>
-							<option>문화/여가</option>
-							<option>여행/숙박</option>
-							<option>반려동물</option>
-							<option>경조/선물</option>
+							<c:forEach items="${listCodecategory}" var="listcategory" varStatus="statuscategory">
+								<option value="${listcategory.ccSeq} ">
+									<c:if test="${list.category eq listcategory.ccSeq}">selected</c:if>${listcategory.ccName}
+								</option>
+							</c:forEach>
 						</select>
 					</div>
 					<div class="modal-body-section d-flex">

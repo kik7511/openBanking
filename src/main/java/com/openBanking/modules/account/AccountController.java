@@ -1,11 +1,32 @@
 package com.openBanking.modules.account;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+=======
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
+
+>>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+<<<<<<< HEAD
+=======
+import org.springframework.web.bind.annotation.ModelAttribute;
+>>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping(value= "/account/")
@@ -46,4 +67,10 @@ public class AccountController {
 	    
 	    return "infra/card/user/cardForm";
 	}
+	
+	@RequestMapping(value="checkAccount")
+	public String checkAccount() throws Exception {
+		 return "infra/member/user/test";
+	}
+	
 }

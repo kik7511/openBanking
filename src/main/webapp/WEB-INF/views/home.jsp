@@ -46,7 +46,7 @@
 					</div>
 						<div class="quickMenuArticle">
 						<ul class="listQuickMenu"> 
-							<li><a href="/account/accountList" id="btnSearchAll"><span class="icoSearch">조회하기</span></a></li>
+							<li><a href="javascript:checkAccount()" id="btnSearchAll"><span class="icoSearch">조회하기</span></a></li>
 							<li><a href="/account/accountTransfer" id="btnSearchEche"><span class="icoTransfer">이체하기</span></a></li>
 							<li><a href="/member/accountBook" id="btnSearchBank"><span class="icoBank">가계부관리</span></a></li>
 						</ul>
@@ -70,6 +70,45 @@
 			    .appendTo('#slide>ul');
 			}, 5000);
 		});
+		
+		function checkAccount(){
+			 var tmpWindow = window.open('about:blank')
+	            tmpWindow.location = "https://testapi.openbanking.or.kr/oauth/2.0/authorize?" +
+	            "response_type=code&"+
+	            "client_id=9558ab9a-79fc-4dfa-8d61-e2b62d530324&"+  
+	            "redirect_uri=http://localhost:8080/&"+
+	            "scope=login inquiry transfer&"+
+	            "state=b80BLsfigm9OokPTjy03elbJqRHOfGSY&"+
+	            "auth_type=0"
+		}
+		
+		app.get('/', function(req, res){
+		    console.log(req.query);
+		    var authCode = req.query.code;
+		    console.log(authCode);
+		    var option = {
+		        method : "POST",
+		        url : "https://testapi.openbanking.or.kr/oauth/2.0/token",
+		        header : {
+		            'Content-Type' : 'application/x-www-form-urlencoded'
+		        },
+		        form : {
+		            code : authCode,
+		            client_id : '9558ab9a-79fc-4dfa-8d61-e2b62d530324', 
+		            client_secret : '95e11988-7bec-469a-8009-eda5f794ca20',
+		            redirect_uri : 'http://localhost:8080/',
+		            grant_type : 'authorization_code'
+		        }
+		    }
+		    // resultChild 호출해서 얻은 토큰 정보를 사이트에 입력
+		    request(option, function (error, response, body) {
+		        console.log(body);
+		        var requestResultJSON = JSON.parse(body);
+		        res.render('resultChild',{data : requestResultJSON})
+		    });
+		})
+		
+		
 	</script>
 </div>
 </body>

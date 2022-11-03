@@ -1,5 +1,6 @@
 package com.openBanking.modules.account;
 
+<<<<<<< HEAD
 import java.util.Date;
 
 public class Account {
@@ -103,4 +104,8 @@ public class Account {
 	
 	
 	
+=======
+public class Account {
+
+>>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
 }

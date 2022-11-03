@@ -36,11 +36,11 @@
 					<div class="input-box">
 						<div style="display: flex;">
 							<span style="width:30%; margin-top:9px; text-align: center;">아이디</span>
-							<input type="text" class="text-input" style="margin-bottom: 10px;">
+							<input type="text" name="ifmmId" id="ifmmId" class="text-input" style="margin-bottom: 10px;">
 						</div>
 						<div style="display: flex;">
 							<span style="width:30%; margin-top:9px; text-align: center;">비밀번호</span>
-							<input type="password" class="text-input">
+							<input type="password" name="ifmmPassword" id="ifmmPassword" class="text-input">
 						</div>
 					</div>
 					<div>
@@ -58,6 +58,40 @@
 	<%@include file = "../../common/footer.jsp" %>
 	
 	<script>
+		$(document).ready(function(){
+			$("#loginBtn").on("click", function(){
+				var ifmmId = $("#ifmmId").val();
+				var ifmmPassword = $("#ifmmPassword").val();
+				
+				if(ifmmId == null || ifmmId == "") {
+					alert("아이디를 입력해주세요");
+					return;
+				}
+				
+				if(ifmmPassword == null || ifmmPassword == "") {
+					alert("비밀번호를 입력해주세요");
+					return;
+				}
+				
+				$.ajax({
+					type : 'post',
+					url : '/member/loginProc',
+					data : {"ifmmId":ifmmId, "ifmmPassword":ifmmPassword},
+					success:function(data){
+						if(data.result == "success") {
+							location.href="/"
+						} else {
+							alert("이메일과 비밀번호를 확인하세요");
+							$("#ifmmId").focus();
+							return;
+						}
+					},
+					error:function(e){
+						alert("로그인실패");
+					}
+				})
+			})
+		});
 	</script>
 	
 

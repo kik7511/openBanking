@@ -51,10 +51,22 @@
     </insert> 
 	
 	<select id="checkId" resultType="int">
-		SELECT COUNT(*)
-			FROM infraMember
-			WHERE 1=1
-				AND ifmmId = #{ifmmId}
-	</select>	
+		SELECT 
+			COUNT(*)
+		FROM 
+			infraMember
+		WHERE 1=1
+			AND ifmmId = #{ifmmId}
+	</select>
+	
+	<select id="login" resultMap="resultMapObj">
+		SELECT 
+			*
+		FROM 
+			infraMember
+		WHERE 1=1
+			AND ifmmId = #{ifmmId}
+			AND ifmmPassword = #{ifmmPassword}
+	</select>
 	    
 </mapper>	   

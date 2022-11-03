@@ -21,4 +21,10 @@ public class MemberServiceImpl implements MemberService{
 	public int checkId(Member dto) throws Exception{
 		return dao.checkId(dto);
 	}
+	
+	@Override
+	public Member login(Member dto) throws Exception {
+		dto.setIfmmPassword(UtilSecurity.encryptSha256(dto.getIfmmPassword()));
+		return dao.login(dto);
+	}
 }

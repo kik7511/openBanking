@@ -3,8 +3,12 @@ package com.openBanking.modules.member;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -88,6 +92,40 @@ public class MemberController {
 		return returnMap;
 	}
 	
+	@RequestMapping(value="loginProc")
+	@ResponseBody
+	public Map<String, Object> login(Member dto, Model model, HttpServletRequest request) throws Exception {
+		Member member = service.login(dto);
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		if(member != null) {
+			System.out.println("로그인성공 login ID : " + member.getIfmmId() + " user name : " + member.getIfmmName() + " user seq : " + member.getIfmmSeq());
+			
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("sessSeq", member.getIfmmSeq());
+			session.setAttribute("IfmmId", member.getIfmmId());
+			session.setAttribute("IfmmName", member.getIfmmName());
 
+			result.put("result", "success");
+		} else {
+			System.out.println("로그인 실패 ");
+			result.put("result", "fail");
+		}
+		return result;
+	}
+	
+	@RequestMapping(value="logout")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		String url = request.getHeader("referer");
+		
+		System.out.println("로그아웃 완료");
+		
+		return "redirect:"+url;
+	}
 
 }

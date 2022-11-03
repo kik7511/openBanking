@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="header">
 		<div id="">
 			<div class="header_new pc" style="width: 100%;">
@@ -10,13 +10,20 @@
 							<a href=""><img src="/resources/img/Fradel (1).png"></a>
 						</h1>
 						<div id="utill">
-						<!-- 로그인 전 -->	
-							<div class="login_before">
-								<span class="login"><a href="/member/login">로그인</a></span>
-								<span class="login"><a href="/member/signup">회원가입</a></span>
-							</div>
-						<!-- //로그인 전 -->
-			
+						<c:choose>
+							<c:when test="${not empty sessSeq}" >
+								<div class="login_before">
+									<span class="login"><a href="#">${IfmmName} 님</a></span>
+									<span class="login"><a href="../member/logout">로그아웃</a></span>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="login_before">
+									<span class="login"><a href="/member/login">로그인</a></span>
+									<span class="login"><a href="/member/signup">회원가입</a></span>
+								</div>
+							</c:otherwise>
+						</c:choose>
            				</div>
 						<!-- //20190417 SR-614 기업 헤더 디자인 반영 -->
 					</div>

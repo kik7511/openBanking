@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<jsp:useBean id="CodeServiceImpl" class="com.openBanking.modules.code.CodeServiceImpl" />
+
 <html lang="ko">
 <head>
 	<title>openBanking</title>
@@ -13,6 +15,7 @@
 </head>
 <body>
 <%@include file = "../../common/header.jsp" %>	
+<c:set var="listCodebankName" value="${CodeServiceImpl.selectListCachedCode('7')}" />
 	<div id="wrap">
 		<div class="flex-shrink-0 p-3 bg-white" style="width: 250px; margin-right: 10px;">
 		    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none" style="border-bottom: 2px solid">
@@ -25,13 +28,18 @@
 			<c:forEach items="${list}" var="list" varStatus="status">
 				<div class="account-item" onclick="location.href='/account/accountView'">
 					<img src="../../../../resources/img/logo/shinhan_logo.png" class="logo_style">
-					<span>${list.bankName}</span>
+					<c:forEach items="${listCodebankName}" var="listbankName" varStatus="statusbankName">
+						<c:if test="${list.bankName eq listbankName.ccSeq}">
+							<c:out value="${listbankName.ccName}" />
+						</c:if>
+					</c:forEach>
 		     		<span>${list.accountNumber}</span>
 		 			<br>
 		     		<span>계좌잔액</span>
 		     		<span>${list.balanceAmt}원</span>
 				</div>
 			</c:forEach>
+			<!-- 
 				<div class="account-item">
 					<img src="../../../../resources/img/logo/shinhan_logo.png" class="logo_style">
 					<span>신한은행</span>
@@ -40,13 +48,14 @@
 		     		<span>계좌잔액</span>
 		     		<span>12,300원</span>
 				</div>
+				 -->
 			</div>
 			<div style="margin: 20px 0 10px 0;">카드</div>
 			<div class="card-list">
 			<c:forEach items="${list}" var="list" varStatus="status">
 				<div class="card-item">
 	           		<img src="../../../../resources/img/logo/hyundaiCard_logo.png" class="logo_style">
-		       		<span>${list.cardName}</span>
+		       		<%-- <span>${list.cardName}</span> --%>
 		       		<br>
 		       		<span>사용금액</span>
 		       		<span>12,300원</span>
@@ -63,5 +72,8 @@
 		</div>
 	</div>
 	<%@include file = "../../common/footer.jsp" %>	
+	
+	<!-- ------------------script--------------------- -->
+	
 </body>
 </html>

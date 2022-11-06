@@ -17,11 +17,12 @@ public class AccountServiceImpl implements AccountService {
 		return list;
 	}
 	
-//	@Override
-//	public List<Account> selectList2() throws Exception {
-//		List<Account> list= dao.selectList();
-//		return list;
-//	}
+	@Override
+	public List<Account> selectList2() throws Exception {
+		List<Account> list= dao.selectList2();
+		return list;
+	}
+	
 	@Override
 	public int accountBookInt(Account dto) throws Exception {
 		return dao.accountBookInst(dto);

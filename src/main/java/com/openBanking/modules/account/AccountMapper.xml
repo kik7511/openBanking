@@ -26,8 +26,8 @@
    		where 1=1
     </select>
     	
- <!--    	
-    <select id="selectCardList2" resultMap="resultMapObj">
+    	
+    <select id="selectList2" resultMap="resultMapObj">
     	select
    			seq
     		, ifmmSeq
@@ -40,7 +40,7 @@
    		from card
    		where 1=1
     </select>
-     -->
+    
     
     <insert id="accountBookInst">
     	INSERT INTO accountBook (

@@ -100,13 +100,14 @@ public class MemberController {
 		Map<String, Object> result = new HashMap<>();
 		
 		if(member != null) {
-			System.out.println("로그인성공 login ID : " + member.getIfmmId() + " user name : " + member.getIfmmName() + " user seq : " + member.getIfmmSeq());
+			System.out.println("로그인성공 login ID : " + member.getIfmmId() + " user name : " + member.getIfmmName() + " user seq : " + member.getIfmmSeq() + "usdr token : " + member.getIfmmAccessToken());
 			
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("sessSeq", member.getIfmmSeq());
-			session.setAttribute("IfmmId", member.getIfmmId());
-			session.setAttribute("IfmmName", member.getIfmmName());
+			session.setAttribute("sessId", member.getIfmmId());
+			session.setAttribute("sessName", member.getIfmmName());
+			session.setAttribute("sessAccessToken", member.getIfmmAccessToken());
 
 			result.put("result", "success");
 		} else {

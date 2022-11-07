@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -45,6 +46,7 @@
 	</style>
 </head>
 <body>
+	<form name="form">
 	<%@include file = "../../common/header.jsp" %>
 	<div id="wrap">
 		<div class="flex-shrink-0 p-3 bg-white" style="width: 250px; margin-right: 10px;">
@@ -66,13 +68,14 @@
 	  			</div>
 	  			<div align="right" style="padding-bottom: 10px; padding-top: 10px;">
 	  				<button type="button" class="btn btn-light total_menu_btn"><span><i class="fas fa-light fa-print"></i>출력</span></button>
-	  				<button type="button" class="btn btn-light total_menu_btn"><span><i class="fas fa-thin fa-file-arrow-down"></i>엑셀 다운로드</span></button>
+	  				<button type="button" class="btn btn-light total_menu_btn" id="btnExcel"><span><i class="fas fa-thin fa-file-arrow-down"></i>엑셀 다운로드</span></button>
 		  		</div>	
 		  		<div style="background-color: #F2F2F2; height: 55px; margin-top: 10px;">
 		  			<i class="fa-solid fa-magnifying-glass fa-1x" style="padding-left: 25px;padding-top: 22px"></i>
 		  		</div>
 		  		<div>
 		  			<ul>
+		  				<%-- <c:forEach items="${list2}" var="list2" varStatus="status"> --%>
 		  				<li style="border-bottom: 1px solid gray">
 		  					<div style="margin-top: 15px; margin-bottom: 15px;">
 		  						<span class="list_date">2022.10.31 08:36</span>
@@ -131,5 +134,20 @@
 	 	</div>
 	</div>	
 	<%@include file = "../../common/footer.jsp" %>	
+	</form>
+	
+	<!-- ------------------------ script ------------------------ -->
+	
+	<script>
+		
+		var excelUri = "/account/excelDownload";
+		
+		$("#btnExcel").click(function() {
+			form.attr("action", excelUri).submit();
+		});
+		
+	</script>
+	
+	
 </body>
 </html>

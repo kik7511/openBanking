@@ -4,6 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.openBanking.modules.code.CodeServiceImpl" />
+
 <html lang="ko">
 <head>
 	<title>openBanking</title>
@@ -79,6 +81,7 @@
 </head>
 <body>
 <%@include file = "../../common/header.jsp" %>
+<c:set var="listCodebankName" value="${CodeServiceImpl.selectListCachedCode('7')}" />
 	<div id="wrap">
 	<!-- main S -->
 		<div class="flex-shrink-0 p-3 bg-white" style="width: 250px; margin-right: 30px;">
@@ -115,18 +118,12 @@
 				<div class="row underLine">
 					<div class="col-3" style="padding: 0px;">
 						<select class="form-select" style="border-style:none; display: inline-block;">
-							<option>은행</option>
-							<option>국민</option>
-							<option>신한</option>
-							<option>농협</option>
-							<option>하나</option>
-							<option>우리</option>
-							<option>카카오</option>
-							<option>토스</option>
-							<option>신협</option>
-							<option>새마을금고</option>
-							<option>수협</option>
-							<option>SC</option>
+							<option>::은행::</option>
+							<c:forEach items="${listCodebankName}" var="listbankName" varStatus="statusbankName">
+								<option value="${listbankName.ccSeq} ">
+									<c:if test="${list.bankName eq listbankName.ccSeq}">selected</c:if>${listbankName.ccName}
+								</option>
+							</c:forEach>
 						</select>
 					</div>
 					<div class="col-7">

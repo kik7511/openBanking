@@ -94,7 +94,7 @@ public class MemberController {
 	
 	@RequestMapping(value="loginProc")
 	@ResponseBody
-	public Map<String, Object> login(Member dto, Model model, HttpServletRequest request) throws Exception {
+	public Map<String, Object> login(Member dto, Model model, HttpSession httpSession) throws Exception {
 		Member member = service.login(dto);
 		
 		Map<String, Object> result = new HashMap<>();
@@ -102,11 +102,9 @@ public class MemberController {
 		if(member != null) {
 			System.out.println("로그인성공 login ID : " + member.getIfmmId() + " user name : " + member.getIfmmName() + " user seq : " + member.getIfmmSeq());
 			
-			HttpSession session = request.getSession();
-			
-			session.setAttribute("sessSeq", member.getIfmmSeq());
-			session.setAttribute("IfmmId", member.getIfmmId());
-			session.setAttribute("IfmmName", member.getIfmmName());
+//			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+            session(member, httpSession); 
 
 			result.put("result", "success");
 		} else {
@@ -127,5 +125,12 @@ public class MemberController {
 		
 		return "redirect:"+url;
 	}
+	
+	public void session(Member dto, HttpSession httpSession) {
+	     httpSession.setAttribute("sessSeq", dto.getIfmmSeq());    
+	     httpSession.setAttribute("sessId", dto.getIfmmId());
+	     httpSession.setAttribute("sessName", dto.getIfmmName());
+	     httpSession.setAttribute("sessToken", dto.getIfmmAccessToken());
+	 }
 
 }

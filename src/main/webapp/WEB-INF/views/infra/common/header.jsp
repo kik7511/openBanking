@@ -13,7 +13,7 @@
 						<c:choose>
 							<c:when test="${not empty sessSeq}" >
 								<div class="login_before">
-									<span class="login"><a href="#">${IfmmName} 님</a></span>
+									<span class="login"><a href="#">${sessName} 님</a></span>
 									<span class="login"><a href="../member/logout">로그아웃</a></span>
 								</div>
 							</c:when>

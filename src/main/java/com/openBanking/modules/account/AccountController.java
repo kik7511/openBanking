@@ -40,7 +40,7 @@ public class AccountController {
 		List<Account> list = service.selectList();
 		model.addAttribute("list", list);
 		List<Account> list2 = service.selectList2();
-		model.addAttribute("list", list);
+		model.addAttribute("list2", list2);
 		return "infra/account/user/accountList";
 	}
 	

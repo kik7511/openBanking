@@ -65,6 +65,10 @@
 	height: 26px;
 }
 
+.font-orange {
+    color: #e63e30!important;
+}
+
 </style>
 </head>
 <body>
@@ -78,22 +82,22 @@
 					<table class="table">
 						<caption>회원정보를 입력해주세요.</caption>
 						<tr>
-							<th class="col-5">이름</th>
+							<th class="col-5"><em class="font-orange">*</em> 이름</th>
 							<td>
 								<input type="text" class=text-input name="ifmmName" id="ifmmName" autocomplete="off">
 								<small class="text-danger" id="name_msg" style="display: none"></small>
 							</td>
 						</tr>
 						<tr>
-							<th>생년월일</th>
-							<td><input type="date" class="text-input" name=ifmmDob id="datepicker" placeholder="YYYYMMDD"></td>
+							<th><em class="font-orange">*</em> 생년월일</th>
+							<td><input type="text" class="text-input" name=ifmmDob id="datepicker" placeholder="YYYY-MM-DD"></td>
 						</tr>
 						<tr>
-							<th>휴대폰 번호</th>
+							<th><em class="font-orange">*</em> 휴대폰 번호</th>
 							<td><input type="text" class="text-input"name="ifmmTel" id="ifmmTel"></td>
 						</tr>
 						<tr>
-							<th>아이디</th>
+							<th><em class="font-orange">*</em> 아이디</th>
 							<td>
 								<div class="d-flex">
 									<input type="text" class="text-input mr-2" name="ifmmId" id="ifmmId">
@@ -105,11 +109,11 @@
 							</td>
 						</tr>
 						<tr>
-							<th>비밀번호</th>
+							<th><em class="font-orange">*</em> 비밀번호</th>
 							<td><input type="password" class="text-input" name="ifmmPassword" id="ifmmPassword"></td>
 						</tr>
 						<tr>
-							<th>비밀번호 확인</th>
+							<th><em class="font-orange">*</em> 비밀번호 확인</th>
 							<td>
 								<input type="password" class="text-input" id="passwordRe"><br>
 								<small class="text-danger d-none pwFail">비밀번호가 일치하지 않습니다.</small>
@@ -148,7 +152,11 @@
 							</td>
 						</tr>
 						<tr>
-							<th>마케팅 활용을 위한 개인정보 수집 이용 안내(선택)</th>
+							<th><em class="font-orange">*</em> 사용자 인증</th>
+							<td><button type="button" class="btn btn-sm" onclick="javascript:checkAccount()">인증하기</button></td>
+						</tr>
+						<tr>
+							<th>마케팅 활용을 위한 개인정보 수집 이용 안내</th>
 							<td>
 								<label class="mr-2">동의<input type="radio" class="ml-1" name="marketing" id="marketing" value="1"></label>
 								<label>비동의<input type="radio" class="ml-1" name="ifmmMarketingNy" value="0"></label>
@@ -253,6 +261,44 @@
 	            
 	        }
 	    };
+	    
+	    <!-- 사용자인증 -->
+	    function checkAccount(){
+			 var tmpWindow = window.open('about:blank')
+	            tmpWindow.location = "https://testapi.openbanking.or.kr/oauth/2.0/authorize?" +
+	            "response_type=code&"+
+	            "client_id=e3798ea4-0c60-4cde-b08c-73b2701e61d1&"+  
+	            "redirect_uri=http://localhost:8080/&"+
+	            "scope=login inquiry transfer&"+
+	            "state=b80BLsfigm9OokPTjy03elbJqRHOfGSY&"+
+	            "auth_type=0"
+		}
+	    
+	    app.get('/', function(req, res){
+		    console.log(req.query);
+		    var authCode = req.query.code;
+		    console.log(authCode);
+		    var option = {
+		        method : "POST",
+		        url : "https://testapi.openbanking.or.kr/oauth/2.0/token",
+		        header : {
+		            'Content-Type' : 'application/x-www-form-urlencoded'
+		        },
+		        form : {
+		            code : authCode,
+		            client_id : 'e3798ea4-0c60-4cde-b08c-73b2701e61d1', 
+		            client_secret : '77b177b0-e958-4eba-888d-fc5ae60df9ff',
+		            redirect_uri : 'http://localhost:8080/',
+		            grant_type : 'authorization_code'
+		        }
+		    }
+		    // resultChild 호출해서 얻은 토큰 정보를 사이트에 입력
+		    request(option, function (error, response, body) {
+		        console.log(body);
+		        var requestResultJSON = JSON.parse(body);
+		        res.render('resultChild',{data : requestResultJSON})
+		    });
+		})
 	
 		 $(document).ready(function(){
 			$("#ifmmPostNumber").on("click", function(){

@@ -11,20 +11,36 @@
     <select id="selectList" resultMap="resultMapObj">
     	select
     		seq
-    		, a.ifmmSeq
-    		, a.availableAmt
-    		, a.bankName
-    		, a.balanceAmt
-    		, a.availableAmt
-    		, a.accountType
-    		, a.productName
-    		, a.accountIssueDate
-    		, a.maturityDate
-    		, a.lastTranDate
-    		, a.accountNumber
+    		, ifmmSeq
+    		, availableAmt
+    		, bankName
+    		, balanceAmt
+    		, availableAmt
+    		, accountType
+    		, productName
+    		, accountIssueDate
+    		, maturityDate
+    		, lastTranDate
+    		, accountNumber
    		from account
    		where 1=1
     </select>
+    	
+    	
+    <select id="selectList2" resultMap="resultMapObj">
+    	select
+   			seq
+    		, ifmmSeq
+    		, cardId
+    		, cardNumMasked
+    		, cardName
+    		, cardType
+    		, settlementBankCode
+    		, issueDate
+   		from card
+   		where 1=1
+    </select>
+    
     
     <insert id="accountBookInst">
     	INSERT INTO accountBook (

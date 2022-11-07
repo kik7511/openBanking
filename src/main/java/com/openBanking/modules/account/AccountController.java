@@ -39,8 +39,8 @@ public class AccountController {
 	public String accountList(Model model) throws Exception {
 		List<Account> list = service.selectList();
 		model.addAttribute("list", list);
-//		List<Account> list2 = service.selectList2();
-//		model.addAttribute("list", list);
+		List<Account> list2 = service.selectList2();
+		model.addAttribute("list", list);
 		return "infra/account/user/accountList";
 	}
 	

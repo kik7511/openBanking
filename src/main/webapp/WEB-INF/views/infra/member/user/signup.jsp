@@ -74,10 +74,10 @@
 <body>
 	<%@include file = "../../common/header.jsp" %>
 	<c:set var="listCodeifmmEmailAddress" value="${CodeServiceImpl.selectListCachedCode('4')}" />
-	<div id="wrap">
-		<span class="tit">회원가입</span>
-		<div class="signup-wrap">
-			<form autocomplete="off"  method="post" id="form" name="form">
+	<form autocomplete="off"  method="post" id="form" name="form">
+		<div id="wrap">
+			<span class="tit">회원가입</span>
+			<div class="signup-wrap">
 				<section class="d-flex justify-content-center">
 					<table class="table">
 						<caption>회원정보를 입력해주세요.</caption>
@@ -169,9 +169,9 @@
 				<section class="d-flex justify-content-center">
 					<button type="button" class="btn next-btn" id="btnSave">회원가입</button>
 				</section>
-			</form>
-		</div>		
-	</div>
+			</div>		
+		</div>
+	</form>
 	<%@include file = "../../common/footer.jsp" %>
 	
 	<!-- 카카오 주소 api -->
@@ -209,7 +209,7 @@
 		}; 
 		
 		<!-- insert -->
-		$("#btnSave").on("click", function(){
+		$(document).on("click",'#btnSave', function(){
 			if(validationUpdt() == false) return false;
 	   		/* if(ckeckId() == false) return false;
 	   		if(ckeckPwd() == false) return false; */
@@ -217,6 +217,7 @@
 	   		 form.attr("action", goUrlInst).submit();
 		});
 		<!-- insert end-->
+		
 		function execDaumPostcode() {
 	        new daum.Postcode({
 	            oncomplete: function(data) {
@@ -268,39 +269,39 @@
 	            tmpWindow.location = "https://testapi.openbanking.or.kr/oauth/2.0/authorize?" +
 	            "response_type=code&"+
 	            "client_id=e3798ea4-0c60-4cde-b08c-73b2701e61d1&"+  
-	            "redirect_uri=http://localhost:8080/&"+
+	            "redirect_uri=http://localhost:8080/member/signup&"+
 	            "scope=login inquiry transfer&"+
 	            "state=b80BLsfigm9OokPTjy03elbJqRHOfGSY&"+
 	            "auth_type=0"
 		}
-	    
-	    app.get('/', function(req, res){
-		    console.log(req.query);
-		    var authCode = req.query.code;
-		    console.log(authCode);
-		    var option = {
-		        method : "POST",
-		        url : "https://testapi.openbanking.or.kr/oauth/2.0/token",
-		        header : {
-		            'Content-Type' : 'application/x-www-form-urlencoded'
-		        },
-		        form : {
-		            code : authCode,
-		            client_id : 'e3798ea4-0c60-4cde-b08c-73b2701e61d1', 
-		            client_secret : '77b177b0-e958-4eba-888d-fc5ae60df9ff',
-		            redirect_uri : 'http://localhost:8080/',
-		            grant_type : 'authorization_code'
-		        }
-		    }
-		    // resultChild 호출해서 얻은 토큰 정보를 사이트에 입력
-		    request(option, function (error, response, body) {
-		        console.log(body);
-		        var requestResultJSON = JSON.parse(body);
-		        res.render('resultChild',{data : requestResultJSON})
-		    });
-		})
 	
 		 $(document).ready(function(){
+			 
+			
+			var query = window.location.search;
+			var param = new URLSearchParams(query);
+			var authCode = param.get('code');
+			console.log(authCode)
+		    
+		    $.ajax({
+		    	type : "POST",
+		        url : "https://testapi.openbanking.or.kr/oauth/2.0/token",
+		        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+		        data : {
+		            "code" : authCode,
+		            "client_id" : 'e3798ea4-0c60-4cde-b08c-73b2701e61d1', 
+		            "client_secret" : '77b177b0-e958-4eba-888d-fc5ae60df9ff',
+		            "redirect_uri" : 'http://localhost:8080/member/signup',
+		            "grant_type" : 'authorization_code'
+		        }, 
+		        success : function(data) {
+		        	var access_token = '<input type="hidden" id="ifmmAccessToken" name="ifmmAccessToken" value="'+data.access_token+'"></input>'
+		        	$("#wrap").append(access_token)
+		        }, error : function(e) {
+					alert(e);
+				}
+		    })
+			 
 			$("#ifmmPostNumber").on("click", function(){
 				execDaumPostcode();
 			})

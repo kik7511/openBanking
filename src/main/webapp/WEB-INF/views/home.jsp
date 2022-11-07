@@ -75,14 +75,37 @@
 			 var tmpWindow = window.open('about:blank')
 	            tmpWindow.location = "https://testapi.openbanking.or.kr/oauth/2.0/authorize?" +
 	            "response_type=code&"+
-	            "client_id=9558ab9a-79fc-4dfa-8d61-e2b62d530324&"+  
+	            "client_id=e3798ea4-0c60-4cde-b08c-73b2701e61d1&"+  
 	            "redirect_uri=http://localhost:8080/&"+
 	            "scope=login inquiry transfer&"+
 	            "state=b80BLsfigm9OokPTjy03elbJqRHOfGSY&"+
 	            "auth_type=0"
 		}
 		
-		app.get('/', function(req, res){
+		var query = window.location.search;
+		var param = new URLSearchParams(query);
+		var authCode = param.get('code');
+		console.log(authCode)
+	    
+	    $.ajax({
+	    	type : "POST",
+	        url : "https://testapi.openbanking.or.kr/oauth/2.0/token",
+	        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+	        data : {
+	            "code" : authCode,
+	            "client_id" : 'e3798ea4-0c60-4cde-b08c-73b2701e61d1', 
+	            "client_secret" : '77b177b0-e958-4eba-888d-fc5ae60df9ff',
+	            "redirect_uri" : 'http://localhost:8080/',
+	            "grant_type" : 'authorization_code'
+	        }, 
+	        success : function(data) {
+	        	console.log(data)
+	        }, error : function(e) {
+				alert(e);
+			}
+	    })
+		
+/* 		app.get('/', function(req, res){
 		    console.log(req.query);
 		    var authCode = req.query.code;
 		    console.log(authCode);
@@ -106,7 +129,7 @@
 		        var requestResultJSON = JSON.parse(body);
 		        res.render('resultChild',{data : requestResultJSON})
 		    });
-		})
+		}) */
 		
 		
 	</script>

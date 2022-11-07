@@ -18,6 +18,7 @@ public class Member {
 	private String ifmmEmail;
 	private Integer ifmmEmailAddress;
 	private Integer ifmmTel;
+	private String  ifmmAccessToken;
 	
 //	------------------------------
 	
@@ -123,7 +124,12 @@ public class Member {
 	public void setIfmmTel(Integer ifmmTel) {
 		this.ifmmTel = ifmmTel;
 	}
-
+	public String getIfmmAccessToken() {
+		return ifmmAccessToken;
+	}
+	public void setIfmmAccessToken(String ifmmAccessToken) {
+		this.ifmmAccessToken = ifmmAccessToken;
+	}
 	
 	
 }

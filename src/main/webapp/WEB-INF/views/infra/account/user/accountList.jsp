@@ -16,7 +16,7 @@
 <body>
 <%@include file = "../../common/header.jsp" %>	
 <c:set var="listCodebankName" value="${CodeServiceImpl.selectListCachedCode('7')}" />
-<c:set var="list2CodecardName" value="${CodeServiceImpl.selectListCachedCode('10')}" />
+<c:set var="listCodecardName" value="${CodeServiceImpl.selectListCachedCode('10')}" />
 	<div id="wrap">
 		<div class="flex-shrink-0 p-3 bg-white" style="width: 250px; margin-right: 10px;">
 		    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none" style="border-bottom: 2px solid">
@@ -46,9 +46,9 @@
 				<c:forEach items="${list2}" var="list2" varStatus="status">
 					<div class="card-item">
 		           		<img src="../../../../resources/img/logo/hyundaiCard_logo.png" class="logo_style">
-		           		<c:forEach items="${list2CodecardName}" var="list2cardName" varStatus="statuscardName">
-		           			<c:if test="${list2.cardName eq list2cardName.ccSeq}">
-		           				<c:out value="${list2cardName.ccName}" />
+		           		<c:forEach items="${listCodecardName}" var="listcardName" varStatus="statuscardName">
+		           			<c:if test="${list2.cardName eq listcardName.ccSeq}">
+		           				<c:out value="${listcardName.ccName}" />
 	           				</c:if>
 	       				</c:forEach>
 			       		<br>

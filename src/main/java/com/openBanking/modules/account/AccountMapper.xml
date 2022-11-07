@@ -30,7 +30,7 @@
   <!-- selectList2 -->	
     <select id="selectList2" resultMap="resultMapObj">
     	select
-   			seq
+   			cardSeq
     		, ifmmSeq
     		, cardId
     		, cardNumMasked
@@ -45,7 +45,7 @@
   <!-- accountBookInst -->
     <insert id="accountBookInst">
     	INSERT INTO accountBook (
-    		seq
+    		cardSeq
     		,memberSeq
     		,type
     		,category
@@ -55,7 +55,7 @@
     		,memo
    		)
     	VALUES(
-    		#{seq}
+    		#{cardSeq}
     		,#{memberSeq}
     		,#{type}
     		,#{category}

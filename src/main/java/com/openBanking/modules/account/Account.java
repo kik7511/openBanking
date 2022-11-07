@@ -17,6 +17,13 @@ public class Account {
 	private Date lastTranDate;
 	private String accountNumber;
 	private String usePrice;
+	private String cardSeq;
+	private String cardId;
+	private String cardNumMasked;
+	private String cardName;
+	private Integer cardType;
+	private String settlementBankCode;
+	private Date issueDate;
 	
 //	---------------------------
 	
@@ -99,5 +106,47 @@ public class Account {
 	public void setUsePrice(String usePrice) {
 		this.usePrice = usePrice;
 	}
+    public String getCardSeq() {
+        return cardSeq;
+    }
+    public void setCardSeq(String cardSeq) {
+        this.cardSeq = cardSeq;
+    }
+    public String getCardId() {
+        return cardId;
+    }
+    public void setCardId(String cardId) {
+        this.cardId = cardId;
+    }
+    public String getCardNumMasked() {
+        return cardNumMasked;
+    }
+    public void setCardNumMasked(String cardNumMasked) {
+        this.cardNumMasked = cardNumMasked;
+    }
+    public String getCardName() {
+        return cardName;
+    }
+    public void setCardName(String cardName) {
+        this.cardName = cardName;
+    }
+    public Integer getCardType() {
+        return cardType;
+    }
+    public void setCardType(Integer cardType) {
+        this.cardType = cardType;
+    }
+    public String getSettlementBankCode() {
+        return settlementBankCode;
+    }
+    public void setSettlementBankCode(String settlementBankCode) {
+        this.settlementBankCode = settlementBankCode;
+    }
+    public Date getIssueDate() {
+        return issueDate;
+    }
+    public void setIssueDate(Date issueDate) {
+        this.issueDate = issueDate;
+    }
 	
 }

@@ -268,7 +268,7 @@
 			 var tmpWindow = window.open('about:blank')
 	            tmpWindow.location = "https://testapi.openbanking.or.kr/oauth/2.0/authorize?" +
 	            "response_type=code&"+
-	            "client_id=e3798ea4-0c60-4cde-b08c-73b2701e61d1&"+  
+	            "client_id=eb586430-d8eb-4fcd-bd6e-0448383e17a5&"+  
 	            "redirect_uri=http://localhost:8080/member/signup&"+
 	            "scope=login inquiry transfer&"+
 	            "state=b80BLsfigm9OokPTjy03elbJqRHOfGSY&"+

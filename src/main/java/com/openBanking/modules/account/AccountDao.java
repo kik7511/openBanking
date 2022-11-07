@@ -26,6 +26,12 @@ public class AccountDao {
 		return sqlSession.selectList(namespace + ".selectList2");
 	}
 	
+//	selectOneCount
+	public int selectOneCount(AccountVo vo) {
+	    int result = sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	    return result;
+	}
+	
 //	accountBookInst
 	public int accountBookInst(Account dto) {
 		return sqlSession.insert(namespace + ".accountBookInst", dto);

@@ -28,4 +28,11 @@ public class AccountServiceImpl implements AccountService {
 		return dao.accountBookInst(dto);
 	}
 	
+	@Override
+	public int selectOneCount(AccountVo vo) throws Exception {
+	    return dao.selectOneCount(vo);
+	}
+	
+	
+	
 }

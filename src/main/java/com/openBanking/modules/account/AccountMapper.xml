@@ -74,6 +74,35 @@
 			SELECT last_insert_id()
 		</selectKey>
     </insert> 
+    
+    <!-- cardInst -->
+    	<insert id="cardInst">
+    		INSERT INTO card (
+    			cardSeq
+    			,ifmmSeq
+    			,cardId
+    			,cardNumMasked
+    			,cardName
+    			,cardType
+    			,settlementBankCode
+    			,issueDate
+    			,cardPw
+    			,cvc
+    		)
+    		VALUES(
+    			#{cardSeq}
+    			#{ifmmSeq}
+    			#{cardId}
+    			#{cardNumMasked}
+    			#{cardName}
+    			#{cardType}
+    			#{settlementBankCode}
+    			#{issueDate}
+    			#{cardPw}
+    			#{cvc}
+    		)
+    	</insert>
+    
 	
 	    
 </mapper>	   

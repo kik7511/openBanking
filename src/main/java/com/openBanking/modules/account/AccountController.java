@@ -68,6 +68,12 @@ public class AccountController {
 		 return "infra/member/user/test";
 	}
 	
+	@RequestMapping(value="cardInst")
+	public String cardInst(Account dto) throws Exception {
+		service.cardInst(dto);
+		return "redirect:/cardView";
+	}
+	
 	@RequestMapping("excelDownload")
     public void excelDownload(AccountVo vo, HttpServletResponse httpServletResponse) throws Exception {
         

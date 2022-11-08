@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
 @Service
 public class AccountServiceImpl implements AccountService {
 
@@ -33,6 +35,10 @@ public class AccountServiceImpl implements AccountService {
 	    return dao.selectOneCount(vo);
 	}
 	
+	@Override
+	public int cardInst(Account dto) throws Exception {
+		return dao.cardInst(dto);
+	}
 	
 	
 }

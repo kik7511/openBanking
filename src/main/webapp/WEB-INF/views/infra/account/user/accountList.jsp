@@ -37,7 +37,8 @@
 		     		<span>${list.accountNumber}</span>
 		 			<br>
 		     		<span>계좌잔액</span>
-		     		<span>${list.balanceAmt}원</span>
+		     		<%-- <span>${list.balanceAmt}원</span> --%>
+		     		<fmt:formatNumber type="number" pattern='#,###' value="${list.balanceAmt}"/>원
 				</div>
 			</c:forEach>
 			</div>
@@ -62,6 +63,7 @@
 	<%@include file = "../../common/footer.jsp" %>	
 	
 	<!-- ------------------script--------------------- -->
-	
+	<script type="text/javascript">
+	</script>
 </body>
 </html>

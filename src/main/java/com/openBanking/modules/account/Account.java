@@ -24,6 +24,7 @@ public class Account {
 	private Integer cardType;
 	private String settlementBankCode;
 	private Date issueDate;
+	private String cardPw;
 	
 //	---------------------------
 	
@@ -148,5 +149,11 @@ public class Account {
     public void setIssueDate(Date issueDate) {
         this.issueDate = issueDate;
     }
+	public String getCardPw() {
+		return cardPw;
+	}
+	public void setCardPw(String cardPw) {
+		this.cardPw = cardPw;
+	}
 	
 }

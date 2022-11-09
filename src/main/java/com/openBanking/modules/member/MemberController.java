@@ -94,7 +94,7 @@ public class MemberController {
 	
 	@RequestMapping(value="loginProc")
 	@ResponseBody
-	public Map<String, Object> login(Member dto, Model model, HttpServletRequest request) throws Exception {
+	public Map<String, Object> login(Member dto, Model model, HttpSession httpSession) throws Exception {
 		Member member = service.login(dto);
 		
 		Map<String, Object> result = new HashMap<>();
@@ -102,6 +102,7 @@ public class MemberController {
 		if(member != null) {
 			System.out.println("로그인성공 login ID : " + member.getIfmmId() + " user name : " + member.getIfmmName() + " user seq : " + member.getIfmmSeq() + "usdr token : " + member.getIfmmAccessToken());
 			
+<<<<<<< HEAD
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("sessSeq", member.getIfmmSeq());
@@ -109,6 +110,11 @@ public class MemberController {
 			session.setAttribute("sessName", member.getIfmmName());
 			session.setAttribute("sessAccessToken", member.getIfmmAccessToken());
 			session.setAttribute("sessRefreshToken", member.getIfmmRefreshToken());
+=======
+//			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+            session(member, httpSession); 
+>>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
 
 			result.put("result", "success");
 		} else {
@@ -129,5 +135,12 @@ public class MemberController {
 		
 		return "redirect:"+url;
 	}
+	
+	public void session(Member dto, HttpSession httpSession) {
+	     httpSession.setAttribute("sessSeq", dto.getIfmmSeq());    
+	     httpSession.setAttribute("sessId", dto.getIfmmId());
+	     httpSession.setAttribute("sessName", dto.getIfmmName());
+	     httpSession.setAttribute("sessToken", dto.getIfmmAccessToken());
+	 }
 
 }

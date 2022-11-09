@@ -36,4 +36,9 @@ public class AccountDao {
 	public int accountBookInst(Account dto) {
 		return sqlSession.insert(namespace + ".accountBookInst", dto);
 	}
+	
+//	cardInst
+	public int cardInst(Account dto) {
+		return sqlSession.insert(namespace + ".cardInst", dto);
+	}
 }

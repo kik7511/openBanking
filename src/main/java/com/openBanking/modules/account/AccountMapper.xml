@@ -78,28 +78,18 @@
     <!-- cardInst -->
     	<insert id="cardInst">
     		INSERT INTO card (
-    			cardSeq
-    			,ifmmSeq
-    			,cardId
+    			ifmmDob
+    			,ifmmGender
     			,cardNumMasked
-    			,cardName
-    			,cardType
-    			,settlementBankCode
-    			,issueDate
-    			,cardPw
     			,cvc
+    			,cardPw
     		)
     		VALUES(
-    			#{cardSeq}
-    			#{ifmmSeq}
-    			#{cardId}
-    			#{cardNumMasked}
-    			#{cardName}
-    			#{cardType}
-    			#{settlementBankCode}
-    			#{issueDate}
-    			#{cardPw}
-    			#{cvc}
+    			,#{ifmmDob}
+    			,#{ifmmGender}
+    			,#{cardNumMasked}
+    			,#{cvc}
+    			,#{cardPw}
     		)
     	</insert>
     

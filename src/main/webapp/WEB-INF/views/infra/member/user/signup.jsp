@@ -295,8 +295,11 @@
 		            "grant_type" : 'authorization_code'
 		        }, 
 		        success : function(data) {
+		        	console.log(data)
 		        	var access_token = '<input type="hidden" id="ifmmAccessToken" name="ifmmAccessToken" value="'+data.access_token+'"></input>'
+		        	var user_seq_no = '<input type="hidden" id="ifmmUserSeqNo" name="ifmmUserSeqNo" value="'+data.user_seq_no+'"></input>'
 		        	$("#wrap").append(access_token)
+		        	$("#wrap").append(user_seq_no)
 		        }, error : function(e) {
 					alert(e);
 				}

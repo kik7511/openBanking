@@ -27,6 +27,7 @@
     		,ifmmEmailAddress
     		,ifmmTel
     		,ifmmAccessToken
+    		,ifmmUserSeqNo
    		)
     	VALUES(
     		#{ifmmName}
@@ -46,6 +47,7 @@
     		,#{ifmmEmailAddress}
     		,#{ifmmTel}
     		,#{ifmmAccessToken}
+    		,#{ifmmUserSeqNo}
     	)	
    		<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
 			SELECT last_insert_id()

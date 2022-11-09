@@ -19,6 +19,7 @@ public class Member {
 	private Integer ifmmEmailAddress;
 	private Integer ifmmTel;
 	private String  ifmmAccessToken;
+	private String  ifmmUserSeqNo;
 	
 //	------------------------------
 	
@@ -129,6 +130,12 @@ public class Member {
 	}
 	public void setIfmmAccessToken(String ifmmAccessToken) {
 		this.ifmmAccessToken = ifmmAccessToken;
+	}
+	public String getIfmmUserSeqNo() {
+		return ifmmUserSeqNo;
+	}
+	public void setIfmmUserSeqNo(String ifmmUserSeqNo) {
+		this.ifmmUserSeqNo = ifmmUserSeqNo;
 	}
 	
 	

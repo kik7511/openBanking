@@ -49,6 +49,7 @@
 	 		<div class="ly_inner gap60_40">
 	            	<div class="expend_wrap bg_gray">
 		                <div class="form_type w_size01">
+		                	<!-- 생년월일 -->
 		                    <div class="form_ele">
 		                        <div class="ele_tit">
 		                            <label for="birthday">생년월일</label>
@@ -58,8 +59,8 @@
 		                        </div>
 		                        <p class="text_tip error" data-bind-lamp="birthday" style="display: none;" tabindex="0"></p>
 		                    </div>
-		                    <!-- //생년월일 -->
-		
+		                    <!-- /생년월일 -->
+							<!-- 성별 -->
 		                    <div class="form_ele">
 		                        <div class="ele_tit">
 		                            <label for="chk_fg">성별</label>
@@ -69,8 +70,8 @@
 		                            <label for="chk_fg02" class="radio_btn"><input type="radio" id="chk_fg02" name="gender" value="F" data-bind-value="cSex" class="set_AutoComplete" autocomplete="off"><span role="text">여자</span></label>
 		                        </div>
 		                    </div>
-		                    <!-- //성별 -->
-							
+		                    <!-- /성별 -->
+							 <!-- 카드번호 -->
 		                    <div class="form_ele">
 		                        <div class="ele_tit">
 		                            <label for="cardno">카드번호</label>
@@ -81,7 +82,7 @@
 		                        <p class="text_tip error" data-bind-lamp="cardno" style="display: none;" tabindex="0"></p>
 		                    </div>
 		                    <!-- //카드번호 -->
-		
+							 <!-- CVC -->
 		                    <div class="form_ele">
 		                        <div class="ele_tit">
 		                            <label for="cvc">CVC번호<button type="button" class="btn_question" data-bind-click="info('infoCardCvc-2020')"><span>자세히</span></button></label>
@@ -91,7 +92,7 @@
 		                        </div>
 		                        <p class="text_tip error" data-bind-lamp="cvc" style="display: none;" tabindex="0">CVC 번호를 3자리로 입력해주세요.</p>
 		                    </div>
-		                    <!-- //카드번호 -->
+		                   <!-- /CVC -->
 		
 		                    <div class="form_ele">
 		                        <div class="ele_tit">
@@ -119,7 +120,7 @@
 	            </div>
 	            <div class="ly_inner">
 	                <div class="btn_wrap align_c m_fixed gap100_0">
-	                    <button type="button" class="btn default blue" id="btnSave" data-bind-click="complete()">카드사용등록</button>
+	                    <button type="button" class="btn default blue" id="btnSave">카드사용등록</button>
 	                </div>
 	            	<!-- CMS -->
 	                <div class="cms_accordion_wrap">
@@ -155,9 +156,9 @@
 	<!-- ------------------------------------------------------------------------- -->
 	<script>
 		<!--insert-->
-			var goUrlInsert = "cardInst";
+			var goUrlInsert = "/account/cardInst";
 			
-				var form = ${"form[name=form]"};
+				var form = $("form[name=form]");
 				
 				$("#btnSave").on("click", function() {
 					alert("test"); 

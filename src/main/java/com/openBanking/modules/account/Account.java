@@ -25,7 +25,7 @@ public class Account {
 	private String settlementBankCode;
 	private Date issueDate;
 	private String cardPw;
-	
+	private Integer cvc;
 //	---------------------------
 	
 	
@@ -155,5 +155,11 @@ public class Account {
 	public void setCardPw(String cardPw) {
 		this.cardPw = cardPw;
 	}
+    public Integer getCvc() {
+        return cvc;
+    }
+    public void setCvc(Integer cvc) {
+        this.cvc = cvc;
+    }
 	
 }

@@ -294,20 +294,16 @@
 		            "grant_type" : 'authorization_code'
 		        }, 
 		        success : function(data) {
-<<<<<<< HEAD
-		        	var access_token = '<input type="hidden" id="ifmmAccessToken" name="ifmmAccessToken" value="'+data.access_token+'"></input>';
-		        	var refresh_token = '<input type="hidden" id="ifmmRefreshToken" name="ifmmRefreshToken" value="'+data.refresh_token+'"></input>';
-=======
 		        	console.log(data)
+		        	
 		        	var access_token = '<input type="hidden" id="ifmmAccessToken" name="ifmmAccessToken" value="'+data.access_token+'"></input>'
+		        	var refresh_token = '<input type="hidden" id="ifmmRefreshToken" name="ifmmRefreshToken" value="'+data.refresh_token+'"></input>'
 		        	var user_seq_no = '<input type="hidden" id="ifmmUserSeqNo" name="ifmmUserSeqNo" value="'+data.user_seq_no+'"></input>'
->>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
+		        	
 		        	$("#wrap").append(access_token)
-<<<<<<< HEAD
 		        	$("#wrap").append(refresh_token)
-=======
 		        	$("#wrap").append(user_seq_no)
->>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
+		        	
 		        }, error : function(e) {
 					alert(e);
 				}

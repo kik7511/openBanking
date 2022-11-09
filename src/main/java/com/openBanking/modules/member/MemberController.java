@@ -102,19 +102,9 @@ public class MemberController {
 		if(member != null) {
 			System.out.println("로그인성공 login ID : " + member.getIfmmId() + " user name : " + member.getIfmmName() + " user seq : " + member.getIfmmSeq() + "usdr token : " + member.getIfmmAccessToken());
 			
-<<<<<<< HEAD
-			HttpSession session = request.getSession();
-			
-			session.setAttribute("sessSeq", member.getIfmmSeq());
-			session.setAttribute("sessId", member.getIfmmId());
-			session.setAttribute("sessName", member.getIfmmName());
-			session.setAttribute("sessAccessToken", member.getIfmmAccessToken());
-			session.setAttribute("sessRefreshToken", member.getIfmmRefreshToken());
-=======
 //			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
             session(member, httpSession); 
->>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
 
 			result.put("result", "success");
 		} else {
@@ -140,7 +130,8 @@ public class MemberController {
 	     httpSession.setAttribute("sessSeq", dto.getIfmmSeq());    
 	     httpSession.setAttribute("sessId", dto.getIfmmId());
 	     httpSession.setAttribute("sessName", dto.getIfmmName());
-	     httpSession.setAttribute("sessToken", dto.getIfmmAccessToken());
+	     httpSession.setAttribute("sessAccessToken", dto.getIfmmAccessToken());
+	     httpSession.setAttribute("sessRefreshToken", dto.getIfmmRefreshToken());
 	 }
 
 }

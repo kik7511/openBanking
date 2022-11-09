@@ -19,11 +19,8 @@ public class Member {
 	private Integer ifmmEmailAddress;
 	private Integer ifmmTel;
 	private String  ifmmAccessToken;
-<<<<<<< HEAD
 	private String  ifmmRefreshToken;
-=======
 	private String  ifmmUserSeqNo;
->>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
 	
 //	------------------------------
 	

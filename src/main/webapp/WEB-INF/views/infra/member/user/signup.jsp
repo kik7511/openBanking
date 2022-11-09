@@ -265,8 +265,7 @@
 	    
 	    <!-- 사용자인증 -->
 	    function checkAccount(){
-			 var tmpWindow = window.open('about:blank')
-	            tmpWindow.location = "https://testapi.openbanking.or.kr/oauth/2.0/authorize?" +
+	            window.location.href = "https://testapi.openbanking.or.kr/oauth/2.0/authorize?" +
 	            "response_type=code&"+
 	            "client_id=eb586430-d8eb-4fcd-bd6e-0448383e17a5&"+  
 	            "redirect_uri=http://localhost:8080/member/signup&"+
@@ -295,8 +294,10 @@
 		            "grant_type" : 'authorization_code'
 		        }, 
 		        success : function(data) {
-		        	var access_token = '<input type="hidden" id="ifmmAccessToken" name="ifmmAccessToken" value="'+data.access_token+'"></input>'
+		        	var access_token = '<input type="hidden" id="ifmmAccessToken" name="ifmmAccessToken" value="'+data.access_token+'"></input>';
+		        	var refresh_token = '<input type="hidden" id="ifmmRefreshToken" name="ifmmRefreshToken" value="'+data.refresh_token+'"></input>';
 		        	$("#wrap").append(access_token)
+		        	$("#wrap").append(refresh_token)
 		        }, error : function(e) {
 					alert(e);
 				}

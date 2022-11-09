@@ -19,9 +19,16 @@ public class Member {
 	private Integer ifmmEmailAddress;
 	private Integer ifmmTel;
 	private String  ifmmAccessToken;
+	private String  ifmmRefreshToken;
 	
 //	------------------------------
 	
+	public String getIfmmRefreshToken() {
+		return ifmmRefreshToken;
+	}
+	public void setIfmmRefreshToken(String ifmmRefreshToken) {
+		this.ifmmRefreshToken = ifmmRefreshToken;
+	}
 	public String getIfmmSeq() {
 		return ifmmSeq;
 	}

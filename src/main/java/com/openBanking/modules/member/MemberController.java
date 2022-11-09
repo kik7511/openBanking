@@ -108,6 +108,7 @@ public class MemberController {
 			session.setAttribute("sessId", member.getIfmmId());
 			session.setAttribute("sessName", member.getIfmmName());
 			session.setAttribute("sessAccessToken", member.getIfmmAccessToken());
+			session.setAttribute("sessRefreshToken", member.getIfmmRefreshToken());
 
 			result.put("result", "success");
 		} else {

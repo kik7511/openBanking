@@ -32,126 +32,162 @@
 
 </head>
 <body>
-	<%@include file = "../../common/header.jsp" %>
-	<div id="wrap">
-		<div class="blank"></div>
-		<div class="flex-shrink-0 p-3 bg-white" style="width: 200px; float: left; height: 100%">
-		    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-		      <span class="fs-5 fw-semibold" style="padding-left: 15px;">등록</span>
-		    </a>
-		  </div>
-		  <div class="ly_inner">
-            <div class="contents_heading h_wrap">
-                <h3 class="h_title38">카드사용등록</h3>
-            </div>
-        </div>
- 		<div class="ly_inner gap60_40">
-            	<div class="expend_wrap bg_gray">
-	                <div class="form_type w_size01">
-	                    <div class="form_ele">
-	                        <div class="ele_tit">
-	                            <label for="birthday">생년월일</label>
-	                        </div>
-	                        <div class="input_wrap">
-	                            <input type="text" name="birthday" id="birthday" placeholder="생년월일[8자리] 입력 (예.19990101)" title="생년월일 8자리 입력 예시 19990101" maxlength="8" data-bind-focus="birthday" data-bind-watch="birthday" data-bind-value="birthday" class="set_AutoComplete" autocomplete="off">
-	                        </div>
-	                        <p class="text_tip error" data-bind-lamp="birthday" style="display: none;" tabindex="0"></p>
-	                    </div>
-	                    <!-- //생년월일 -->
-	
-	                    <div class="form_ele">
-	                        <div class="ele_tit">
-	                            <label for="chk_fg">성별</label>
-	                        </div>
-	                        <div class="radio_wrap type_flex type_btn">
-	                            <label for="chk_fg01" class="radio_btn is_checked" style=""><input type="radio" id="chk_fg01" name="gender" value="M" checked="checked" data-bind-value="cSex" class="set_AutoComplete" autocomplete="off"><span role="text">남자</span></label>
-	                            <label for="chk_fg02" class="radio_btn"><input type="radio" id="chk_fg02" name="gender" value="F" data-bind-value="cSex" class="set_AutoComplete" autocomplete="off"><span role="text">여자</span></label>
-	                        </div>
-	                    </div>
-	                    <!-- //성별 -->
-						
-	                    <div class="form_ele">
-	                        <div class="ele_tit">
-	                            <label for="cardno">카드번호</label>
-	                        </div>
-	                        <div class="input_wrap">
-	                            <input class="inca_keypad nppfs-npv set_AutoComplete" type="text" id="cardno" data-bind-watch="cardno" data-bind-value="cardno" data-bind-focus="cardno" maxlength="16" title="카드번호 숫자 16자리 입력" npkencrypt="on" placeholder="카드번호[-없이 숫자 16자리] 입력" data-keypad-type="num" nppfs-formatter-type="card" data-keypad-theme="shinhancard-default" name="cardno" autocomplete="off" nppfs-keypad-uuid="nppfs-keypad-cardno" data-input-useyn-type="toggle" data-keypad-useyn-input="__KU_29e69da2282f" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
-	                        </div>
-	                        <p class="text_tip error" data-bind-lamp="cardno" style="display: none;" tabindex="0"></p>
-	                    </div>
-	                    <!-- //카드번호 -->
-	
-	                    <div class="form_ele">
-	                        <div class="ele_tit">
-	                            <label for="cvc">CVC번호<button type="button" class="btn_question" data-bind-click="info('infoCardCvc-2020')"><span>자세히</span></button></label>
-	                        </div>
-	                        <div class="input_wrap focus">
-	                            <input class="inca_keypad nppfs-npv set_AutoComplete" type="password" id="cvc" name="cvc" data-bind-watch="cvc" data-bind-value="cvc" data-bind-focus="cvc" maxlength="3" title="CVC번호 숫자 3자리 입력" npkencrypt="on" placeholder="숫자 3자리 입력" data-keypad-type="num" autocomplete="off" data-keypad-theme="shinhancard-default" data-keypad-next="__hide__" nppfs-keypad-uuid="nppfs-keypad-cvc" data-input-useyn-type="toggle" data-keypad-useyn-input="__KU_ec7a22ed9a10" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
-	                        </div>
-	                        <p class="text_tip error" data-bind-lamp="cvc" style="display: none;" tabindex="0">CVC 번호를 3자리로 입력해주세요.</p>
-	                    </div>
-	                    <!-- //카드번호 -->
-	
-	                    <div class="form_ele">
-	                        <div class="ele_tit">
-	                            <label for="pwd">카드비밀번호<button type="button" class="btn_question" data-bind-click="info('infoCardPwd-2020')"><span>자세히</span></button></label>
-	                        </div>
-	                        <div class="input_wrap">
-	                            <input class="inca_keypad nppfs-npv set_AutoComplete" type="password" id="pwd" data-bind-watch="pwd" data-bind-value="pwd" data-bind-focus="pwd" maxlength="4" title=" 카드비밀번호 숫자 4자리 입력" npkencrypt="on" placeholder="숫자 4자리 입력" data-keypad-type="num" autocomplete="off" data-keypad-theme="shinhancard-default" data-keypad-next="__hide__" name="pwd" nppfs-keypad-uuid="nppfs-keypad-pwd" data-input-useyn-type="toggle" data-keypad-useyn-input="__KU_08bdb1bca0f1" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
-	                        </div>
-	                        <p class="text_tip error" data-bind-lamp="pwd" style="display: none;" tabindex="0"></p>
-	                    </div>
-	                    <!-- //카드번호 -->
-	                    <div class="form_ele" id="fanArea" data-bind-visible="fanShow != 'N'" style="display: none;">
-	                        <div class="ele_tit">
-	                            <span class="label">FAN 동시등록</span>
-	                        </div>
-	                        <div class="radio_wrap type_flex type_btn">
-	                            <label for="chk_fan01" class="radio_btn"><input type="radio" id="chk_fan01" name="fan" value="Y" checked="checked" data-bind-value="fanYn" class="set_AutoComplete" autocomplete="off"><span role="text">등록</span></label>
-	                            <label for="chk_fan02" class="radio_btn"><input type="radio" id="chk_fan02" name="fan" value="N" data-bind-value="fanYn" class="set_AutoComplete" autocomplete="off"><span role="text">미등록</span></label>
-	                        </div>
-	                        <p class="text_tip" tabindex="0">카드사용등록과 동시에 FAN에 자동등록 됩니다</p>
-	                    </div>
-	                    <!-- //FAN 동시등록 -->
+	<form autocomplete="off" name="form">
+		<%@include file = "../../common/header.jsp" %>
+		<div id="wrap">
+			<div class="blank"></div>
+			<div class="flex-shrink-0 p-3 bg-white" style="width: 200px; float: left; height: 100%">
+			    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+			      <span class="fs-5 fw-semibold" style="padding-left: 15px;">등록</span>
+			    </a>
+			  </div>
+			  <div class="ly_inner">
+	            <div class="contents_heading h_wrap">
+	                <h3 class="h_title38">카드사용등록</h3>
+	            </div>
+	        </div>
+	 		<div class="ly_inner gap60_40">
+	            	<div class="expend_wrap bg_gray">
+		                <div class="form_type w_size01">
+		                	<!-- 생년월일 -->
+		                    <div class="form_ele">
+		                        <div class="ele_tit">
+		                            <label for="birthday">생년월일</label>
+		                        </div>
+		                        <div class="input_wrap">
+		                            <input type="text" name="ifmmDob" id="" placeholder="생년월일[8자리] 입력 (예.19990101)" title="생년월일 8자리 입력 예시 19990101" maxlength="8" data-bind-focus="birthday" data-bind-watch="birthday" data-bind-value="birthday" class="set_AutoComplete" autocomplete="off">
+		                        </div>
+		                        <p class="text_tip error" data-bind-lamp="birthday" style="display: none;" tabindex="0"></p>
+		                    </div>
+		                    <!-- /생년월일 -->
+							<!-- 성별 -->
+		                    <div class="form_ele">
+		                        <div class="ele_tit">
+		                            <label for="chk_fg">성별</label>
+		                        </div>
+		                        <div class="radio_wrap type_flex type_btn">
+		                        <!-- 
+		                            <label for="chk_fg01" class="radio_btn is_checked" style=""><input type="radio" id="chk_fg01" name="ifmmGender" value="M" checked="checked" data-bind-value="cSex" class="set_AutoComplete" autocomplete="off"><span role="text">남자</span></label>
+		                            <label for="chk_fg02" class="radio_btn"><input type="radio" id="chk_fg02" name="ifmmGender" value="F" data-bind-value="cSex" class="set_AutoComplete" autocomplete="off"><span role="text">여자</span></label>
+		                            --> 
+		                             <label for="chk_fg01" class="radio_btn is_checked">
+		                             	<input type="radio" id="gender" name="ifmmGender" value="1" checked="checked" data-bind-value="cSex" class="set_AutoComplete" autocomplete="off">
+		                             	<span role="text">남자</span>
+	                             	 </label>
+		                             <label for="chk_fg02" class="radio_btn">
+		                             	<input type="radio" id="chk_fg02" name="ifmmGender" value="0" data-bind-value="cSex" class="set_AutoComplete" autocomplete="off">
+		                             	<span role="text">여자</span>
+	                             	 </label>
+		                             <input type="hidden" name="ifmmGender" id="ifmmGenderCheck" value="0">
+		                        </div>
+		                    </div>
+		                    <!-- /성별 -->
+							 <!-- 카드번호 -->
+		                    <div class="form_ele">
+		                        <div class="ele_tit">
+		                            <label for="cardno">카드번호</label>
+		                        </div>
+		                        <div class="input_wrap">
+		                            <input class="inca_keypad nppfs-npv set_AutoComplete" type="text" id="" name="cardNumMasked" data-bind-watch="cardno" data-bind-value="cardno" data-bind-focus="cardno" maxlength="16" title="카드번호 숫자 16자리 입력" npkencrypt="on" placeholder="카드번호[-없이 숫자 16자리] 입력" data-keypad-type="num" nppfs-formatter-type="card" data-keypad-theme="shinhancard-default" autocomplete="off" nppfs-keypad-uuid="nppfs-keypad-cardno" data-input-useyn-type="toggle" data-keypad-useyn-input="__KU_29e69da2282f" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+		                        </div>
+		                        <p class="text_tip error" data-bind-lamp="cardno" style="display: none;" tabindex="0"></p>
+		                    </div>
+		                    <!-- //카드번호 -->
+							 <!-- CVC -->
+		                    <div class="form_ele">
+		                        <div class="ele_tit">
+		                            <label for="cvc">CVC번호<button type="button" class="btn_question" data-bind-click="info('infoCardCvc-2020')"><span>자세히</span></button></label>
+		                        </div>
+		                        <div class="input_wrap focus">
+		                            <input class="inca_keypad nppfs-npv set_AutoComplete" type="password" id="cvc" name="cvc" data-bind-watch="cvc" data-bind-value="cvc" data-bind-focus="cvc" maxlength="3" title="CVC번호 숫자 3자리 입력" npkencrypt="on" placeholder="숫자 3자리 입력" data-keypad-type="num" autocomplete="off" data-keypad-theme="shinhancard-default" data-keypad-next="__hide__" nppfs-keypad-uuid="nppfs-keypad-cvc" data-input-useyn-type="toggle" data-keypad-useyn-input="__KU_ec7a22ed9a10" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+		                        </div>
+		                        <p class="text_tip error" data-bind-lamp="cvc" style="display: none;" tabindex="0">CVC 번호를 3자리로 입력해주세요.</p>
+		                    </div>
+		                   <!-- /CVC -->
+		                   
+							<!-- /카드pw -->
+		                    <div class="form_ele">
+		                        <div class="ele_tit">
+		                            <label for="pwd">카드비밀번호<button type="button" class="btn_question" data-bind-click="info('infoCardPwd-2020')"><span>자세히</span></button></label>
+		                        </div>
+		                        <div class="input_wrap">
+		                            <input class="inca_keypad nppfs-npv set_AutoComplete" type="password" id="" name="cardPw" data-bind-watch="pwd" data-bind-value="pwd" data-bind-focus="pwd" maxlength="4" title=" 카드비밀번호 숫자 4자리 입력" npkencrypt="on" placeholder="숫자 4자리 입력" data-keypad-type="num" autocomplete="off" data-keypad-theme="shinhancard-default" data-keypad-next="__hide__" nppfs-keypad-uuid="nppfs-keypad-pwd" data-input-useyn-type="toggle" data-keypad-useyn-input="__KU_08bdb1bca0f1" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+		                        </div>
+		                        <p class="text_tip error" data-bind-lamp="pwd" style="display: none;" tabindex="0"></p>
+		                    </div>
+		                    <!-- /카드pw -->
+		                    
+		                    <!-- FAN 동시등록 -->
+		                    <div class="form_ele" id="fanArea" data-bind-visible="fanShow != 'N'" style="display: none;">
+		                        <div class="ele_tit">
+		                            <span class="label">FAN 동시등록</span>
+		                        </div>
+		                        <div class="radio_wrap type_flex type_btn">
+		                            <label for="chk_fan01" class="radio_btn"><input type="radio" id="chk_fan01" name="fan" value="Y" checked="checked" data-bind-value="fanYn" class="set_AutoComplete" autocomplete="off"><span role="text">등록</span></label>
+		                            <label for="chk_fan02" class="radio_btn"><input type="radio" id="chk_fan02" name="fan" value="N" data-bind-value="fanYn" class="set_AutoComplete" autocomplete="off"><span role="text">미등록</span></label>
+		                        </div>
+		                        <p class="text_tip" tabindex="0">카드사용등록과 동시에 FAN에 자동등록 됩니다</p>
+		                    </div>
+		                    <!-- /FAN 동시등록 -->
+		                </div>
 	                </div>
-                </div>
-            </div>
-            <div class="ly_inner">
-                <div class="btn_wrap align_c m_fixed gap100_0">
-                    <button type="button" class="btn default blue" data-bind-click="complete()">카드사용등록</button>
-                </div>
-            	<!-- CMS -->
-                <div class="cms_accordion_wrap">
-            		<div data-bind-cms="/pconts/html/card/MOBFM042/MOBFM042C0101.html">                    <div class="ly_inner gap60_40">
-                        <div class="con accordion_wrap btm_line">
-                            <dl>
-                                <dt class="accordion_header on" data-idx="0" data-wrapper="0">
-                                    <a href="#" class="acc_btn toggle_btn on" role="button" aria-controls="acc0" aria-expanded="true">꼭! 알아두세요<span class="blind">자세히보기</span></a>
-                                </dt>
-                                <dd class="accordion_body" id="acc0" data-idx="0" data-wrapper="0">
-                                    <div class="area">
-                                        <div class="inner">
-                                            <ul class="marker_dot">
-                                                <li>신청하신 카드의 부정사용 예방 및 사용의 안정성을 높이기 위해 고객님께서 카드를 수령하신 후 직접 카드사용등록을 한 경우에만 카드사용이 가능하도록 한 제도입니다.</li>
-                                                <li>카드사용등록을 하시는 즉시 카드를 사용하실 수 있습니다.</li>
-                                                <li>카드사용등록을 원하시는 카드번호와 다음 항목을 모두 정확히 입력해 주시기 바랍니다.(단,법인카드제외)</li>
-                                                <li>가족카드 사용 등록 시, 가족개인정보 및 가족카드정보를 입력해 주시기 바랍니다. ARS(<a href="tel:1544-0036" class="tel_link" role="button">1544-0036</a>)를 이용해 등록 가능합니다.</li>
-                                                <li>카드고유확인번호/비밀번호 등록오류 시 ARS(<a href="tel:1544-7000" class="tel_link" role="button">1544-7000</a>)를 통해 오류해제 후 이용하실 수 있습니다.</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </dd>
-                            </dl>
-                        </div>
-                        <!-- //유의사항 -->
-                    </div></div>
-            	</div>
-            	<!-- //CMS --> 
-            </div>
-	</div>
-	<%@include file = "../../common/footer.jsp" %>
-	
+	            </div>
+	            <div class="ly_inner">
+	                <div class="btn_wrap align_c m_fixed gap100_0">
+	                    <button type="button" class="btn default blue" id="btnSave">카드사용등록</button>
+	                </div>
+	            	<!-- CMS -->
+	                <div class="cms_accordion_wrap">
+	            		<div data-bind-cms="/pconts/html/card/MOBFM042/MOBFM042C0101.html">                    <div class="ly_inner gap60_40">
+	                        <div class="con accordion_wrap btm_line">
+	                            <dl>
+	                                <dt class="accordion_header on" data-idx="0" data-wrapper="0">
+	                                    <a href="#" class="acc_btn toggle_btn on" role="button" aria-controls="acc0" aria-expanded="true">꼭! 알아두세요<span class="blind">자세히보기</span></a>
+	                                </dt>
+	                                <dd class="accordion_body" id="acc0" data-idx="0" data-wrapper="0">
+	                                    <div class="area">
+	                                        <div class="inner">
+	                                            <ul class="marker_dot">
+	                                                <li>신청하신 카드의 부정사용 예방 및 사용의 안정성을 높이기 위해 고객님께서 카드를 수령하신 후 직접 카드사용등록을 한 경우에만 카드사용이 가능하도록 한 제도입니다.</li>
+	                                                <li>카드사용등록을 하시는 즉시 카드를 사용하실 수 있습니다.</li>
+	                                                <li>카드사용등록을 원하시는 카드번호와 다음 항목을 모두 정확히 입력해 주시기 바랍니다.(단,법인카드제외)</li>
+	                                                <li>가족카드 사용 등록 시, 가족개인정보 및 가족카드정보를 입력해 주시기 바랍니다. ARS(<a href="tel:1544-0036" class="tel_link" role="button">1544-0036</a>)를 이용해 등록 가능합니다.</li>
+	                                                <li>카드고유확인번호/비밀번호 등록오류 시 ARS(<a href="tel:1544-7000" class="tel_link" role="button">1544-7000</a>)를 통해 오류해제 후 이용하실 수 있습니다.</li>
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </dd>
+	                            </dl>
+	                        </div>
+	                        <!-- //유의사항 -->
+	                    </div></div>
+	            	</div>
+	            	<!-- //CMS --> 
+	            </div>
+		</div>
+		<%@include file = "../../common/footer.jsp" %>
+	</form>
+	<!-- ------------------------------------------------------------------------- -->
 	<script>
+		
+			var goUrlInsert = "/account/cardInst";
+			var form = $("form[name=form]");
+			var seq = $("input:hidden[name=ifmmseq]");
+			
+			setCheckboxValue = function(obj, targetObj) {
+				if(obj.is(":checked")) {
+					targetObj.val("1");
+				} else {
+					targetObj.val("0");
+				}
+			}
+		<!--insert-->
+				$("#btnSave").on("click", function() {
+					setCheckboxValue($("#gender"), $("#ifmmGenderCheck"))
+					form.attr("action",goUrlInsert).submit();
+				})			
+		<!--insert-->
+		
 	</script>
 	
 

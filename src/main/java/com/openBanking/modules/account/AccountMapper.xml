@@ -42,6 +42,12 @@
    		where 1=1
     </select>
     
+    <!-- selectOneCount -->
+    <select id="selectOneCount" resultType="Integer">
+    	SELECT COUNT(*)
+    	FROM card
+    </select>
+    
   <!-- accountBookInst -->
     <insert id="accountBookInst">
     	INSERT INTO accountBook (
@@ -68,6 +74,35 @@
 			SELECT last_insert_id()
 		</selectKey>
     </insert> 
+    
+    <!-- cardInst -->
+    	<insert id="cardInst">
+    		INSERT INTO card (
+    			cardSeq
+    			,ifmmSeq
+    			,cardId
+    			,cardNumMasked
+    			,cardName
+    			,cardType
+    			,settlementBankCode
+    			,issueDate
+    			,cardPw
+    			,cvc
+    		)
+    		VALUES(
+    			#{cardSeq}
+    			#{ifmmSeq}
+    			#{cardId}
+    			#{cardNumMasked}
+    			#{cardName}
+    			#{cardType}
+    			#{settlementBankCode}
+    			#{issueDate}
+    			#{cardPw}
+    			#{cvc}
+    		)
+    	</insert>
+    
 	
 	    
 </mapper>	   

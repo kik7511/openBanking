@@ -268,7 +268,7 @@
 			 var tmpWindow = window.open('about:blank')
 	            tmpWindow.location = "https://testapi.openbanking.or.kr/oauth/2.0/authorize?" +
 	            "response_type=code&"+
-	            "client_id=e3798ea4-0c60-4cde-b08c-73b2701e61d1&"+  
+	            "client_id=eb586430-d8eb-4fcd-bd6e-0448383e17a5&"+  
 	            "redirect_uri=http://localhost:8080/member/signup&"+
 	            "scope=login inquiry transfer&"+
 	            "state=b80BLsfigm9OokPTjy03elbJqRHOfGSY&"+
@@ -289,8 +289,8 @@
 		        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 		        data : {
 		            "code" : authCode,
-		            "client_id" : 'e3798ea4-0c60-4cde-b08c-73b2701e61d1', 
-		            "client_secret" : '77b177b0-e958-4eba-888d-fc5ae60df9ff',
+		            "client_id" : 'eb586430-d8eb-4fcd-bd6e-0448383e17a5', 
+		            "client_secret" : '4c9c85c4-e7fa-4a89-84bd-90d6a7ef3708',
 		            "redirect_uri" : 'http://localhost:8080/member/signup',
 		            "grant_type" : 'authorization_code'
 		        }, 

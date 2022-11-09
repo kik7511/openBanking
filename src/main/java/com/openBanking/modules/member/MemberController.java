@@ -100,11 +100,20 @@ public class MemberController {
 		Map<String, Object> result = new HashMap<>();
 		
 		if(member != null) {
-			System.out.println("로그인성공 login ID : " + member.getIfmmId() + " user name : " + member.getIfmmName() + " user seq : " + member.getIfmmSeq());
+			System.out.println("로그인성공 login ID : " + member.getIfmmId() + " user name : " + member.getIfmmName() + " user seq : " + member.getIfmmSeq() + "usdr token : " + member.getIfmmAccessToken());
 			
+<<<<<<< HEAD
 //			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
             session(member, httpSession); 
+=======
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("sessSeq", member.getIfmmSeq());
+			session.setAttribute("sessId", member.getIfmmId());
+			session.setAttribute("sessName", member.getIfmmName());
+			session.setAttribute("sessAccessToken", member.getIfmmAccessToken());
+>>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
 
 			result.put("result", "success");
 		} else {

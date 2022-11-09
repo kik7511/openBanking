@@ -26,6 +26,8 @@ public class Account {
 	private Date issueDate;
 	private String cardPw;
 	private Integer cvc;
+	private String ifmmDob;
+	private Integer ifmmGender;
 //	---------------------------
 	
 	
@@ -161,5 +163,18 @@ public class Account {
     public void setCvc(Integer cvc) {
         this.cvc = cvc;
     }
+    
+	public String getIfmmDob() {
+		return ifmmDob;
+	}
+	public void setIfmmDob(String ifmmDob) {
+		this.ifmmDob = ifmmDob;
+	}
+	public Integer getIfmmGender() {
+		return ifmmGender;
+	}
+	public void setIfmmGender(Integer ifmmGender) {
+		this.ifmmGender = ifmmGender;
+	}
 	
 }

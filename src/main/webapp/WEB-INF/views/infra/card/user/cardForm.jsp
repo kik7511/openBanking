@@ -127,7 +127,7 @@
 		                            <label for="chk_fan02" class="radio_btn"><input type="radio" id="chk_fan02" name="fan" value="N" data-bind-value="fanYn" class="set_AutoComplete" autocomplete="off"><span role="text">미등록</span></label>
 		                        </div>
 		                        <p class="text_tip" tabindex="0">카드사용등록과 동시에 FAN에 자동등록 됩니다</p>
-		                    </div>
+		                     </div>
 		                    <!-- /FAN 동시등록 -->
 		                </div>
 	                </div>

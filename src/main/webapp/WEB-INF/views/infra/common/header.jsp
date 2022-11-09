@@ -14,11 +14,7 @@
 							<c:when test="${not empty sessSeq}" >
 								<div class="login_before">
 									<span class="login"><a href="#">${sessName} 님</a></span>
-<<<<<<< HEAD
-									<span class="login"><a href="../member/logout">로그아웃</a></span>
-=======
 									<span class="login"><a href="/member/logout">로그아웃</a></span>
->>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
 								</div>
 							</c:when>
 							<c:otherwise>

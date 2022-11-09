@@ -16,7 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.openBanking.modules.code.CodeServiceImpl;
+import com.openBanking.modules.member.Member;
+import com.openBanking.modules.member.MemberServiceImpl;
 
 @Controller
 @RequestMapping(value= "/account/")
@@ -24,6 +25,9 @@ public class AccountController {
 	
 	@Autowired
 	AccountServiceImpl service;
+	
+	@Autowired
+	MemberServiceImpl serviceM;
 	
 	public void setSearchAndPaging(AccountVo vo) throws Exception {
 
@@ -69,8 +73,9 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value="cardInst")
-	public String cardInst(Account dto) throws Exception {
+	public String cardInst(Account dto, Member dtoM) throws Exception {
 		service.cardInst(dto);
+		serviceM.memberInst(dtoM);
 		return "redirect:/cardView";
 	}
 	

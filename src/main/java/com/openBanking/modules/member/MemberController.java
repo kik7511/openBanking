@@ -100,12 +100,12 @@ public class MemberController {
 		Map<String, Object> result = new HashMap<>();
 		
 		if(member != null) {
-			System.out.println("로그인성공 login ID : " + member.getIfmmId() + " user name : " + member.getIfmmName() + " user seq : " + member.getIfmmSeq() + "usdr token : " + member.getIfmmAccessToken());
+			System.out.println("로그인성공 login ID : " + member.getIfmmId() + " user name : " + member.getIfmmName() + " user seq : " + member.getIfmmSeq() + " user token : " + member.getIfmmAccessToken());
 			
 //			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
-            session(member, httpSession);
-
+            
+			session(member, httpSession);
 			result.put("result", "success");
 		} else {
 			System.out.println("로그인 실패 ");

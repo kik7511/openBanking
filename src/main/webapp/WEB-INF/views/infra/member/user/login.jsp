@@ -76,15 +76,34 @@
 				$.ajax({
 					type : 'post',
 					url : '/member/loginProc',
-					data : {"ifmmId":ifmmId, "ifmmPassword":ifmmPassword},
+					data : {"ifmmId":ifmmId, 
+							"ifmmPassword":ifmmPassword
+							},
 					success:function(data){
 						if(data.result == "success") {
-							location.href="/"
+							location.href="/" 
+							alert(${token});
+							
 						} else {
 							alert("이메일과 비밀번호를 확인하세요");
 							$("#ifmmId").focus();
 							return;
 						}
+						
+						/* $.ajax({
+						type : 'POST',
+						url :  'https://testapi.openbanking.or.kr/oauth/2.0/token',
+						data : {
+								"client_id" : "9558ab9a-79fc-4dfa-8d61-e2b62d530324",
+								"client_secret" : "95e11988-7bec-469a-8009-eda5f794ca20",
+								"refresh_token" : "${sessRefreshToken}",
+								"scope" : "login inquiry transfer",
+								"grant_type" : "refresh_token"
+						},
+						success:function(data){
+							console.log(data);
+						}
+					})  */
 					},
 					error:function(e){
 						alert("로그인실패");

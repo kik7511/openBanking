@@ -267,7 +267,7 @@
 	    function checkAccount(){
 	            window.location.href = "https://testapi.openbanking.or.kr/oauth/2.0/authorize?" +
 	            "response_type=code&"+
-	            "client_id=eb586430-d8eb-4fcd-bd6e-0448383e17a5&"+  
+	            "client_id=9558ab9a-79fc-4dfa-8d61-e2b62d530324&"+  
 	            "redirect_uri=http://localhost:8080/member/signup&"+
 	            "scope=login inquiry transfer&"+
 	            "state=b80BLsfigm9OokPTjy03elbJqRHOfGSY&"+
@@ -288,8 +288,8 @@
 		        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 		        data : {
 		            "code" : authCode,
-		            "client_id" : 'eb586430-d8eb-4fcd-bd6e-0448383e17a5', 
-		            "client_secret" : '4c9c85c4-e7fa-4a89-84bd-90d6a7ef3708',
+		            "client_id" : '9558ab9a-79fc-4dfa-8d61-e2b62d530324', 
+		            "client_secret" : '95e11988-7bec-469a-8009-eda5f794ca20',
 		            "redirect_uri" : 'http://localhost:8080/member/signup',
 		            "grant_type" : 'authorization_code'
 		        }, 
@@ -359,9 +359,11 @@
 				,success: function(response) {
 					$("#id_msg").css("display", "none")
 					if(response.rt == "success") {
+						$("small.idFail").addClass('d-none');
 						$("small.idSuccess").removeClass('d-none');
 						return true;
 					} else {
+						$("small.idSuccess").addClass('d-none');
 						$("small.idFail").removeClass('d-none');
 						passwordRe.focus();
 						return false;

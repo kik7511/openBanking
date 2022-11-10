@@ -68,6 +68,13 @@ public class MemberController {
 		return "infra/member/user/test";
 	}
 	
+//	accountBookInst
+	@RequestMapping(value="accountBookInst")
+	public String accountBookInst(Member dto) throws Exception {
+		service.accountBookInst(dto);
+		return "redirect:/member/user/accountBook";
+	}
+	
 //	insert member
 	@RequestMapping(value="memberInst")
 	public String memberInst(Member dto) throws Exception {

@@ -11,20 +11,29 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	MemberDao dao;
 	
+//	selectList
 	@Override
 	public int memberInst(Member dto) throws Exception {
 		dto.setIfmmPassword(UtilSecurity.encryptSha256(dto.getIfmmPassword()));
 		return dao.memberInst(dto);
 	}
 	
+//	checkId
 	@Override
 	public int checkId(Member dto) throws Exception{
 		return dao.checkId(dto);
 	}
 	
+//	login
 	@Override
 	public Member login(Member dto) throws Exception {
 		dto.setIfmmPassword(UtilSecurity.encryptSha256(dto.getIfmmPassword()));
 		return dao.login(dto);
+	}
+	
+//	accountBookInst
+	@Override
+	public int accountBookInst(Member dto)throws Exception {
+		return dao.accountBookInst(dto);
 	}
 }

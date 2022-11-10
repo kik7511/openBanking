@@ -60,28 +60,6 @@
 		                        <p class="text_tip error" data-bind-lamp="birthday" style="display: none;" tabindex="0"></p>
 		                    </div>
 		                    <!-- /생년월일 -->
-							<!-- 성별 -->
-		                    <div class="form_ele">
-		                        <div class="ele_tit">
-		                            <label for="chk_fg">성별</label>
-		                        </div>
-		                        <div class="radio_wrap type_flex type_btn">
-		                        <!-- 
-		                            <label for="chk_fg01" class="radio_btn is_checked" style=""><input type="radio" id="chk_fg01" name="ifmmGender" value="M" checked="checked" data-bind-value="cSex" class="set_AutoComplete" autocomplete="off"><span role="text">남자</span></label>
-		                            <label for="chk_fg02" class="radio_btn"><input type="radio" id="chk_fg02" name="ifmmGender" value="F" data-bind-value="cSex" class="set_AutoComplete" autocomplete="off"><span role="text">여자</span></label>
-		                            --> 
-		                             <label for="chk_fg01" class="radio_btn is_checked">
-		                             	<input type="radio" id="gender" name="ifmmGender" value="1" checked="checked" data-bind-value="cSex" class="set_AutoComplete" autocomplete="off">
-		                             	<span role="text">남자</span>
-	                             	 </label>
-		                             <label for="chk_fg02" class="radio_btn">
-		                             	<input type="radio" id="chk_fg02" name="ifmmGender" value="0" data-bind-value="cSex" class="set_AutoComplete" autocomplete="off">
-		                             	<span role="text">여자</span>
-	                             	 </label>
-		                             <input type="hidden" name="ifmmGender" id="ifmmGenderCheck" value="0">
-		                        </div>
-		                    </div>
-		                    <!-- /성별 -->
 							 <!-- 카드번호 -->
 		                    <div class="form_ele">
 		                        <div class="ele_tit">
@@ -174,16 +152,8 @@
 			var form = $("form[name=form]");
 			var seq = $("input:hidden[name=ifmmseq]");
 			
-			setCheckboxValue = function(obj, targetObj) {
-				if(obj.is(":checked")) {
-					targetObj.val("1");
-				} else {
-					targetObj.val("0");
-				}
-			}
 		<!--insert-->
 				$("#btnSave").on("click", function() {
-					setCheckboxValue($("#gender"), $("#ifmmGenderCheck"))
 					form.attr("action",goUrlInsert).submit();
 				})			
 		<!--insert-->

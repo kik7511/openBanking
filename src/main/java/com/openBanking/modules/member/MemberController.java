@@ -68,6 +68,13 @@ public class MemberController {
 		return "infra/member/user/test";
 	}
 	
+//	accountBookInst
+	@RequestMapping(value="accountBookInst")
+	public String accountBookInst(Member dto) throws Exception {
+		service.accountBookInst(dto);
+		return "redirect:/member/user/accountBook";
+	}
+	
 //	insert member
 	@RequestMapping(value="memberInst")
 	public String memberInst(Member dto) throws Exception {
@@ -104,8 +111,8 @@ public class MemberController {
 			
 //			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
-            session(member, httpSession); 
-            model.addAttribute("token", member.getIfmmRefreshToken());
+            
+			session(member, httpSession);
 			result.put("result", "success");
 		} else {
 			System.out.println("로그인 실패 ");

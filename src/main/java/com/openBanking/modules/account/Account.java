@@ -28,6 +28,7 @@ public class Account {
 	private Integer cvc;
 	private String ifmmDob;
 	private Integer ifmmGender;
+	private Integer useMoney;
 //	---------------------------
 	
 	
@@ -175,6 +176,12 @@ public class Account {
 	}
 	public void setIfmmGender(Integer ifmmGender) {
 		this.ifmmGender = ifmmGender;
+	}
+	public Integer getUseMoney() {
+		return useMoney;
+	}
+	public void setUseMoney(Integer useMoney) {
+		this.useMoney = useMoney;
 	}
 	
 }

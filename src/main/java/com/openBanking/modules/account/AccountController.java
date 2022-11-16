@@ -26,8 +26,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.openBanking.modules.member.Member;
-import com.openBanking.modules.member.MemberServiceImpl;
 
 @Controller
 @RequestMapping(value= "/account/")
@@ -36,20 +34,19 @@ public class AccountController {
 	@Autowired
 	AccountServiceImpl service;
 	
-	@Autowired
-	MemberServiceImpl serviceM;
-	
 	public void setSearchAndPaging(AccountVo vo) throws Exception {
 
         vo.setParamsPaging(service.selectOneCount(vo));
     }
 	
+//	accountView
 	@RequestMapping(value="accountView")
 	public String accountView() throws Exception {
 		
 		return "infra/account/user/accountView";
 	}
 	
+//	accountList
 	@RequestMapping(value="accountList")
 	public String accountList(Model model) throws Exception {
 		List<Account> list = service.selectList();
@@ -95,30 +92,34 @@ public class AccountController {
 	    return "infra/account/user/accountTransfer";
 	}
 	
+//	cardView
 	@RequestMapping(value="cardView")
 	public String cardView() throws Exception {
 	    
 	    return "infra/card/user/cardView";
 	}
 	
+//	cardForm
 	@RequestMapping(value="cardForm")
 	public String cardForm() throws Exception {
 	    
 	    return "infra/card/user/cardForm";
 	}
 	
+//	checkAccount
 	@RequestMapping(value="checkAccount")
 	public String checkAccount() throws Exception {
 		 return "infra/member/user/test";
 	}
 	
+//	cardInst
 	@RequestMapping(value="cardInst")
-	public String cardInst(Account dto, Member dtoM) throws Exception {
+	public String cardInst(Account dto) throws Exception {
 		service.cardInst(dto);
-		serviceM.memberInst(dtoM);
-		return "redirect:/cardView";
+		return "redirect:/account/cardForm";
 	}
 	
+//	excelDownload
 	@RequestMapping("excelDownload")
     public void excelDownload(AccountVo vo, HttpServletResponse httpServletResponse) throws Exception {
         

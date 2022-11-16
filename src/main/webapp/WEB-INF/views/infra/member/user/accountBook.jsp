@@ -125,6 +125,7 @@
 
 </head>
 <body>
+<form autocomplete="off"  method="post" id="form" name="form">
 	<%@include file = "../../common/header.jsp" %>
 	<c:set var="listCodecategory" value="${CodeServiceImpl.selectListCachedCode('14')}" />
 	<div id="wrap">
@@ -144,17 +145,17 @@
 				<div class="modal-body">
 					<div>
 						<div>지출금액</div>
-						<input type="text" class="form-control d-inline" style="width:30%; font-size: 25px; font-weight: bold;" onkeyup="inputNumberFormat(this)">원
+						<input type="text" class="form-control d-inline" id="" name="useMoney" style="width:30%; font-size: 25px; font-weight: bold;" onkeyup="inputNumberFormat(this)">원
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">분류</span>
-						<button class="btn optionBtn">지출</button>
-						<button class="btn optionBtn">수입</button>
-						<button class="btn optionBtn">이체</button>
+						<button class="btn optionBtn" id="" name="">지출</button>
+						<button class="btn optionBtn" id="" name="">수입</button>
+						<button class="btn optionBtn" id="" name="">이체</button>
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">카테고리</span>
-						<select class="form-select">
+						<select class="form-select" name="category">
 							<option>미분류</option>
 							<c:forEach items="${listCodecategory}" var="listcategory" varStatus="statuscategory">
 								<option value="${listcategory.ccSeq} ">
@@ -165,20 +166,21 @@
 					</div>
 					<div class="modal-body-section d-flex">
 						<div class="tit">거래처</div>
-						<input type="text" class="form-control" placeholder="입력하세요" style="width : 50%;">
+						<input type="text" class="form-control" id="" name="client" placeholder="입력하세요" style="width : 50%;">
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">결제수단</span>
-						<button class="btn optionBtn">카드</button>
-						<button class="btn optionBtn">현금</button>
+						<button class="btn optionBtn" id="payment" name="payment" value="64">카드</button>
+						<button class="btn optionBtn" id="" name="methodOfPayment" value="65">현금</button>
+						<input type="hidden" id="methodOfPayment" name="methodOfPayment" value="65">
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">날짜</span>
-						<input type="text" class="form-control" id="date" placeholder="입력하세요" style="width : 40%;">
+						<input type="text" class="form-control" id="date" name="date" placeholder="입력하세요" style="width : 40%;">
 					</div>
 					<div class="modal-body-section d-flex">
 						<div class="tit">메모</div>
-						<input type="text" class="form-control" placeholder="입력하세요" style="width : 50%;">
+						<input type="text" class="form-control" id="" name="memo" placeholder="입력하세요" style="width : 50%;">
 					</div>
 					<button id="saveBtn" class="btn">저장</button>
 				</div>
@@ -186,7 +188,7 @@
 		</div>
 	</div>
 	<!-- modal -->
-	
+</form>
 	<script>
 		$("#date").datepicker({
 			dateFormat: "yy-mm-dd",
@@ -234,6 +236,50 @@
 			
 		});
 		
+		var goUrlInst = "/member/accountBookInst";
+		var form =$("form[name=form]");
+		var seq = $("input:hidden[name=ifmmSeq]");			/* #-> */
+		
+		setCheckboxValue = function(obj, targetObj) {
+			   if(obj.is(":checked")){
+				   targetObj.val("64");
+			    } else {
+			    	targetObj.val("65");
+			    }
+			}
+		
+		<!-- insert -->
+		$(document).on("click",'#btnSave', function(){
+			if(validationUpdt() == false) return false;
+	   		/* if(ckeckId() == false) return false;
+	   		if(ckeckPwd() == false) return false; */
+	   		 setCheckboxValue($("#payment"), $("#methodOfPayment"));
+	   		 form.attr("action", goUrlInst).submit();
+		});
+		<!-- insert end-->
+		
+		
+		
+	/* 	
+		var goUrlInst="/member/accountBook";
+		var seq = $("input:hidden[name=memberSeq]")
+		
+		setCheckboxValue = function(obj, targetObj) {
+			   if(obj.is(":checked")){
+				   targetObj.val("48");
+			    } else(obj.is(":checked")){
+			    	targetObj.val("49");
+			    } else if {
+			    	targetObj.val("50")
+			    }
+			}
+		
+		$(document).on("click", "#btnSave", function(){
+			setCheckboxValue($("#usetype"), $("#type"));
+			setCheckboxValue($("#usetype2"), $("#type"));
+			form.attr("action", goUrlInst).submit();
+		});
+		 */
 	</script>
 
 </body>

@@ -28,4 +28,8 @@ public class MemberDao {
 	public Member login(Member dto) {
 		return sqlSession.selectOne(namespace + ".login", dto); 
 	}
+	
+	public int accountBookInst(Member dto) {
+		return sqlSession.insert(namespace + ".accountBookInst", dto);
+	}
 }

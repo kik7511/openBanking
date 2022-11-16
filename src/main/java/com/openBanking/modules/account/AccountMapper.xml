@@ -48,50 +48,23 @@
     	FROM card
     </select>
     
-  <!-- accountBookInst -->
-    <insert id="accountBookInst">
-    	INSERT INTO accountBook (
-    		cardSeq
-    		,memberSeq
-    		,type
-    		,category
-    		,client
-    		,methodOfPayment
-    		,date
-    		,memo
-   		)
-    	VALUES(
-    		#{cardSeq}
-    		,#{memberSeq}
-    		,#{type}
-    		,#{category}
-    		,#{client}
-    		,#{methodOfPayment}
-    		,#{date}
-    		,#{memo}
-    	)	
-   		<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
-    </insert> 
-    
     <!-- cardInst -->
     	<insert id="cardInst">
     		INSERT INTO card (
-    			ifmmDob
-    			,ifmmGender
-    			,cardNumMasked
+    			cardNumMasked
     			,cvc
     			,cardPw
     		)
     		VALUES(
-    			,#{ifmmDob}
-    			,#{ifmmGender}
-    			,#{cardNumMasked}
+    			#{cardNumMasked}
     			,#{cvc}
     			,#{cardPw}
     		)
+    		<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
+			SELECT last_insert_id()
+			</selectKey>
     	</insert>
+    	
     
 	
 	    

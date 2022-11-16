@@ -11,7 +11,7 @@ public interface AccountService {
 	public List<Account> selectList2() throws Exception;
 //	Inst
 	public int accountBookInst(Account dto) throws Exception;
-	public int cardInst(Account dao) throws Exception;
+	public int cardInst(Account dto) throws Exception;
 	
 	public int selectOneCount(AccountVo vo) throws Exception;
 }

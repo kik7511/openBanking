@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.openBanking.modules.member.Member;
+
 @Repository
 public class AccountDao {
 

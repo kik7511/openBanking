@@ -74,5 +74,30 @@
 			AND ifmmId = #{ifmmId}
 			AND ifmmPassword = #{ifmmPassword}
 	</select>
+	
+	<!-- accountBookInst -->
+	    <insert id="accountBookInst">
+	    	INSERT INTO accountBook (
+	    		useMoney
+	    		,type
+	    		,category
+	    		,client
+	    		,methodOfPayment
+	    		,date
+	    		,memo
+	   		)
+	    	VALUES(
+	    		#{useMoney}
+	    		,#{type}
+	    		,#{category}
+	    		,#{client}
+	    		,#{methodOfPayment}
+	    		,#{date}
+	    		,#{memo}
+	    	)	
+	   		<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
+				SELECT last_insert_id()
+			</selectKey>
+	    </insert> 
 	    
 </mapper>	   

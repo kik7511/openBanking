@@ -78,5 +78,30 @@
 		$(this).removeClass('on');
 	}); */
 	
+	/* function accountRequest(){
+		var user_seq_no = ${sessUserSeqNo};
+		var token = ${sessAccesstoken};
+		alert(token);
+		$.ajax({
+			dataType:"json" 	
+			,url: "/account/accountRequest"
+			,data:{
+				"user_seq_no" : user_seq_no,
+				"accessToken" : token
+	    		}
+			,success: function(response) {
+				if (response.rt == "success") {
+					var pin = response.fintech_use_num;
+					alert(pin);
+				    window.location.href = "/account/accountList"; 
+				} else {
+					alert("실패");
+				}					    
+			} ,
+			error:function(error){
+				alert(error);
+			}
+		});
+	} */
 	
 	</script>

@@ -1,6 +1,14 @@
 package com.openBanking.modules.account;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.openBanking.modules.member.Member;
 import com.openBanking.modules.member.MemberServiceImpl;
@@ -48,6 +58,36 @@ public class AccountController {
 		model.addAttribute("list2", list2);
 		return "infra/account/user/accountList";
 	}
+	
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value = "accountRequest") public String
+	 * accountRequest(@RequestParam("user_seq_no") String
+	 * user_seq_no, @RequestParam("accessToken") String accessToken, Account dto)
+	 * throws Exception{ URL url = new
+	 * URL("https://testapi.openbanking.or.kr/v2.0/account/list"); HttpURLConnection
+	 * conn = (HttpURLConnection) url.openConnection();
+	 * conn.setRequestMethod("GET"); conn.setRequestProperty("Authorization",
+	 * "Bearer  " + accessToken); conn.setDoOutput(true); conn.setDoInput(true);
+	 * Map<String, String> params = new HashMap<String, String>();
+	 * params.put("user_seq_no", user_seq_no); params.put("include_cancel_yn", "Y");
+	 * params.put("sort_order ", "D");
+	 * 
+	 * String string_params = new String(); for (Map.Entry<String, String> elem :
+	 * params.entrySet()) { string_params += (elem.getKey() + "=" + elem.getValue()
+	 * + "&"); } OutputStream give = conn.getOutputStream(); DataOutputStream
+	 * datagiven = new DataOutputStream(give);
+	 * datagiven.write(string_params.getBytes()); datagiven.close();
+	 * 
+	 * 
+	 * int result = conn.getResponseCode(); BufferedReader changer; if (result ==
+	 * 200) { changer = new BufferedReader((new
+	 * InputStreamReader(conn.getInputStream()))); } else { changer = new
+	 * BufferedReader((new InputStreamReader(conn.getErrorStream()))); }
+	 * 
+	 * return changer.readLine(); }
+	 */
 	
 	@RequestMapping(value="accountTransfer")
 	public String accountTransfer() throws Exception {

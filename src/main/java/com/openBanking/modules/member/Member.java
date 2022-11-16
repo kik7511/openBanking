@@ -21,9 +21,17 @@ public class Member {
 	private String  ifmmAccessToken;
 	private String  ifmmRefreshToken;
 	private String  ifmmUserSeqNo;
+	private Integer  total;
+	
 	
 //	------------------------------
 	
+	public Integer getTotal() {
+		return total;
+	}
+	public void setTotal(Integer total) {
+		this.total = total;
+	}
 	public String getIfmmRefreshToken() {
 		return ifmmRefreshToken;
 	}

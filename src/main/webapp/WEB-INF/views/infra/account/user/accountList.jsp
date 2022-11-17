@@ -12,6 +12,14 @@
 	<%@include file = "../../common/link.jsp" %>	
 	<%@include file = "../../common/font.jsp" %>
 	<link rel="stylesheet" href="../../resources/css/accountList.css">
+	
+	<style>
+		#accountAlias {
+			font-size: 14px;
+    		color: silver;
+    		margin-left: 5px;
+		}
+	</style>
 </head>
 <body>
 <%@include file = "../../common/header.jsp" %>	
@@ -26,20 +34,13 @@
 		<div style="margin-top: 20px;">
 			<div style="margin-bottom: 10px;">계좌/현금</div>
 			<div class="account-list">
-			<c:forEach items="${list}" var="list" varStatus="status">
-				<div class="account-item" onclick="location.href='/account/accountView'">
+				<!-- <div class="account-item" onclick="location.href='/account/accountView'">
 					<img src="../../../../resources/img/logo/shinhan_logo.png" class="logo_style">
-					<c:forEach items="${listCodebankName}" var="listbankName" varStatus="statusbankName">
-						<c:if test="${list.bankName eq listbankName.ccSeq}">
-							<c:out value="${listbankName.ccName}" />
-						</c:if>
-					</c:forEach>
-		     		<span>${list.accountNumber}</span>
+					<span id="bankName"></span>
+		     		<span id="accountAlias"></span>
 		 			<br>
 		     		<span>계좌잔액</span>
-		     		<fmt:formatNumber type="number" pattern='#,###' value="${list.balanceAmt}"/>원
-				</div>
-			</c:forEach>
+				</div> -->
 			</div>
 			<div style="margin: 20px 0 10px 0;">카드</div>
 			<div class="card-list">
@@ -60,10 +61,118 @@
             </div>
 		</div>
 	</div>
+	
 	<%@include file = "../../common/footer.jsp" %>	
 	
 	<!-- ------------------script--------------------- -->
 	<script type="text/javascript">
+	
+	function numComma(str) {
+	    return str.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
+	
+	$(document).ready(function(){
+		//사용자조회
+		$.ajax({
+			type : "GET",
+			url : "https://testapi.openbanking.or.kr/v2.0/user/me",
+			headers : {
+				"Authorization" : "Bearer ${sessAccessToken}"
+			},
+			data : {
+	            "user_seq_no" : "${sessUserSeqNo }"
+	        }, 
+	        success : function(response) {
+	        	console.log(response)
+	        	
+	        	for(var i = 0; i < response.res_list.length; i++) {
+	        		var fintech_use_num = '<input type="hidden" name="ifmmAccessToken" value="'+response.res_list[i].fintech_use_num+'"></input>'
+	        	}
+	        	
+	        	
+	        }, error : function(e) {
+				alert(e);
+			}
+		});
+		
+		var logo = "";
+		
+		function logoNm(str) {
+			if(str.includes('카카오')) logo = "kakao.png";
+			if(str.includes('신한')) logo = "sh.png";
+			if(str.includes('농협')) logo = "NH.png";
+			if(str.includes('국민')) logo = "kb.png";
+			if(str.includes('토스')) logo = "toss.png";
+			if(str.includes('오픈')) logo = "open.png";
+		}
+		
+		//계좌리스트 조회
+		$.ajax({
+			type : "GET",
+			url : "https://testapi.openbanking.or.kr/v2.0/account/list",
+			headers : {
+				"Authorization" : "Bearer ${sessAccessToken}"
+			},
+			data : {
+	            "user_seq_no" : "${sessUserSeqNo }",
+	            "include_cancel_yn" : "N",
+	            "sort_order" : "D"
+	        }, 
+	        success : function(response) {
+	        	var count = 0;
+	        	
+	        	for(var i = 0; i < response.res_list.length; i++) {
+	        		console.log(response.res_list[i])
+	        		
+	        		var fintech_use_num = '<input type="hidden" name="fintech_use_num" value="'+response.res_list[i].fintech_use_num+'"></input>'
+	        		
+	        		logoNm(response.res_list[i].bank_name)
+        			
+	        		var account_item = '<div class="account-item" id="account-'+count+'"><img src="../../../../resources/img/logo/'+logo+'" class="logo_style"><span id="bankName">'+response.res_list[i].bank_name+'</span><span id="accountAlias">'+response.res_list[i].account_alias+'</span></div>'
+	        		
+	        		$(".account-list").append(account_item);
+	        		
+	        		var countnum = Math.floor(Math.random() * 1000000000) + 1;
+	        		
+	        		(function(i) {
+		        		$.ajax({
+		        			type : "GET",
+		        			async: false,
+		        			url : "https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num",
+		        			headers : {
+		        				"Authorization" : "Bearer ${sessAccessToken}"
+		        			},
+		        			data : {
+		        	            "bank_tran_id" : "M202201824U"+countnum,
+		        	            "fintech_use_num" : response.res_list[i].fintech_use_num,
+		        	            "tran_dtime" : "20160310101921"
+		        	        }, 
+		        	        success : function(response) {
+		        	        	console.log(response)
+		        	        	
+		        	        	var balance_amt = '<br><span id="balanceAmt">'+numComma(response.balance_amt)+'원</span>'
+		        	        	
+		        	        	$("#account-"+count).append(balance_amt)
+		        	        	
+		        	        }, error : function(e) {
+		        				alert(e);
+		        			}
+		        	        
+		        		});
+	        		})(i);
+	        		count++;
+        		}
+	        }, error : function(e) {
+				alert(e);
+			}
+		});
+		
+	});
+	
+	$(document).on("load",'body', function(){
+		console.log($("input[name=bankName]").val())
+	});
+	
 	</script>
 </body>
 </html>

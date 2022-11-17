@@ -139,6 +139,7 @@ public class MemberController {
 	     httpSession.setAttribute("sessName", dto.getIfmmName());
 	     httpSession.setAttribute("sessAccessToken", dto.getIfmmAccessToken());
 	     httpSession.setAttribute("sessRefreshToken", dto.getIfmmRefreshToken());
+	     httpSession.setAttribute("sessUserSeqNo", dto.getIfmmUserSeqNo());
 	 }
 
 }

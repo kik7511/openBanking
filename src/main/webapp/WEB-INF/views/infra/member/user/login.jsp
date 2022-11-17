@@ -82,7 +82,6 @@
 					success:function(data){
 						if(data.result == "success") {
 							location.href="/" 
-							alert(${token});
 							
 						} else {
 							alert("이메일과 비밀번호를 확인하세요");

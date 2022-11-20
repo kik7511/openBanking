@@ -72,7 +72,7 @@ public class MemberController {
 	@RequestMapping(value="accountBookInst")
 	public String accountBookInst(Member dto) throws Exception {
 		service.accountBookInst(dto);
-		return "redirect:/member/user/accountBook";
+		return "redirect:/member/accountBook";
 	}
 	
 //	insert member

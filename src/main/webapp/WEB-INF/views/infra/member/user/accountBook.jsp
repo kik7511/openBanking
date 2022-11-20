@@ -127,6 +127,7 @@
 <body>
 <form autocomplete="off"  method="post" id="form" name="form">
 	<%@include file = "../../common/header.jsp" %>
+	<input type="hidden" name="memberSeq" value="${sessSeq}">
 	<c:set var="listCodecategory" value="${CodeServiceImpl.selectListCachedCode('14')}" />
 	<div id="wrap">
 		<a id="createdBtn" data-bs-toggle="modal" href="#accountBookModal" role="button"><i class="fa-regular fa-calendar-plus"></i></a>
@@ -172,7 +173,8 @@
 						<span class="tit">결제수단</span>
 						<button class="btn optionBtn" id="payment" name="payment" value="64">카드</button>
 						<button class="btn optionBtn" id="" name="methodOfPayment" value="65">현금</button>
-						<input type="hidden" id="methodOfPayment" name="methodOfPayment" value="65">
+						<input type="hidden" id="methodOfPayment" name="methodOfPayment" value="64">
+						<input type="hidden" id="" name="" value=""
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">날짜</span>
@@ -249,10 +251,8 @@
 			}
 		
 		<!-- insert -->
-		$(document).on("click",'#btnSave', function(){
-			if(validationUpdt() == false) return false;
-	   		/* if(ckeckId() == false) return false;
-	   		if(ckeckPwd() == false) return false; */
+		$(document).on("click",'#saveBtn', function(){
+			alert("나와라");
 	   		 setCheckboxValue($("#payment"), $("#methodOfPayment"));
 	   		 form.attr("action", goUrlInst).submit();
 		});

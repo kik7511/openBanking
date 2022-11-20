@@ -22,22 +22,17 @@ public class Member {
 	private String  ifmmRefreshToken;
 	private String  ifmmUserSeqNo;
 	private Integer  total;
-	
-	
+	private String useMoney;
+	private String memberSeq;
+	private Integer type;
+	private Integer category;
+	private String client;
+	private String date;
+	private String memo;
+	private String methodOfPayment;
+	private String seq;
 //	------------------------------
 	
-	public Integer getTotal() {
-		return total;
-	}
-	public void setTotal(Integer total) {
-		this.total = total;
-	}
-	public String getIfmmRefreshToken() {
-		return ifmmRefreshToken;
-	}
-	public void setIfmmRefreshToken(String ifmmRefreshToken) {
-		this.ifmmRefreshToken = ifmmRefreshToken;
-	}
 	public String getIfmmSeq() {
 		return ifmmSeq;
 	}
@@ -146,12 +141,83 @@ public class Member {
 	public void setIfmmAccessToken(String ifmmAccessToken) {
 		this.ifmmAccessToken = ifmmAccessToken;
 	}
+	public String getIfmmRefreshToken() {
+		return ifmmRefreshToken;
+	}
+	public void setIfmmRefreshToken(String ifmmRefreshToken) {
+		this.ifmmRefreshToken = ifmmRefreshToken;
+	}
 	public String getIfmmUserSeqNo() {
 		return ifmmUserSeqNo;
 	}
 	public void setIfmmUserSeqNo(String ifmmUserSeqNo) {
 		this.ifmmUserSeqNo = ifmmUserSeqNo;
 	}
+	public Integer getTotal() {
+		return total;
+	}
+	public void setTotal(Integer total) {
+		this.total = total;
+	}
+	public String getUseMoney() {
+		return useMoney;
+	}
+	public void setUseMoney(String useMoney) {
+		this.useMoney = useMoney;
+	}
+	public String getMemberSeq() {
+		return memberSeq;
+	}
+	public void setMemberSeq(String memberSeq) {
+		this.memberSeq = memberSeq;
+	}
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
+	}
+	public Integer getCategory() {
+		return category;
+	}
+	public void setCategory(Integer category) {
+		this.category = category;
+	}
+	public String getClient() {
+		return client;
+	}
+	public void setClient(String client) {
+		this.client = client;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getMemo() {
+		return memo;
+	}
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+	public String getMethodOfPayment() {
+		return methodOfPayment;
+	}
+	public void setMethodOfPayment(String methodOfPayment) {
+		this.methodOfPayment = methodOfPayment;
+	}
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
+	
+	
+	
+
+	
 	
 	
 }

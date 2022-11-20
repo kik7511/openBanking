@@ -173,8 +173,8 @@
 						<span class="tit">결제수단</span>
 						<button class="btn optionBtn" id="payment" name="payment" value="64">카드</button>
 						<button class="btn optionBtn" id="" name="methodOfPayment" value="65">현금</button>
-						<input type="hidden" id="methodOfPayment" name="methodOfPayment" value="64">
-						<input type="hidden" id="" name="" value=""
+						<input type="hidden" id="methodOfPayment" name="methodOfPayment" value="65">
+						<input type="hidden" id="" name="" value="">
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">날짜</span>

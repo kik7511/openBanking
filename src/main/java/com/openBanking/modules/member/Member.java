@@ -29,7 +29,7 @@ public class Member {
 	private String client;
 	private String date;
 	private String memo;
-	private String methodOfPayment;
+	private Integer methodOfPayment;
 	private String seq;
 //	------------------------------
 	
@@ -201,10 +201,10 @@ public class Member {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
-	public String getMethodOfPayment() {
+	public Integer getMethodOfPayment() {
 		return methodOfPayment;
 	}
-	public void setMethodOfPayment(String methodOfPayment) {
+	public void setMethodOfPayment(Integer methodOfPayment) {
 		this.methodOfPayment = methodOfPayment;
 	}
 	public String getSeq() {

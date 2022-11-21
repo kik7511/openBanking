@@ -100,10 +100,19 @@
 		width : 80px;
 		height: 35px;
 		border : 1px solid #ced4da;
-		background-color: white;
+		/* background-color: white; */
 		border-radius: 5px;
 		margin-right: 10px;
 	}
+	
+	.optionBtn:active {
+		width : 80px;
+		height: 35px;
+		border : 1px solid #ced4da;
+		background-color: yellow; 
+		border-radius: 5px;
+		margin-right: 10px;
+	} 
 	
 	#accountBookModal .modal-content .modal-body-section .form-select {
 		width : 30%;
@@ -120,7 +129,7 @@
 		margin-top: 30px;
 		color : white;
 	}
-
+	
 </style>
 
 </head>
@@ -151,9 +160,20 @@
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">분류</span>
-						<button class="btn optionBtn" id="" name="">지출</button>
-						<button class="btn optionBtn" id="" name="">수입</button>
-						<button class="btn optionBtn" id="" name="">이체</button>
+						<input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+						<label class="btn btn" for="option1">지출</label>
+						
+						<input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+						<label class="btn btn" for="option3">수입</label>
+						
+						<input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
+						<label class="btn btn" for="option4">이체</label>
+						
+						
+					<!-- <button type="button" class="btn optionBtn type" value="지출" id="type1">지출</button>
+						<button type="button" class="btn optionBtn type" value="수입" id="type2">수입</button>
+						<button type="button" class="btn optionBtn type" value="이체" id="type3">이체</button> -->
+						<input type="hidden" id="type" name="type">
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">카테고리</span>
@@ -172,10 +192,16 @@
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">결제수단</span>
-						<button class="btn optionBtn" id="payment" name="payment" value="64">카드</button>
-						<button class="btn optionBtn" id="" name="methodOfPayment" value="65">현금</button>
-						<input type="hidden" id="methodOfPayment" name="methodOfPayment" value="65">
-						<input type="hidden" id="" name="" value="">
+						<input type="button" class="btn optionBtn" id="pay1" value="카드">
+						<input type="button" class="btn optionBtn" id="pay2" value="현금">
+						<!-- 
+						<input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off">
+						<label class="btn btn-outline-success" for="success-outlined">카드</label>
+						
+						<input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+						<label class="btn btn-outline-danger" for="danger-outlined">현금</label>
+						 -->
+						<input type="hidden" id="payment" name="methodOfPayment">
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">날짜</span>
@@ -243,44 +269,80 @@
 		var form =$("form[name=form]");
 		var seq = $("input:hidden[name=ifmmSeq]");			/* #-> */
 		
-		setCheckboxValue = function(obj, targetObj) {
+		/* type */
+		setCheckboxValue = function(obj, obj2, obj3, targetObj) {
 			   if(obj.is(":checked")){
-				   targetObj.val("64");
+				   targetObj.val("48");
+			    } else if(obj2.is(":checked")) {
+			    	targetObj.val("49");
+			    } else if(obj3.is(":checked")) {
+			    	targetObj.val("50");
 			    } else {
-			    	targetObj.val("65");
 			    }
 			}
+		
+		/* methodOfPayment */
+		setCheckboxValue2 = function(obj1,obj2, targetObj) {
+			   if(obj.is(":checked")){
+				   targetObj.val("64");
+			    } else if(obj2.is(":checked")) {
+			    	targetObj.val("65");
+			    } else {
+			    }
+			}
+	  	/* $(".optionBtn").on("click", function() {
+		 	if($('.optionBtn').is(':checked')){
+		 		$(".optionBtn").css('background-color', 'black')
+	 		};
+		})   */
+	    
+	 	/* $('optionBtn').click(function() {
+			$('optionBtn').removeClass("active");
+			$(this).addClass("active");
+		}); */  
+	  	
+	  /* 	for (var i=0; i<$(".type").length; i++) {
+	  		alert($("#type"+(i+1)).val())
+	  		$("#type"+(i+1)).on("click", function() {
+	  			alert("asdda"+i)
+				$("#type"+(i+1)).css("background", "yellow")
+			})
+	  	} */
+		
+		/* 분류 */
+		$("#type1").on("click", function(){
+			$('input:hidden[name = type]').val("48");
+			/* $(".optionBtn").css("background", "yellow") */
+		})
+		
+		$("#type2").on("click", function() {
+			$('input:hidden[name = type]').val("49");
+		})
+		
+		$("#type3").on("click", function() {
+			$('input:hidden[name = type]').val("50");
+		})
+		
+		/* 결제수단 */
+		$("#pay1").on("click", function(){
+			$('input:hidden[name = methodOfPayment]').val("64");
+		})
+		
+		$("#pay2").on("click", function(){
+			$('input:hidden[name = methodOfPayment]').val("65");
+		})
 		
 		<!-- insert -->
 		$(document).on("click",'#saveBtn', function(){
 			alert("나와라");
-	   		 setCheckboxValue($("#payment"), $("#methodOfPayment"));
-	   		 form.attr("action", goUrlInst).submit();
+			setCheckboxValue($("#option1"),$("#option3"),$("#option4"), $("#type"));
+	   		form.attr("action", goUrlInst).submit();
 		});
 		<!-- insert end-->
 		
 		
 		
-	/* 	
-		var goUrlInst="/member/accountBook";
-		var seq = $("input:hidden[name=memberSeq]")
 		
-		setCheckboxValue = function(obj, targetObj) {
-			   if(obj.is(":checked")){
-				   targetObj.val("48");
-			    } else(obj.is(":checked")){
-			    	targetObj.val("49");
-			    } else if {
-			    	targetObj.val("50")
-			    }
-			}
-		
-		$(document).on("click", "#btnSave", function(){
-			setCheckboxValue($("#usetype"), $("#type"));
-			setCheckboxValue($("#usetype2"), $("#type"));
-			form.attr("action", goUrlInst).submit();
-		});
-		 */
 	</script>
 
 </body>

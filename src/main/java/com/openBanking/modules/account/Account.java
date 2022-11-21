@@ -29,9 +29,125 @@ public class Account {
 	private String ifmmDob;
 	private Integer ifmmGender;
 	private Integer useMoney;
+	private String[] res_list;
+	private Integer[] balance_amt;
+	private String bank_code_tran;
+	private String bank_name;
+	private String bank_tran_date;
+	private String bank_tran_id;
+	private String fintech_use_num;
+	private Integer page_record_cnt;
+	private String[] after_balance_amt;
+	private String branch_name;
+	private String inout_type;
+	private String print_content;
+	
+	
+	public String[] getAfter_balance_amt() {
+		return after_balance_amt;
+	}
+	public void setAfter_balance_amt(String[] after_balance_amt) {
+		this.after_balance_amt = after_balance_amt;
+	}
+	public String getBranch_name() {
+		return branch_name;
+	}
+	public void setBranch_name(String branch_name) {
+		this.branch_name = branch_name;
+	}
+	public String getInout_type() {
+		return inout_type;
+	}
+	public void setInout_type(String inout_type) {
+		this.inout_type = inout_type;
+	}
+	public String getPrint_content() {
+		return print_content;
+	}
+	public void setPrint_content(String print_content) {
+		this.print_content = print_content;
+	}
+	public Integer getTran_amt() {
+		return tran_amt;
+	}
+	public void setTran_amt(Integer tran_amt) {
+		this.tran_amt = tran_amt;
+	}
+	public String getTran_date() {
+		return tran_date;
+	}
+	public void setTran_date(String tran_date) {
+		this.tran_date = tran_date;
+	}
+	public String getTran_time() {
+		return tran_time;
+	}
+	public void setTran_time(String tran_time) {
+		this.tran_time = tran_time;
+	}
+	public String getTran_type() {
+		return tran_type;
+	}
+	public void setTran_type(String tran_type) {
+		this.tran_type = tran_type;
+	}
+	private Integer tran_amt;
+	private String tran_date;
+	private String tran_time;
+	private String tran_type;
+	
+	
 //	---------------------------
 	
 	
+	public String[] getRes_list() {
+		return res_list;
+	}
+	public void setRes_list(String[] res_list) {
+		this.res_list = res_list;
+	}
+	public Integer[] getBalance_amt() {
+		return balance_amt;
+	}
+	public void setBalance_amt(Integer[] balance_amt) {
+		this.balance_amt = balance_amt;
+	}
+	public String getBank_code_tran() {
+		return bank_code_tran;
+	}
+	public void setBank_code_tran(String bank_code_tran) {
+		this.bank_code_tran = bank_code_tran;
+	}
+	public String getBank_name() {
+		return bank_name;
+	}
+	public void setBank_name(String bank_name) {
+		this.bank_name = bank_name;
+	}
+	public String getBank_tran_date() {
+		return bank_tran_date;
+	}
+	public void setBank_tran_date(String bank_tran_date) {
+		this.bank_tran_date = bank_tran_date;
+	}
+	public String getBank_tran_id() {
+		return bank_tran_id;
+	}
+	public void setBank_tran_id(String bank_tran_id) {
+		this.bank_tran_id = bank_tran_id;
+	}
+	public String getFintech_use_num() {
+		return fintech_use_num;
+	}
+	public void setFintech_use_num(String fintech_use_num) {
+		this.fintech_use_num = fintech_use_num;
+	}
+	public Integer getPage_record_cnt() {
+		return page_record_cnt;
+	}
+	public void setPage_record_cnt(Integer page_record_cnt) {
+		this.page_record_cnt = page_record_cnt;
+	}
 	public String getSeq() {
 		return seq;
 	}

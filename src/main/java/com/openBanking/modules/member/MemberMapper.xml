@@ -85,6 +85,7 @@
 	    		,methodOfPayment
 	    		,date
 	    		,memo
+	    		,memberSeq
 	   		)
 	    	VALUES(
 	    		#{useMoney}
@@ -94,6 +95,7 @@
 	    		,#{methodOfPayment}
 	    		,#{date}
 	    		,#{memo}
+	    		,#{memberSeq}
 	    	)	
 	   		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 				SELECT last_insert_id()

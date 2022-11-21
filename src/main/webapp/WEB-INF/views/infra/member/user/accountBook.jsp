@@ -145,6 +145,7 @@
 				</div>
 				<div class="modal-body">
 					<div>
+						<input type="hidden" name="" value="${sessName}">
 						<div>지출금액</div>
 						<input type="text" class="form-control d-inline" id="" name="useMoney" style="width:30%; font-size: 25px; font-weight: bold;" onkeyup="inputNumberFormat(this)">원
 					</div>

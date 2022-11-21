@@ -44,6 +44,7 @@
 			</div>
 			<div style="margin: 20px 0 10px 0;">카드</div>
 			<div class="card-list">
+				<input type = "hidden" name="resListArray" id="resList">
 				<c:forEach items="${list2}" var="list2" varStatus="status">
 					<div class="card-item">
 		           		<img src="../../../../resources/img/logo/hyundaiCard_logo.png" class="logo_style">
@@ -60,6 +61,8 @@
 		       	</c:forEach>
             </div>
 		</div>
+		<form name = "form" id="form">
+		</form>
 	</div>
 	
 	<%@include file = "../../common/footer.jsp" %>	
@@ -174,7 +177,7 @@
 	});
 	
 	function detail(finNum){
-		console.log($("input[name=fintech_use_num"+finNum+"]").val());
+		console.log($("input[name=fintech_use_num"+ finNum + "]").val());
 		var countnum = Math.floor(Math.random() * 1000000000) + 1;
 		function getToday(){
 		    var date = new Date();
@@ -242,9 +245,33 @@
 	        }, 
 	        success : function(response) {
 	        	console.log(response)
-	        	
+	        	var resList = response.res_list;
+	        	var array = new Array;
+	        	var arr1 = new Array;
+	        	array.push(resList);
+	        	console.log(array[0]);
+				for(var i = 0; i < array[0].length; i++){
+					arr1.push(
+						array[0][i].after_balance_amt,
+						/* branch_name : array[0][i].branch_name,
+						inout_type : array[0][i].inout_type,
+						print_content : array[0][i].print_content,
+						tran_amt : array[0][i].tran_amt,
+						tran_date : array[0][i].tran_date,
+						tran_time : array[0][i].tran_time,
+						tran_type : array[0][i].tran_type */
+					)
+				}        	
+					console.log(arr1);
+					$.ajax({
+						url : "/account/accountView",
+						data : {
+							"after_balance_amt" : arr1
+						},
+						
+					})
 	        }, error : function(e) {
-				alert(e);
+				
 			}
 		});
 	}

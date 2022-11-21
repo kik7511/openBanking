@@ -262,7 +262,6 @@
 			});
 			 
 			calendar.render();
-			
 		});
 		
 		var goUrlInst = "/member/accountBookInst";

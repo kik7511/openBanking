@@ -204,6 +204,12 @@
 						<input type="button" class="btn optionBtn" id="pay1" value="카드">
 						<input type="button" class="btn optionBtn" id="pay2" value="현금">
 						<!-- 
+						<input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+						<label class="btn btn" for="option2">카드</label>
+						<input type="radio" class="btn-check" name="options" id="option7" autocomplete="off">
+						<label class="btn btn" for="option7">현금</label>
+						 -->
+						<!-- 
 						<input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off">
 						<label class="btn btn-outline-success" for="success-outlined">카드</label>
 						

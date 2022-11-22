@@ -76,30 +76,39 @@
 	</select>
 	
 	<!-- accountBookInst -->
-	    <insert id="accountBookInst">
-	    	INSERT INTO accountBook (
-	    		useMoney
-	    		,type
-	    		,category
-	    		,client
-	    		,methodOfPayment
-	    		,date
-	    		,memo
-	    		,memberSeq
-	   		)
-	    	VALUES(
-	    		#{useMoney}
-	    		,#{type}
-	    		,#{category}
-	    		,#{client}
-	    		,#{methodOfPayment}
-	    		,#{date}
-	    		,#{memo}
-	    		,#{memberSeq}
-	    	)	
-	   		<selectKey resultType="String" keyProperty="seq" order="AFTER">
-				SELECT last_insert_id()
-			</selectKey>
-	    </insert> 
+    <insert id="accountBookInst">
+    	INSERT INTO accountBook (
+    		useMoney
+    		,type
+    		,category
+    		,client
+    		,methodOfPayment
+    		,date
+    		,memo
+    		,memberSeq
+   		)
+    	VALUES(
+    		#{useMoney}
+    		,#{type}
+    		,#{category}
+    		,#{client}
+    		,#{methodOfPayment}
+    		,#{date}
+    		,#{memo}
+    		,#{memberSeq}
+    	)	
+   		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+    </insert> 
+    
+    <select id="accountBookList" resultMap="resultMapObj">
+		SELECT 
+			*
+		FROM 
+			accountBook
+		WHERE 1=1
+			AND memberSeq = #{memberSeq}
+	</select>
 	    
 </mapper>	   

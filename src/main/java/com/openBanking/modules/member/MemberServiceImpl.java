@@ -1,5 +1,7 @@
 package com.openBanking.modules.member;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +37,10 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int accountBookInst(Member dto)throws Exception {
 		return dao.accountBookInst(dto);
+	}
+	
+	@Override
+	public List<Member> accountBookList(Member dto) throws Exception {
+		return dao.accountBookList(dto);
 	}
 }

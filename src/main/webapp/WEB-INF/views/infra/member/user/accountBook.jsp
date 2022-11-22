@@ -130,6 +130,15 @@
 		color : white;
 	}
 	
+	.fc-daygrid-event {
+		background-color:transparent;
+		border : none;
+	}
+	
+	.fc-event-title {
+		color : black;
+	}
+	
 </style>
 
 </head>
@@ -259,7 +268,42 @@
 		
 			      return month + "월";
 			    },
+			    eventDidMount:function(data) {
+			    	console.log(data.event.extendedProps.type)
+			    	if(data.event.extendedProps.type == "48") {
+			    		$(".fc-event-main").remove();
+			    		$(data.el).css("color", "red");
+			    		$(data.el).html("-"+data.event.title)
+			    	} else {
+			    		$(".fc-event-main").remove();
+			    		$(data.el).css("color", "#57BA83");
+			    		$(data.el).html("+"+data.event.title)
+			    	}
+				}
 			});
+			
+			$.ajax({
+				type:"post",
+				url:"/rest/member/accountData",
+				data:{"memberSeq":$("input[name=memberSeq]").val()},
+				success:function(data) {
+					console.log(data)
+					
+					for(i=0; i < data.length; i++) {
+						calendar.addEvent({
+							title:data[i]['useMoney'],
+							start:data[i]['date'],
+							
+							extendedProps: {
+						        accountbookSeq:data[i]['seq'],
+						        type:data[i]['type'],
+						        useMoney:data[i]['useMoney']
+					        }
+	  				 	});
+  			 		}
+	 		 	}
+				
+		});
 			 
 			calendar.render();
 		});

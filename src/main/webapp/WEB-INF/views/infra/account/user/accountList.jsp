@@ -85,6 +85,10 @@
 			data : {
 	            "user_seq_no" : "${sessUserSeqNo }"
 	        }, 
+	        beforeSend: function (xhr) {
+	            xhr.setRequestHeader("Access-Control-Allow-Origin","*");
+	            xhr.setRequestHeader("Access-Control-Allow-Headers","*");
+	        },
 	        success : function(response) {
 	        	console.log(response)
 	        	
@@ -116,6 +120,10 @@
 			headers : {
 				"Authorization" : "Bearer ${sessAccessToken}"
 			},
+			beforeSend: function (xhr) {
+	            xhr.setRequestHeader("Access-Control-Allow-Origin","*");
+	            xhr.setRequestHeader("Access-Control-Allow-Headers","*");
+	        },
 			data : {
 	            "user_seq_no" : "${sessUserSeqNo }",
 	            "include_cancel_yn" : "N",

@@ -1,5 +1,7 @@
 package com.openBanking.modules.member;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
@@ -31,5 +33,9 @@ public class MemberDao {
 	
 	public int accountBookInst(Member dto) {
 		return sqlSession.insert(namespace + ".accountBookInst", dto);
+	}
+	
+	public List<Member> accountBookList(Member dto) {
+		return sqlSession.selectList(namespace + ".accountBookList", dto); 
 	}
 }

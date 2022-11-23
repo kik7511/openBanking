@@ -30,7 +30,7 @@ public class Account {
 	private Integer ifmmGender;
 	private Integer useMoney;
 	private String[] res_list;
-	private Integer[] balance_amt;
+	private Integer balance_amt;
 	private String bank_code_tran;
 	private String bank_name;
 	private String bank_tran_date;
@@ -41,8 +41,23 @@ public class Account {
 	private String branch_name;
 	private String inout_type;
 	private String print_content;
+	private String product_name;
+	
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+	private String account_num_masked;
 	
 	
+	public String getAccount_num_masked() {
+		return account_num_masked;
+	}
+	public void setAccount_num_masked(String account_num_masked) {
+		this.account_num_masked = account_num_masked;
+	}
 	public String[] getAfter_balance_amt() {
 		return after_balance_amt;
 	}
@@ -106,10 +121,10 @@ public class Account {
 	public void setRes_list(String[] res_list) {
 		this.res_list = res_list;
 	}
-	public Integer[] getBalance_amt() {
+	public Integer getBalance_amt() {
 		return balance_amt;
 	}
-	public void setBalance_amt(Integer[] balance_amt) {
+	public void setBalance_amt(Integer balance_amt) {
 		this.balance_amt = balance_amt;
 	}
 	public String getBank_code_tran() {

@@ -33,7 +33,15 @@ public class AccountController {
 	
 //	accountView
 	@RequestMapping(value="accountView")
-	public String accountView() throws Exception {
+	public String accountView(Account dto, Model model) throws Exception {
+		System.out.println("핀번호는: " + dto.getFintech_use_num());
+		System.out.println("금액은: " + dto.getBalance_amt());
+		System.out.println("통장이름은 : " + dto.getProduct_name());
+		System.out.println("계좌번호는 : " + dto.getAccount_num_masked());
+		model.addAttribute("fintech_use_num", dto.getFintech_use_num());
+		model.addAttribute("balance_amt", dto.getBalance_amt());
+		model.addAttribute("product_name", dto.getProduct_name());
+		model.addAttribute("account_num_masked", dto.getAccount_num_masked());
 		
 		return "infra/account/user/accountView";
 	}
@@ -87,7 +95,6 @@ public class AccountController {
 //	cardView
 	@RequestMapping(value="cardView")
 	public String cardView() throws Exception {
-	    
 	    return "infra/card/user/cardView";
 	}
 	

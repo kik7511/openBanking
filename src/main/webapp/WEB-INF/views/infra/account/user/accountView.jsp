@@ -23,11 +23,12 @@
 		  	<span style="font-size : 23px; color : #454D5B;">조회</span>
 		  	<div class="border_yellow">
 		  		<div style="text-align: right; padding: 20px;"><span style="font-size: 15px;">관리</span></div>
-		  		<div class="context_content"><span style="font-size: 20px;">MY 입출금통장</span></div>
-		  		<div class="context_content"><span style="font-size: 14px; color: gray;">110-133-242800</span></div>
+		  		<div class="context_content"><span style="font-size: 20px;">${product_name}</span></div>
+		  		<div class="context_content"><span style="font-size: 14px; color: gray;">${account_num_masked}</span></div>
 		  		<div style="padding-top: 13px;padding-bottom: 13px;">
-		  			<span style="font-size: 25px;"><strong>0</strong></span>
+		  			<span style="font-size: 25px;"><strong>${balance_amt}</strong></span>
 		  			<span style="font-size: 22px;">원</span>
+		  			<input type = "hidden" name = "fintech_use_num" value="${fintech_use_num}">
 	  			</div>
 	  			<div align="right" style="padding-bottom: 10px; padding-top: 10px;">
 	  				<button type="button" class="btn next-btn"><span style="color: white;">이체하기</span></button>
@@ -38,39 +39,120 @@
 		  		<div style="background-color: #F2F2F2; height: 55px; margin-top: 10px;">
 		  			<i class="fa-solid fa-magnifying-glass fa-1x" style="padding-left: 25px;padding-top: 22px"></i>
 		  		</div>
-		  		<div>
-		  			<ul>
-		  				<li style="border-bottom: 1px solid gray">
-		  					<div style="margin-top: 35px; margin-bottom: 15px;">
-		  						<span style="font-size: 17px; padding-left: 20px;" class="">09.24 | 05:48</span>
-		  					</div>
-		  					<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">
-		  						<div style="margin-left: 20px;"><span>이자</span></div>
-		  						<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">+0</span><span style="font-weight: bolder; color: purple;">원</span></div>
-		  					</div>
-		  					<div style="display:flex; justify-content: space-between; margin-bottom: 15px;">
-		  						<div style="margin-left: 20px; font-size: 11px;"><span>이자</span></div>
-		  						<div style="margin-right: 20px;"><span style="margin-right: 5px; font-size: 11px; color: gray;">잔액</span><span style="font-size: 11px; color: gray">0</span><span style="font-size: 11px; color: gray;">원</span></div>
-		  					</div>
-		  				</li>
-		  				<li style="border-bottom: 1px solid gray">
-		  					<div style="margin-top: 35px; margin-bottom: 15px;">
-		  						<span style="font-size: 17px; padding-left: 20px;" class="">09.24 | 05:48</span>
-		  					</div>
-		  					<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">
-		  						<div style="margin-left: 20px;"><span>이자</span></div>
-		  						<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">+0</span><span style="font-weight: bolder; color: purple;">원</span></div>
-		  					</div>
-		  					<div style="display:flex; justify-content: space-between; margin-bottom: 15px;">
-		  						<div style="margin-left: 20px; font-size: 11px;"><span>이자</span></div>
-		  						<div style="margin-right: 20px;"><span style="margin-right: 5px; font-size: 11px; color: gray;">잔액</span><span style="font-size: 11px; color: gray">0</span><span style="font-size: 11px; color: gray;">원</span></div>
-		  					</div>
-		  				</li>
+		  		<div id="content_res_list_div">
+		  			<ul class="content_res_list_div_ul">
 		  			</ul>
 		  		</div>
 	  		</div> 			
 	 	</div>
 	</div>	
 	<%@include file = "../../common/footer.jsp" %>	
+	
+	<script>
+	$(document).ready(function(){
+		var countnum = Math.floor(Math.random() * 1000000000) + 1;
+		var finNum = $('input:hidden[name=fintech_use_num]').val();
+		console.log(finNum);
+		function getToday(){
+		    var date = new Date();
+		    var year = date.getFullYear();
+		    var month = ("0" + (1 + date.getMonth())).slice(-2);
+		    var day = ("0" + date.getDate()).slice(-2);
+
+		    return year + month + day;
+		}
+		
+		function getPrevday(){
+		    var date = new Date();
+		    var year = date.getFullYear();
+		    var month = ("0" + (date.getMonth())).slice(-2);
+		    var day = ("0" + date.getDate()).slice(-2);
+
+		    return year + month + day;
+		}
+		
+		function getCurrentDate()
+	    {
+	        var date = new Date();
+	        var year = date.getFullYear().toString();
+
+	        var month = date.getMonth() + 1;
+	        month = month < 10 ? '0' + month.toString() : month.toString();
+
+	        var day = date.getDate();
+	        day = day < 10 ? '0' + day.toString() : day.toString();
+
+	        var hour = date.getHours();
+	        hour = hour < 10 ? '0' + hour.toString() : hour.toString();
+
+	        var minites = date.getMinutes();
+	        minites = minites < 10 ? '0' + minites.toString() : minites.toString();
+
+	        var seconds = date.getSeconds();
+	        seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
+
+	        return year + month + day + hour + minites + seconds;
+	    }
+		
+		$.ajax({
+			type : "GET",
+			async: false,
+			url : "https://testapi.openbanking.or.kr/v2.0/account/transaction_list/fin_num",
+			headers : {
+				"Authorization" : "Bearer ${sessAccessToken}"
+			},
+			data : {
+	            "bank_tran_id" : "M202201824U"+countnum,
+	            "fintech_use_num" : finNum,
+	            "inquiry_type" : "A",
+	            "inquiry_base" : "D",
+	            "from_date" : getPrevday(),
+	            "to_date" : getToday(),
+	            "sort_order" : "D",
+	            "tran_dtime" : getCurrentDate()
+	        }, 
+	        success : function(response) {
+	        	console.log(response);
+	        	console.log(response.res_list);
+	        	for(var i=0; i<response.res_list.length; i++){
+	        		var li = "";
+	        		if(response.res_list[i].inout_type == "입금"){
+		        		li += '<li style="border-bottom: 1px solid gray">';
+		        		li += '<div style="margin-top: 35px; margin-bottom: 15px;">';
+		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + response.res_list[i].tran_date + '|' + response.res_list[i].tran_time + '</span>';
+		        		li += '</div>';
+		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">';
+		        		li += '<div style="margin-left: 20px;"><span>' + response.res_list[i].tran_type + '</span></div>';
+		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">+' + response.res_list[i].tran_amt + '</span><span style="font-weight: bolder; color: purple;">원</span></div>';
+		        		li += '</div>';
+		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 15px;">';
+		        		li += '<div style="margin-left: 20px; font-size: 11px;"><span>' + response.res_list[i].print_content + '</span></div>';
+		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; font-size: 11px; color: gray;">잔액</span><span style="font-size: 11px; color: gray">' + response.res_list[i].after_balance_amt + '</span><span style="font-size: 11px; color: gray;">원</span></div>';
+		        		li += '</div>';
+		        		li += '</li>';
+		        		$('#content_res_list_div').children('ul.content_res_list_div_ul').append(li); 
+	        		}else{
+	        			li += '<li style="border-bottom: 1px solid gray">';
+		        		li += '<div style="margin-top: 35px; margin-bottom: 15px;">';
+		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + response.res_list[i].tran_date + '|' + response.res_list[i].tran_time + '</span>';
+		        		li += '</div>';
+		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">';
+		        		li += '<div style="margin-left: 20px;"><span>' + response.res_list[i].tran_type + '</span></div>';
+		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">-' + response.res_list[i].tran_amt + '</span><span style="font-weight: bolder; color: purple;">원</span></div>';
+		        		li += '</div>';
+		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 15px;">';
+		        		li += '<div style="margin-left: 20px; font-size: 11px;"><span>' + response.res_list[i].print_content + '</span></div>';
+		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; font-size: 11px; color: gray;">잔액</span><span style="font-size: 11px; color: gray">' + response.res_list[i].after_balance_amt + '</span><span style="font-size: 11px; color: gray;">원</span></div>';
+		        		li += '</div>';
+		        		li += '</li>';
+		        		$('#content_res_list_div').children('ul.content_res_list_div_ul').append(li);
+	        		}
+	        	}
+	        }, error : function(e) {
+				
+			}
+		});
+	});
+	</script>
 </body>
 </html>

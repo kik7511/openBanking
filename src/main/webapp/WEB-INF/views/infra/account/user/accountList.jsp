@@ -139,7 +139,7 @@
 	        		
 	        		logoNm(response.res_list[i].bank_name)
         			
-	        		var account_item = '<div class="account-item" id="account-'+count+'" onclick="location.href=\'javascript:detail(' + count + ')\'"><img src="../../../../resources/img/logo/'+logo+'" class="logo_style"><span id="bankName">'+response.res_list[i].bank_name+'</span><span id="accountAlias">'+response.res_list[i].account_alias+'</span><input type="hidden" name="fintech_use_num'+count+ '" value="' + response.res_list[i].fintech_use_num + '"></div>'
+	        		var account_item = '<div class="account-item" id="account-'+count+'" onclick="location.href=\'javascript:detail(' + count + ')\'"><form style="display: inline;" name = "form' + count +'" id="form' + count +'"><img src="../../../../resources/img/logo/'+logo+'" class="logo_style"><span id="bankName">'+response.res_list[i].bank_name+'</span><span id="accountAlias">'+response.res_list[i].account_alias+'</span><input type="hidden" name="fintech_use_num" value="' + response.res_list[i].fintech_use_num + '"><input type="hidden" name="account_num_masked" value="' + response.res_list[i].account_num_masked + '"></form></div>'
 	        		
 	        		$(".account-list").append(account_item);
 	        		
@@ -161,9 +161,12 @@
 		        	        success : function(response) {
 		        	        	console.log(response)
 		        	        	
-		        	        	var balance_amt = '<br><span id="balanceAmt">'+numComma(response.balance_amt)+'원</span>'
+		        	        	var balance_amt = '' 
+		        	        		balance_amt += '<br><span id="balanceAmt">'+numComma(response.balance_amt)+'원</span>'
+		        	        		balance_amt += '<br><input type = "hidden" name = "balance_amt" value = "' + response.balance_amt + '">'
+		        	        		balance_amt += '<br><input type = "hidden" name = "product_name" value = "' + response.product_name + '">'
 		        	        	
-		        	        	$("#account-"+count).append(balance_amt)
+		        	        	$("#form"+count).append(balance_amt)
 		        	        	
 		        	        }, error : function(e) {
 		        				alert(e);
@@ -185,103 +188,9 @@
 	});
 	
 	function detail(finNum){
-		console.log($("input[name=fintech_use_num"+ finNum + "]").val());
-		var countnum = Math.floor(Math.random() * 1000000000) + 1;
-		function getToday(){
-		    var date = new Date();
-		    var year = date.getFullYear();
-		    var month = ("0" + (1 + date.getMonth())).slice(-2);
-		    var day = ("0" + date.getDate()).slice(-2);
-
-		    return year + month + day;
-		}
-		
-		function getPrevday(){
-		    var date = new Date();
-		    var year = date.getFullYear();
-		    var month = ("0" + (date.getMonth())).slice(-2);
-		    var day = ("0" + date.getDate()).slice(-2);
-
-		    return year + month + day;
-		}
-		
-		function getCurrentDate()
-	    {
-	        var date = new Date();
-	        var year = date.getFullYear().toString();
-
-	        var month = date.getMonth() + 1;
-	        month = month < 10 ? '0' + month.toString() : month.toString();
-
-	        var day = date.getDate();
-	        day = day < 10 ? '0' + day.toString() : day.toString();
-
-	        var hour = date.getHours();
-	        hour = hour < 10 ? '0' + hour.toString() : hour.toString();
-
-	        var minites = date.getMinutes();
-	        minites = minites < 10 ? '0' + minites.toString() : minites.toString();
-
-	        var seconds = date.getSeconds();
-	        seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
-
-	        return year + month + day + hour + minites + seconds;
-	    }
-		var fnum = finNum.toString();
-		
-		console.log(countnum);
-		console.log(getPrevday());
-		console.log(getToday());
-		console.log(getCurrentDate());
-		
-		$.ajax({
-			type : "GET",
-			async: false,
-			url : "https://testapi.openbanking.or.kr/v2.0/account/transaction_list/fin_num",
-			headers : {
-				"Authorization" : "Bearer ${sessAccessToken}"
-			},
-			data : {
-	            "bank_tran_id" : "M202201824U"+countnum,
-	            "fintech_use_num" : $("input[name=fintech_use_num"+finNum+"]").val(),
-	            "inquiry_type" : "A",
-	            "inquiry_base" : "D",
-	            "from_date" : getPrevday(),
-	            "to_date" : getToday(),
-	            "sort_order" : "D",
-	            "tran_dtime" : getCurrentDate()
-	        }, 
-	        success : function(response) {
-	        	console.log(response)
-	        	var resList = response.res_list;
-	        	var array = new Array;
-	        	var arr1 = new Array;
-	        	array.push(resList);
-	        	console.log(array[0]);
-				for(var i = 0; i < array[0].length; i++){
-					arr1.push(
-						array[0][i].after_balance_amt,
-						/* branch_name : array[0][i].branch_name,
-						inout_type : array[0][i].inout_type,
-						print_content : array[0][i].print_content,
-						tran_amt : array[0][i].tran_amt,
-						tran_date : array[0][i].tran_date,
-						tran_time : array[0][i].tran_time,
-						tran_type : array[0][i].tran_type */
-					)
-				}        	
-					console.log(arr1);
-					$.ajax({
-						url : "/account/accountView",
-						data : {
-							"after_balance_amt" : arr1
-						},
-						
-					})
-	        }, error : function(e) {
-				
-			}
-		});
+		var form = $("form[name=form" + finNum + "]");
+		var goUrl = "/account/accountView";
+       	form.attr("action", goUrl).submit();
 	}
 	</script>
 </body>

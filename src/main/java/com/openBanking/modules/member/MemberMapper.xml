@@ -110,5 +110,15 @@
 		WHERE 1=1
 			AND memberSeq = #{memberSeq}
 	</select>
+	
+	<select id="accountBookSelectOne" resultMap="resultMapObj">
+		SELECT 
+			*
+		FROM 
+			accountBook
+		WHERE 1=1
+			AND memberSeq = #{memberSeq}
+			AND seq = #{seq}
+	</select>
 	    
 </mapper>	   

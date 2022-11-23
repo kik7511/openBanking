@@ -43,4 +43,9 @@ public class MemberServiceImpl implements MemberService{
 	public List<Member> accountBookList(Member dto) throws Exception {
 		return dao.accountBookList(dto);
 	}
+	
+	@Override
+	public Member accountBookSelectOne(Member dto) throws Exception {
+		return dao.accountBookSelectOne(dto);
+	}
 }

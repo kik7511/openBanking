@@ -10,6 +10,42 @@
 	<%@include file = "../../common/link.jsp" %>
 	<%@include file = "../../common/font.jsp" %>
 	<link rel="stylesheet" type="text/css" href="/resources/css/accountView.css">
+	<style>
+		.pagination-container {
+  width: calc(100% - 2rem);
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  padding: 1rem 0;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.pagination-number,
+.pagination-button{
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: none;
+  margin: 0.25rem 0.25rem;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: .2rem;
+}
+
+.pagination-number:hover,
+.pagination-button:not(.disabled):hover {
+  background: #fff;
+}
+
+.pagination-number.active {
+  color: #fff;
+  background: #0085b6;
+}
+	</style>
 </head>
 <body>
 	<%@include file = "../../common/header.jsp" %>
@@ -26,7 +62,7 @@
 		  		<div class="context_content"><span style="font-size: 20px;">${product_name}</span></div>
 		  		<div class="context_content"><span style="font-size: 14px; color: gray;">${account_num_masked}</span></div>
 		  		<div style="padding-top: 13px;padding-bottom: 13px;">
-		  			<span style="font-size: 25px;"><strong>${balance_amt}</strong></span>
+		  			<span style="font-size: 25px;"><strong> <fmt:formatNumber value="${balance_amt}" pattern="#,###"/></strong></span>
 		  			<span style="font-size: 22px;">원</span>
 		  			<input type = "hidden" name = "fintech_use_num" value="${fintech_use_num}">
 	  			</div>
@@ -40,8 +76,21 @@
 		  			<i class="fa-solid fa-magnifying-glass fa-1x" style="padding-left: 25px;padding-top: 22px"></i>
 		  		</div>
 		  		<div id="content_res_list_div">
-		  			<ul class="content_res_list_div_ul">
+		  			<ul id="paginated-list" class="content_res_list_div_ul" data-current-page="1" aria-live="polite">
 		  			</ul>
+		  			<nav class="pagination-container">
+					    <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page">
+					      &lt;
+					    </button>
+					
+					    <div id="pagination-numbers">
+					
+					    </div>
+					
+					    <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page">
+					      &gt;
+					    </button>
+				  </nav>
 		  		</div>
 	  		</div> 			
 	 	</div>
@@ -49,6 +98,20 @@
 	<%@include file = "../../common/footer.jsp" %>	
 	
 	<script>
+		
+	function numComma(str) {
+	    return str.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
+	
+	function numDate(str) {
+	    return (str.substr(4, 4)).slice(0, 2) + '.' + (str.substr(4, 4)).slice(2, 4);
+	}
+	
+	function numTime(str) {
+		return (str.substr(0, 4)).slice(0, 2) + ':' + (str.substr(0, 4)).slice(2, 4);
+	}
+	
+	
 	$(document).ready(function(){
 		var countnum = Math.floor(Math.random() * 1000000000) + 1;
 		var finNum = $('input:hidden[name=fintech_use_num]').val();
@@ -113,41 +176,144 @@
 	        }, 
 	        success : function(response) {
 	        	console.log(response);
-	        	console.log(response.res_list);
+	        	
 	        	for(var i=0; i<response.res_list.length; i++){
+	        		var str1 = response.res_list[i].tran_date;
+	        		var str2 = response.res_list[i].tran_time;
+	        		
 	        		var li = "";
 	        		if(response.res_list[i].inout_type == "입금"){
 		        		li += '<li style="border-bottom: 1px solid gray">';
 		        		li += '<div style="margin-top: 35px; margin-bottom: 15px;">';
-		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + response.res_list[i].tran_date + '|' + response.res_list[i].tran_time + '</span>';
+		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + numDate(response.res_list[i].tran_date) + ' | ' + numTime(response.res_list[i].tran_time) + '</span>';
 		        		li += '</div>';
 		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">';
 		        		li += '<div style="margin-left: 20px;"><span>' + response.res_list[i].tran_type + '</span></div>';
-		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">+' + response.res_list[i].tran_amt + '</span><span style="font-weight: bolder; color: purple;">원</span></div>';
+		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">+' + numComma(response.res_list[i].tran_amt) + '</span><span style="font-weight: bolder; color: purple;">원</span></div>';
 		        		li += '</div>';
 		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 15px;">';
 		        		li += '<div style="margin-left: 20px; font-size: 11px;"><span>' + response.res_list[i].print_content + '</span></div>';
-		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; font-size: 11px; color: gray;">잔액</span><span style="font-size: 11px; color: gray">' + response.res_list[i].after_balance_amt + '</span><span style="font-size: 11px; color: gray;">원</span></div>';
+		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; font-size: 11px; color: gray;">잔액</span><span style="font-size: 11px; color: gray">' + numComma(response.res_list[i].after_balance_amt) + '</span><span style="font-size: 11px; color: gray;">원</span></div>';
 		        		li += '</div>';
 		        		li += '</li>';
 		        		$('#content_res_list_div').children('ul.content_res_list_div_ul').append(li); 
 	        		}else{
 	        			li += '<li style="border-bottom: 1px solid gray">';
 		        		li += '<div style="margin-top: 35px; margin-bottom: 15px;">';
-		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + response.res_list[i].tran_date + '|' + response.res_list[i].tran_time + '</span>';
+		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + response.res_list[i].tran_date + ' | ' + response.res_list[i].tran_time + '</span>';
 		        		li += '</div>';
 		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">';
 		        		li += '<div style="margin-left: 20px;"><span>' + response.res_list[i].tran_type + '</span></div>';
-		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">-' + response.res_list[i].tran_amt + '</span><span style="font-weight: bolder; color: purple;">원</span></div>';
+		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">-' + numComma(response.res_list[i].tran_amt) + '</span><span style="font-weight: bolder; color: purple;">원</span></div>';
 		        		li += '</div>';
 		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 15px;">';
 		        		li += '<div style="margin-left: 20px; font-size: 11px;"><span>' + response.res_list[i].print_content + '</span></div>';
-		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; font-size: 11px; color: gray;">잔액</span><span style="font-size: 11px; color: gray">' + response.res_list[i].after_balance_amt + '</span><span style="font-size: 11px; color: gray;">원</span></div>';
+		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; font-size: 11px; color: gray;">잔액</span><span style="font-size: 11px; color: gray">' + numComma(response.res_list[i].after_balance_amt) + '</span><span style="font-size: 11px; color: gray;">원</span></div>';
 		        		li += '</div>';
 		        		li += '</li>';
 		        		$('#content_res_list_div').children('ul.content_res_list_div_ul').append(li);
 	        		}
 	        	}
+	        	const paginationNumbers = document.getElementById("pagination-numbers");
+	        	const paginatedList = document.getElementById("paginated-list");
+	        	const listItems = paginatedList.querySelectorAll("li");
+	        	const nextButton = document.getElementById("next-button");
+	        	const prevButton = document.getElementById("prev-button");
+
+	        	const paginationLimit = 5;
+	        	const pageCount = Math.ceil(response.res_list.length / paginationLimit);
+	        	console.log(pageCount);
+	        	let currentPage = 1;
+
+	        	const disableButton = (button) => {
+	        	  button.classList.add("disabled");
+	        	  button.setAttribute("disabled", true);
+	        	};
+
+	        	const enableButton = (button) => {
+	        	  button.classList.remove("disabled");
+	        	  button.removeAttribute("disabled");
+	        	};
+
+	        	const handlePageButtonsStatus = () => {
+	        	  if (currentPage === 1) {
+	        	    disableButton(prevButton);
+	        	  } else {
+	        	    enableButton(prevButton);
+	        	  }
+
+	        	  if (pageCount === currentPage) {
+	        	    disableButton(nextButton);
+	        	  } else {
+	        	    enableButton(nextButton);
+	        	  }
+	        	};
+
+	        	const handleActivePageNumber = () => {
+	        	  document.querySelectorAll(".pagination-number").forEach((button) => {
+	        	    button.classList.remove("active");
+	        	    const pageIndex = Number(button.getAttribute("page-index"));
+	        	    if (pageIndex == currentPage) {
+	        	      button.classList.add("active");
+	        	    }
+	        	  });
+	        	};
+
+	        	const appendPageNumber = (index) => {
+	        	  const pageNumber = document.createElement("button");
+	        	  pageNumber.className = "pagination-number";
+	        	  pageNumber.innerHTML = index;
+	        	  pageNumber.setAttribute("page-index", index);
+	        	  pageNumber.setAttribute("aria-label", "Page " + index);
+
+	        	  paginationNumbers.appendChild(pageNumber);
+	        	};
+
+	        	const getPaginationNumbers = () => {
+	        	  for (let i = 1; i <= pageCount; i++) {
+	        	    appendPageNumber(i);
+	        	  }
+	        	};
+
+	        	const setCurrentPage = (pageNum) => {
+	        	  currentPage = pageNum;
+
+	        	  handleActivePageNumber();
+	        	  handlePageButtonsStatus();
+	        	  
+	        	  const prevRange = (pageNum - 1) * paginationLimit;
+	        	  const currRange = pageNum * paginationLimit;
+
+	        	  listItems.forEach((item, index) => {
+	        	    item.classList.add("hidden");
+	        	    if (index >= prevRange && index < currRange) {
+	        	      item.classList.remove("hidden");
+	        	    }
+	        	  });
+	        	};
+
+	        	window.addEventListener("load", () => {
+	        	  getPaginationNumbers();
+	        	  setCurrentPage(1);
+
+	        	  prevButton.addEventListener("click", () => {
+	        	    setCurrentPage(currentPage - 1);
+	        	  });
+
+	        	  nextButton.addEventListener("click", () => {
+	        	    setCurrentPage(currentPage + 1);
+	        	  });
+
+	        	  document.querySelectorAll(".pagination-number").forEach((button) => {
+	        	    const pageIndex = Number(button.getAttribute("page-index"));
+
+	        	    if (pageIndex) {
+	        	      button.addEventListener("click", () => {
+	        	        setCurrentPage(pageIndex);
+	        	      });
+	        	    }
+	        	  });
+	        	});
 	        }, error : function(e) {
 				
 			}

@@ -205,7 +205,7 @@
 	        		}else{
 	        			li += '<li style="border-bottom: 1px solid gray">';
 		        		li += '<div style="margin-top: 35px; margin-bottom: 15px;">';
-		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + response.res_list[i].tran_date + ' | ' + response.res_list[i].tran_time + '</span>';
+		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + numDate(response.res_list[i].tran_date) + ' | ' + numTime(response.res_list[i].tran_time) + '</span>';
 		        		li += '</div>';
 		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">';
 		        		li += '<div style="margin-left: 20px;"><span>' + response.res_list[i].print_content + '</span></div>';

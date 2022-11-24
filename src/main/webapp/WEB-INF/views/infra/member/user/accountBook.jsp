@@ -52,7 +52,7 @@
 		color : black;
 		position: relative;
 		left: 870px;
-    	top: 28px;
+    	top: 32px;
 	}
 	
 	#accountBookModal {
@@ -99,20 +99,19 @@
 	#accountBookModal .modal-content .modal-body-section .optionBtn {
 		width : 80px;
 		height: 35px;
-		border : 1px solid #ced4da;
+		/* border : 1px solid #ced4da; */
 		/* background-color: white; */
 		border-radius: 5px;
 		margin-right: 10px;
 	}
 	
-	.optionBtn:active {
+	/* .optionBtn:active {
 		width : 80px;
 		height: 35px;
 		border : 1px solid #ced4da;
-		background-color: yellow; 
 		border-radius: 5px;
 		margin-right: 10px;
-	} 
+	}  */
 	
 	#accountBookModal .modal-content .modal-body-section .form-select {
 		width : 30%;
@@ -135,6 +134,11 @@
 		border : none;
 	}
 	
+	.fc-daygrid-event:hover{
+		opacity: 0.33;
+	}
+	
+	
 	.fc-event-title {
 		color : black;
 	}
@@ -143,12 +147,13 @@
 
 </head>
 <body>
-<form autocomplete="off"  method="post" id="form" name="form">
-	<%@include file = "../../common/header.jsp" %>
+	<form autocomplete="off" method="post" id="form" name="form">
+	<input type="hidden" name="" value="${sessName}">
 	<input type="hidden" name="memberSeq" value="${sessSeq}">
+	<%@include file = "../../common/header.jsp" %>
 	<c:set var="listCodecategory" value="${CodeServiceImpl.selectListCachedCode('14')}" />
 	<div id="wrap">
-		<a id="createdBtn" data-bs-toggle="modal" href="#accountBookModal" role="button"><i class="fa-regular fa-calendar-plus"></i></a>
+		<a id="createdBtn" href="#" onclick="createModalShow()"><i class="fa-regular fa-calendar-plus"></i></a>
 		<div id="calendar">
 		</div>
 	</div>
@@ -163,33 +168,28 @@
 				</div>
 				<div class="modal-body">
 					<div>
-						<input type="hidden" name="" value="${sessName}">
-						<div>지출금액</div>
-						<input type="text" class="form-control d-inline" id="" name="useMoney" style="width:30%; font-size: 25px; font-weight: bold;" onkeyup="inputNumberFormat(this)">원
+						<div>금액</div>
+						<input type="text" class="form-control d-inline" name="useMoney" id="useMoney" style="width:30%; font-size: 25px; font-weight: bold;" onkeyup="inputNumberFormat(this)" <c:if test="${not empty item.useMoney }">value="${item.useMoney  }"</c:if>>원
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">분류</span>
-						<input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+						<input type="radio" class="btn-check type" name="options" id="option1" autocomplete="off" value="48">
 						<label class="btn btn" for="option1">지출</label>
 						
-						<input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+						<input type="radio" class="btn-check type" name="options" id="option3" autocomplete="off" value="49">
 						<label class="btn btn" for="option3">수입</label>
 						
-						<input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
+						<input type="radio" class="btn-check type" name="options" id="option4" autocomplete="off" value="50">
 						<label class="btn btn" for="option4">이체</label>
 						
-						
-					<!-- <button type="button" class="btn optionBtn type" value="지출" id="type1">지출</button>
-						<button type="button" class="btn optionBtn type" value="수입" id="type2">수입</button>
-						<button type="button" class="btn optionBtn type" value="이체" id="type3">이체</button> -->
 						<input type="hidden" id="type" name="type">
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">카테고리</span>
-						<select class="form-select" name="category">
-							<option>미분류</option>
+						<select class="form-select" name="category" id="category">
+							<option value="0">미분류</option>
 							<c:forEach items="${listCodecategory}" var="listcategory" varStatus="statuscategory">
-								<option value="${listcategory.ccSeq} ">
+								<option value="${listcategory.ccSeq}">
 									<c:if test="${list.category eq listcategory.ccSeq}">selected</c:if>${listcategory.ccName}
 								</option>
 							</c:forEach>
@@ -197,25 +197,16 @@
 					</div>
 					<div class="modal-body-section d-flex">
 						<div class="tit">거래처</div>
-						<input type="text" class="form-control" id="" name="client" placeholder="입력하세요" style="width : 50%;">
+						<input type="text" class="form-control" id="client" name="client" placeholder="입력하세요" style="width : 50%;">
 					</div>
 					<div class="modal-body-section d-flex">
 						<span class="tit">결제수단</span>
-						<input type="button" class="btn optionBtn" id="pay1" value="카드">
-						<input type="button" class="btn optionBtn" id="pay2" value="현금">
-						<!-- 
-						<input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+						<input type="radio" class="btn-check" name="options2" id="option2" autocomplete="off" value="64">
 						<label class="btn btn" for="option2">카드</label>
-						<input type="radio" class="btn-check" name="options" id="option7" autocomplete="off">
-						<label class="btn btn" for="option7">현금</label>
-						 -->
-						<!-- 
-						<input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off">
-						<label class="btn btn-outline-success" for="success-outlined">카드</label>
 						
-						<input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
-						<label class="btn btn-outline-danger" for="danger-outlined">현금</label>
-						 -->
+						<input type="radio" class="btn-check" name="options2" id="option7" autocomplete="off" value="65">
+						<label class="btn btn" for="option7">현금</label>
+						 
 						<input type="hidden" id="payment" name="methodOfPayment">
 					</div>
 					<div class="modal-body-section d-flex">
@@ -224,15 +215,17 @@
 					</div>
 					<div class="modal-body-section d-flex">
 						<div class="tit">메모</div>
-						<input type="text" class="form-control" id="" name="memo" placeholder="입력하세요" style="width : 50%;">
+						<input type="text" class="form-control" id="memo" name="memo" placeholder="입력하세요" style="width : 50%;">
 					</div>
 					<button id="saveBtn" class="btn">저장</button>
+				
 				</div>
 			</div>
 		</div>
 	</div>
+	</form>
 	<!-- modal -->
-</form>
+	
 	<script>
 		$("#date").datepicker({
 			dateFormat: "yy-mm-dd",
@@ -256,6 +249,45 @@
 		    return str.replace(/[^\d]+/g, '');
 		}
 		
+		function createModalShow(){
+			$('#accountBookModal').find('#useMoney, #client, #date, #memo').val(null);
+			$('#accountBookModal').find('select').val(0);
+			
+			$('#accountBookModal').modal('show');
+			
+			return;
+		}
+		
+		$(document).on("click",'.fc-daygrid-event', function() {
+			var seq = $(this).children("a").data("id");
+
+			$.ajax({
+				type:"post",
+				url:"/rest/member/accountBookSelectOne",
+				data:{"memberSeq":$("input[name=memberSeq]").val(), "seq":seq},
+				success:function(data){
+					console.log(data)
+					var modal = $("#accountBookModal");
+					modal.find("#useMoney").val(comma(data.useMoney));
+					modal.find("#client").val(data.client);
+					modal.find("#date").val(data.date);
+					modal.find("#memo").val(data.memo);
+					modal.modal('show');
+					
+					$("input:radio[name='options'][value='"+data.type+"']").attr('checked', true);
+					$("input:radio[name='options2'][value='"+data.methodOfPayment+"']").attr('checked', true);
+					console.log($("input:radio[name='options'][value='"+data.methodOfPayment+"']"))
+					$("#category").val(data.category).prop("selected", true);
+				}
+			})
+		})
+		
+		$('#accountBookModal').on('hide.bs.modal', function() {
+			$("input:radio[name='options']").attr('checked', false);
+			$("input:radio[name='options2']").attr('checked', false);
+		});
+			
+		
 		$(document).ready(function() {
 			
 			var calendarEl = document.getElementById('calendar');
@@ -274,23 +306,36 @@
 		
 			      return month + "월";
 			    },
+		      	editable: true,
+  			    customButtons:{
+			    	prev: {
+			    		click : function() {
+			    			calendar.prev();
+			    			$(".fc-event-main").remove();
+			    		}
+			    	},
+			    	next: {
+			    		click : function() {
+			    			calendar.next();
+			    			$(".fc-event-main").remove();
+			    		}
+			    	}
+			    },
 			    eventDidMount:function(data) {
 			    	console.log(data.event.extendedProps.type)
 			    	if(data.event.extendedProps.type == "48") {
 			    		$(".fc-event-main").remove();
-			    		$(data.el).css("color", "red");
-			    		$(data.el).html("-"+data.event.title)
+			    		$(data.el).html('<a href="#" class="detail" data-id="'+data.event.extendedProps.accountbookSeq+'" style="color:red;">-'+data.event.title+'</a>')
 			    	} else {
 			    		$(".fc-event-main").remove();
-			    		$(data.el).css("color", "#57BA83");
-			    		$(data.el).html("+"+data.event.title)
+			    		$(data.el).html('<a href="#" class="detail" data-id="'+data.event.extendedProps.accountbookSeq+'" style="color:#57BA83;">+'+data.event.title+'</a>')
 			    	}
 				}
 			});
 			
 			$.ajax({
 				type:"post",
-				url:"/rest/member/accountData",
+				url:"/rest/member/accountList",
 				data:{"memberSeq":$("input[name=memberSeq]").val()},
 				success:function(data) {
 					console.log(data)
@@ -308,10 +353,10 @@
 	  				 	});
   			 		}
 	 		 	}
-				
-		});
-			 
+			});
+			$(".fc-event-main").remove();
 			calendar.render();
+			
 		});
 		
 		var goUrlInst = "/member/accountBookInst";
@@ -320,77 +365,33 @@
 		
 		/* type */
 		setCheckboxValue = function(obj, obj2, obj3, targetObj) {
-			   if(obj.is(":checked")){
-				   targetObj.val("48");
-			    } else if(obj2.is(":checked")) {
-			    	targetObj.val("49");
-			    } else if(obj3.is(":checked")) {
-			    	targetObj.val("50");
-			    } else {
-			    }
-			}
+		   if(obj.is(":checked")){
+			   targetObj.val("48");
+		    } else if(obj2.is(":checked")) {
+		    	targetObj.val("49");
+		    } else if(obj3.is(":checked")) {
+		    	targetObj.val("50");
+		    } else {
+		    }
+		}
 		
 		/* methodOfPayment */
-		setCheckboxValue2 = function(obj1,obj2, targetObj) {
-			   if(obj.is(":checked")){
-				   targetObj.val("64");
-			    } else if(obj2.is(":checked")) {
-			    	targetObj.val("65");
-			    } else {
-			    }
-			}
-	  	/* $(".optionBtn").on("click", function() {
-		 	if($('.optionBtn').is(':checked')){
-		 		$(".optionBtn").css('background-color', 'black')
-	 		};
-		})   */
-	    
-	 	/* $('optionBtn').click(function() {
-			$('optionBtn').removeClass("active");
-			$(this).addClass("active");
-		}); */  
-	  	
-	  /* 	for (var i=0; i<$(".type").length; i++) {
-	  		alert($("#type"+(i+1)).val())
-	  		$("#type"+(i+1)).on("click", function() {
-	  			alert("asdda"+i)
-				$("#type"+(i+1)).css("background", "yellow")
-			})
-	  	} */
-		
-		/* 분류 */
-		$("#type1").on("click", function(){
-			$('input:hidden[name = type]').val("48");
-			/* $(".optionBtn").css("background", "yellow") */
-		})
-		
-		$("#type2").on("click", function() {
-			$('input:hidden[name = type]').val("49");
-		})
-		
-		$("#type3").on("click", function() {
-			$('input:hidden[name = type]').val("50");
-		})
-		
-		/* 결제수단 */
-		$("#pay1").on("click", function(){
-			$('input:hidden[name = methodOfPayment]').val("64");
-		})
-		
-		$("#pay2").on("click", function(){
-			$('input:hidden[name = methodOfPayment]').val("65");
-		})
-		
+		setCheckboxValue2 = function(obj,obj2, targetObj) {
+		   if(obj.is(":checked")){
+			   targetObj.val("64");
+		    } else if(obj2.is(":checked")) {
+		    	targetObj.val("65");
+		    } else {
+		    }
+		}
+        
 		<!-- insert -->
 		$(document).on("click",'#saveBtn', function(){
-			alert("나와라");
 			setCheckboxValue($("#option1"),$("#option3"),$("#option4"), $("#type"));
+			setCheckboxValue2($("#option2"),$("#option7"), $("#payment"));
 	   		form.attr("action", goUrlInst).submit();
 		});
 		<!-- insert end-->
-		
-		
-		
 		
 	</script>
 

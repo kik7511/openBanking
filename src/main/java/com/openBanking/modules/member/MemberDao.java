@@ -38,4 +38,8 @@ public class MemberDao {
 	public List<Member> accountBookList(Member dto) {
 		return sqlSession.selectList(namespace + ".accountBookList", dto); 
 	}
+	
+	public Member accountBookSelectOne(Member dto) {
+		return sqlSession.selectOne(namespace + ".accountBookSelectOne", dto); 
+	}
 }

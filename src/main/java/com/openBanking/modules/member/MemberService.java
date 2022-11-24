@@ -12,4 +12,5 @@ public interface MemberService {
 	public int memberInst(Member dto) throws Exception;
 	
 	public List<Member> accountBookList(Member dto) throws Exception;
+	public Member accountBookSelectOne(Member dto) throws Exception;
 }

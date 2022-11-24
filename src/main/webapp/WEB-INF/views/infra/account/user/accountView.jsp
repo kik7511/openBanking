@@ -70,7 +70,7 @@
 	  				<button type="button" class="btn next-btn"><span style="color: white;">이체하기</span></button>
 	  			</div>
 	  			<div align="right" style="padding-bottom: 10px; padding-top: 10px;">
-	  				<button type="button" class="btn btn-light"><span style="color: gray; border-radius: 3px;">엑셀 다운로드</span></button>
+	  				<button type="button" class="btn btn-light" id="btnExcel"><span style="color: gray; border-radius: 3px;">엑셀 다운로드</span></button>
 		  		</div>	
 		  		<div style="background-color: #F2F2F2; height: 55px; margin-top: 10px;">
 		  			<i class="fa-solid fa-magnifying-glass fa-1x" style="padding-left: 25px;padding-top: 22px"></i>
@@ -98,6 +98,11 @@
 	<%@include file = "../../common/footer.jsp" %>	
 	
 	<script>
+	
+	/* excel download */
+	$("#btnExcel").click(function() {
+		form.attr("action", excelUri).submit();
+	});
 		
 	function numComma(str) {
 	    return str.replace(/\B(?=(\d{3})+(?!\d))/g, ',');

@@ -188,11 +188,11 @@
 		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + numDate(response.res_list[i].tran_date) + ' | ' + numTime(response.res_list[i].tran_time) + '</span>';
 		        		li += '</div>';
 		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">';
-		        		li += '<div style="margin-left: 20px;"><span>' + response.res_list[i].tran_type + '</span></div>';
+		        		li += '<div style="margin-left: 20px;"><span>' + response.res_list[i].print_content + '</span></div>';
 		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">+' + numComma(response.res_list[i].tran_amt) + '</span><span style="font-weight: bolder; color: purple;">원</span></div>';
 		        		li += '</div>';
 		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 15px;">';
-		        		li += '<div style="margin-left: 20px; font-size: 11px;"><span>' + response.res_list[i].print_content + '</span></div>';
+		        		li += '<div style="margin-left: 20px; font-size: 11px;"><span>' + response.res_list[i].tran_type + '</span></div>';
 		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; font-size: 11px; color: gray;">잔액</span><span style="font-size: 11px; color: gray">' + numComma(response.res_list[i].after_balance_amt) + '</span><span style="font-size: 11px; color: gray;">원</span></div>';
 		        		li += '</div>';
 		        		li += '</li>';
@@ -200,14 +200,14 @@
 	        		}else{
 	        			li += '<li style="border-bottom: 1px solid gray">';
 		        		li += '<div style="margin-top: 35px; margin-bottom: 15px;">';
-		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + response.res_list[i].tran_date + ' | ' + response.res_list[i].tran_time + '</span>';
+		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + response.res_list[i].print_content + ' | ' + response.res_list[i].tran_time + '</span>';
 		        		li += '</div>';
 		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">';
 		        		li += '<div style="margin-left: 20px;"><span>' + response.res_list[i].tran_type + '</span></div>';
 		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">-' + numComma(response.res_list[i].tran_amt) + '</span><span style="font-weight: bolder; color: purple;">원</span></div>';
 		        		li += '</div>';
 		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 15px;">';
-		        		li += '<div style="margin-left: 20px; font-size: 11px;"><span>' + response.res_list[i].print_content + '</span></div>';
+		        		li += '<div style="margin-left: 20px; font-size: 11px;"><span>' + response.res_list[i].tran_type + '</span></div>';
 		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; font-size: 11px; color: gray;">잔액</span><span style="font-size: 11px; color: gray">' + numComma(response.res_list[i].after_balance_amt) + '</span><span style="font-size: 11px; color: gray;">원</span></div>';
 		        		li += '</div>';
 		        		li += '</li>';

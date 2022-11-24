@@ -170,7 +170,7 @@
 				"Authorization" : "Bearer ${sessAccessToken}"
 			},
 			data : {
-	            "bank_tran_id" : "M202201824U"+countnum,
+	            "bank_tran_id" : "M202201826U"+countnum,
 	            "fintech_use_num" : finNum,
 	            "inquiry_type" : "A",
 	            "inquiry_base" : "D",

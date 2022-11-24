@@ -13,4 +13,4 @@
 .next-btn {border : 1px solid #BEB4AF;width : 100px;color : white;background-color : #0F0060;border : 0px;}
 .next-btn:hover {color : white;background-color : #0F0060;border : 0px;}
 .border_yellow {position: relative;padding-left: 20px;}
-.border_yellow:before {content : "";position:absolute;left:0;top:0px;bottom:0;height:40%;border-left:5px solid #C8F03E;margin-top: 5px;}
+.border_yellow:before {content : "";position:absolute;left:0;top:0px;bottom:0;height:26%;border-left:5px solid #C8F03E;margin-top: 5px;}

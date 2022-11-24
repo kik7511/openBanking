@@ -303,7 +303,6 @@
 				titleFormat: function (date) {
 			      year = date.date.year;
 			      month = date.date.month + 1;
-		
 			      return month + "월";
 			    },
 		      	editable: true,

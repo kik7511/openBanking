@@ -87,8 +87,11 @@ public class AccountController {
 	 */
 	
 	@RequestMapping(value="accountTransfer")
-	public String accountTransfer() throws Exception {
-	    
+	public String accountTransfer(Account dto, Model model) throws Exception {
+		model.addAttribute("fintech_use_num", dto.getFintech_use_num());
+		model.addAttribute("balance_amt", dto.getBalance_amt());
+		model.addAttribute("product_name", dto.getProduct_name());
+		model.addAttribute("account_num_masked", dto.getAccount_num_masked());
 	    return "infra/account/user/accountTransfer";
 	}
 	

@@ -70,7 +70,7 @@
 	  				<button type="button" class="btn next-btn"><span style="color: white;">이체하기</span></button>
 	  			</div>
 	  			<div align="right" style="padding-bottom: 10px; padding-top: 10px;">
-	  				<button type="button" class="btn btn-light" id="btnExcel"><span style="color: gray; border-radius: 3px;">엑셀 다운로드</span></button>
+	  				<button type="button" class="btn btn-light"><span style="color: gray; border-radius: 3px;">엑셀 다운로드</span></button>
 		  		</div>	
 		  		<div style="background-color: #F2F2F2; height: 55px; margin-top: 10px;">
 		  			<i class="fa-solid fa-magnifying-glass fa-1x" style="padding-left: 25px;padding-top: 22px"></i>
@@ -98,11 +98,6 @@
 	<%@include file = "../../common/footer.jsp" %>	
 	
 	<script>
-	
-	/* excel download */
-	$("#btnExcel").click(function() {
-		form.attr("action", excelUri).submit();
-	});
 		
 	function numComma(str) {
 	    return str.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -170,7 +165,7 @@
 				"Authorization" : "Bearer ${sessAccessToken}"
 			},
 			data : {
-	            "bank_tran_id" : "M202201824U"+countnum,
+	            "bank_tran_id" : "M202201828U"+countnum,
 	            "fintech_use_num" : finNum,
 	            "inquiry_type" : "A",
 	            "inquiry_base" : "D",
@@ -205,10 +200,10 @@
 	        		}else{
 	        			li += '<li style="border-bottom: 1px solid gray">';
 		        		li += '<div style="margin-top: 35px; margin-bottom: 15px;">';
-		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + response.res_list[i].tran_date + ' | ' + response.res_list[i].tran_time + '</span>';
+		        		li += '<span style="font-size: 17px; padding-left: 20px;">' + response.res_list[i].print_content + ' | ' + response.res_list[i].tran_time + '</span>';
 		        		li += '</div>';
 		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 5px;">';
-		        		li += '<div style="margin-left: 20px;"><span>' + response.res_list[i].print_content + '</span></div>';
+		        		li += '<div style="margin-left: 20px;"><span>' + response.res_list[i].tran_type + '</span></div>';
 		        		li += '<div style="margin-right: 20px;"><span style="margin-right: 5px; color: purple; font-size: 21px; font-weight: bolder;">-' + numComma(response.res_list[i].tran_amt) + '</span><span style="font-weight: bolder; color: purple;">원</span></div>';
 		        		li += '</div>';
 		        		li += '<div style="display:flex; justify-content: space-between; margin-bottom: 15px;">';

@@ -78,7 +78,8 @@
 		//사용자조회
 		$.ajax({
 			type : "GET",
-			url : "https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/user/me",
+			url : "https://testapi.openbanking.or.kr/v2.0/user/me",
+			/* url : "https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/user/me", */
 			headers : {
 				"Authorization" : "Bearer ${sessAccessToken}"
 			},
@@ -116,7 +117,8 @@
 		//계좌리스트 조회
 		$.ajax({
 			type : "GET",
-			url : "https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/account/list",
+			url : "https://testapi.openbanking.or.kr/v2.0/account/list",
+			/* url : "https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/account/list", */
 			headers : {
 				"Authorization" : "Bearer ${sessAccessToken}"
 			},
@@ -149,12 +151,13 @@
 		        		$.ajax({
 		        			type : "GET",
 		        			async: false,
-		        			url : "https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num",
+		        			url : "https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num",
+		        			/* url : "https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num", */
 		        			headers : {
 		        				"Authorization" : "Bearer ${sessAccessToken}"
 		        			},
 		        			data : {
-		        	            "bank_tran_id" : "M202201824U"+countnum,
+		        	            "bank_tran_id" : "M202201828U"+countnum,
 		        	            "fintech_use_num" : response.res_list[i].fintech_use_num,
 		        	            "tran_dtime" : "20160310101921"
 		        	        }, 

@@ -5,7 +5,7 @@ import java.util.Date;
 public class Account {
 
 	private String seq;
-	private String ifmmSeq;
+	private Integer ifmmSeq;
 	private String availablamt;
 	private Integer bankName;
 	private String balanceAmt;
@@ -169,10 +169,10 @@ public class Account {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
-	public String getIfmmSeq() {
+	public Integer getIfmmSeq() {
 		return ifmmSeq;
 	}
-	public void setIfmmSeq(String ifmmSeq) {
+	public void setIfmmSeq(Integer ifmmSeq) {
 		this.ifmmSeq = ifmmSeq;
 	}
 	public String getAvailablamt() {

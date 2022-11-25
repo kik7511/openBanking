@@ -64,10 +64,15 @@
 		  		<div style="padding-top: 13px;padding-bottom: 13px;">
 		  			<span style="font-size: 25px;"><strong> <fmt:formatNumber value="${balance_amt}" pattern="#,###"/></strong></span>
 		  			<span style="font-size: 22px;">원</span>
-		  			<input type = "hidden" name = "fintech_use_num" value="${fintech_use_num}">
 	  			</div>
+	  			<form name = "form">
+		  			<input type = "hidden" name = "fintech_use_num" value="${fintech_use_num}">
+		  			<input type = "hidden" name = "balance_amt" value="${balance_amt}">
+		  			<input type = "hidden" name = "product_name" value="${product_name}">
+		  			<input type = "hidden" name = "account_num_masked" value="${account_num_masked}">
+	  			</form>
 	  			<div align="right" style="padding-bottom: 10px; padding-top: 10px;">
-	  				<button type="button" class="btn next-btn"><span style="color: white;">이체하기</span></button>
+	  				<button type="button" class="btn next-btn" id="next-btn"><span style="color: white;">이체하기</span></button>
 	  			</div>
 	  			<div align="right" style="padding-bottom: 10px; padding-top: 10px;">
 	  				<button type="button" class="btn btn-light" id="btnExcel"><span style="color: gray; border-radius: 3px;">엑셀 다운로드</span></button>
@@ -118,9 +123,24 @@
 	
 	
 	$(document).ready(function(){
-		var countnum = Math.floor(Math.random() * 1000000000) + 1;
+		
+		function getBankId()
+    	{
+    		var resultNum = "";  		//결과 난수
+        	for (var i=0; i<9; i++) { 
+				var createNum = Math.floor(Math.random() * 9);		//0부터 9까지 올 수 있는 1자리 난수 생성
+				var ranNum = createNum.toString();  //1자리 난수를 String으로 형변환
+				resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
+				}
+				
+				var bankId = "M202201824U" + resultNum;
+				console.log(bankId);
+				return bankId;
+    	}
+		
 		var finNum = $('input:hidden[name=fintech_use_num]').val();
 		console.log(finNum);
+		
 		function getToday(){
 		    var date = new Date();
 		    var year = date.getFullYear();
@@ -170,7 +190,7 @@
 				"Authorization" : "Bearer ${sessAccessToken}"
 			},
 			data : {
-	            "bank_tran_id" : "M202201826U"+countnum,
+	            "bank_tran_id" : getBankId(),
 	            "fintech_use_num" : finNum,
 	            "inquiry_type" : "A",
 	            "inquiry_base" : "D",
@@ -219,6 +239,8 @@
 		        		$('#content_res_list_div').children('ul.content_res_list_div_ul').append(li);
 	        		}
 	        	}
+	        	
+	        	//pagination
 	        	const paginationNumbers = document.getElementById("pagination-numbers");
 	        	const paginatedList = document.getElementById("paginated-list");
 	        	const listItems = paginatedList.querySelectorAll("li");
@@ -324,6 +346,15 @@
 			}
 		});
 	});
+	
+	</script>
+	<script>
+		var goTransfer = "/account/accountTransfer"
+		
+		$('#next-btn').click(function(){
+			alert('작동');
+			$('form[name=form]').attr("action", goTransfer).submit();
+		})
 	</script>
 </body>
 </html>

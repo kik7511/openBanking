@@ -132,6 +132,44 @@
 	        success : function(response) {
 	        	var count = 0;
 	        	
+	    		
+	        	function getBankId()
+	        	{
+	        		var resultNum = "";  		//결과 난수
+		        	for (var i=0; i<9; i++) { 
+						var createNum = Math.floor(Math.random() * 9);		//0부터 9까지 올 수 있는 1자리 난수 생성
+						var ranNum = createNum.toString();  //1자리 난수를 String으로 형변환
+						resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
+						}
+						
+						var bankId = "M202201824U" + resultNum;
+						console.log(bankId);
+						return bankId;
+	        	}
+				
+				function getCurrentDate()
+			    {
+			        var date = new Date();
+			        var year = date.getFullYear().toString();
+
+			        var month = date.getMonth() + 1;
+			        month = month < 10 ? '0' + month.toString() : month.toString();
+
+			        var day = date.getDate();
+			        day = day < 10 ? '0' + day.toString() : day.toString();
+
+			        var hour = date.getHours();
+			        hour = hour < 10 ? '0' + hour.toString() : hour.toString();
+
+			        var minites = date.getMinutes();
+			        minites = minites < 10 ? '0' + minites.toString() : minites.toString();
+
+			        var seconds = date.getSeconds();
+			        seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
+
+			        return year + month + day + hour + minites + seconds;
+			    }
+	        	
 	        	for(var i = 0; i < response.res_list.length; i++) {
 	        		console.log(response.res_list[i])
 	        		
@@ -143,7 +181,7 @@
 	        		
 	        		$(".account-list").append(account_item);
 	        		
-	        		var countnum = Math.floor(Math.random() * 1000000000) + 1;
+	        		/* var countnum = Math.floor(Math.random() * 1000000000) + 1; */
 	        		
 	        		(function(i) {
 		        		$.ajax({
@@ -154,9 +192,9 @@
 		        				"Authorization" : "Bearer ${sessAccessToken}"
 		        			},
 		        			data : {
-		        	            "bank_tran_id" : "M202201826U"+countnum,
+		        	            "bank_tran_id" : getBankId(),
 		        	            "fintech_use_num" : response.res_list[i].fintech_use_num,
-		        	            "tran_dtime" : "20160310101921"
+		        	            "tran_dtime" : getCurrentDate()
 		        	        }, 
 		        	        success : function(response) {
 		        	        	console.log(response)

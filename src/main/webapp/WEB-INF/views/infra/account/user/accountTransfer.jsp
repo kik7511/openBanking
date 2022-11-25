@@ -76,7 +76,7 @@
 			font-size : 23px;
 			margin-left: 380px;
 			color : #454D5B
-		}
+		}	
 	</style>
 </head>
 <body>
@@ -113,6 +113,12 @@
 					<a href="#" style="color:#757575; margin-top: 5px;">잔액/한도</a>
 				</div>
 			</div>
+			<form name = "form">
+	  			<input type = "hidden" name = "fintech_use_num" value="${fintech_use_num}">
+	  			<input type = "hidden" name = "balance_amt" value="${balance_amt}">
+	  			<input type = "hidden" name = "product_name" value="${product_name}">
+	  			<input type = "hidden" name = "account_num_masked" value="${account_num_masked}">
+  			</form>
 			<div style="margin : 0 0 40px 0;">
 				<div style="margin-bottom: 15px;"><i class="fa-solid fa-user"></i>받는사람</div>
 				<div class="row underLine">
@@ -138,7 +144,7 @@
 				</div>
 			</div>
 			<div style="display: flex; justify-content: center;">
-				<button class="btn next-btn" type="button">확인</button>
+				<button class="btn next-btn" type="button" id="transfer_btn">확인</button>
 				<!-- <button class="btn next-btn" type="button">이체하기</button> -->
 			</div>
 	   	<!-- main E-->
@@ -160,6 +166,64 @@
 	    str = String(str);
 	    return str.replace(/[^\d]+/g, '');
 	}
+	
+	function getBankId()
+	{
+		var resultNum = "";  		//결과 난수
+    	for (var i=0; i<9; i++) { 
+			var createNum = Math.floor(Math.random() * 9);		//0부터 9까지 올 수 있는 1자리 난수 생성
+			var ranNum = createNum.toString();  //1자리 난수를 String으로 형변환
+			resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
+			}
+			
+			var bankId = "M202201824U" + resultNum;
+			console.log(bankId);
+			return bankId;
+	}
+	
+	var finNum = $('input:hidden[name=fintech_use_num]').val(); 
+	
+	var jsonData = { // Body에 첨부할 json 데이터
+			  "bank_tran_id": getBankId(),
+			  "cntr_account_type": "N",
+			  "cntr_account_num": "110334778713",
+			  "dps_print_content": "이용료 (김대겸)",
+			  "fintech_use_num": finNum,  
+			  "tran_amt": "21000",
+			  "tran_dtime": "20221124150133",
+			  "req_client_name": "김무겸",
+			  "req_client_account_num": "111334778713",
+			  "req_client_bank_code": "097",  
+			  "req_client_num": "M202201824U000000071",
+			  "transfer_purpose": "TR",
+			  "sub_frnc_name": "하위가맹점",
+			  "sub_frnc_num": "123456789012",
+			  "sub_frnc_business_num": "1234567890",
+			  "recv_client_name": "김무겸",
+			  "recv_client_bank_code": "097",
+			  "recv_client_account_num": "111334778713"
+		};
+	
+	
+	$('#transfer_btn').click(function(){
+		$.ajax({
+			type : "POST",
+			async: true,
+			contentType: "application/json; charset=utf-8",
+			dataType: "JSON",
+			url : "https://testapi.openbanking.or.kr/v2.0/transfer/withdraw/fin_num",
+			headers : {
+				"Authorization" : "Bearer ${sessAccessToken}"
+			},
+			data: JSON.stringify(jsonData), 
+	        success : function(response) {
+	        	console.log(response)
+	        }, error : function(e) {
+				alert(e);
+			}
+	        
+		});
+	})
 </script>
 </body>
 </html>

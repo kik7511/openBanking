@@ -220,7 +220,7 @@
 		});
 		
 	});
-	
+	 
 	$(document).on("load",'body', function(){
 		console.log($("input[name=bankName]").val())
 	});

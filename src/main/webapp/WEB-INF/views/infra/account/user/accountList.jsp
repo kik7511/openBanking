@@ -79,10 +79,6 @@
 		$.ajax({
 			type : "GET",
 			url : "https://testapi.openbanking.or.kr/v2.0/user/me",
-<<<<<<< HEAD
-			/* url : "https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/user/me", */
-=======
->>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
 			headers : {
 				"Authorization" : "Bearer ${sessAccessToken}"
 			},
@@ -121,10 +117,6 @@
 		$.ajax({
 			type : "GET",
 			url : "https://testapi.openbanking.or.kr/v2.0/account/list",
-<<<<<<< HEAD
-			/* url : "https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/account/list", */
-=======
->>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
 			headers : {
 				"Authorization" : "Bearer ${sessAccessToken}"
 			},
@@ -196,19 +188,11 @@
 		        			type : "GET",
 		        			async: false,
 		        			url : "https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num",
-<<<<<<< HEAD
-		        			/* url : "https://cors-anywhere.herokuapp.com/https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num", */
-=======
->>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
 		        			headers : {
 		        				"Authorization" : "Bearer ${sessAccessToken}"
 		        			},
 		        			data : {
-<<<<<<< HEAD
-		        	            "bank_tran_id" : "M202201828U"+countnum,
-=======
 		        	            "bank_tran_id" : getBankId(),
->>>>>>> branch 'main' of https://github.com/kik7511/openBanking.git
 		        	            "fintech_use_num" : response.res_list[i].fintech_use_num,
 		        	            "tran_dtime" : getCurrentDate()
 		        	        }, 
@@ -236,7 +220,7 @@
 		});
 		
 	});
-	
+	 
 	$(document).on("load",'body', function(){
 		console.log($("input[name=bankName]").val())
 	});

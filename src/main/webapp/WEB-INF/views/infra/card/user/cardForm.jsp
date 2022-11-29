@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:useBean id="CodeServiceImpl" class="com.openBanking.modules.code.CodeServiceImpl" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +34,8 @@
 </head>
 <body>
 	<form autocomplete="off" name="form">
+	<input type="hidden" name="ifmmSeq" value="${sessSeq}">
+	<c:set var="listCodecardCompany" value="${CodeServiceImpl.selectListCachedCode('10')}" />
 		<%@include file = "../../common/header.jsp" %>
 		<div id="wrap">
 			<div class="blank"></div>
@@ -49,8 +52,24 @@
 	 		<div class="ly_inner gap60_40">
 	            	<div class="expend_wrap bg_gray">
 		                <div class="form_type w_size01">
+		                	<div class="form_ele">
+		                        <div class="ele_tit">
+		                            <label for="birthday">카드사</label>
+		                        </div>
+		                        <div class="input_wrap">
+		                        	<select class="form-select" name="cardName" id="category">
+										<option value="0">::선택::</option>
+										<c:forEach items="${listCodecardCompany}" var="listcardCompany" varStatus="statuscardCompany">
+											<option value="${listcardCompany.ccSeq}">
+												<c:if test="${list.cardCompany eq listcardCompany.ccSeq}">selected</c:if>${listcardCompany.ccName}
+											</option>
+										</c:forEach>
+									</select>
+		                        </div>
+		                        <p class="text_tip error" data-bind-lamp="birthday" style="display: none;" tabindex="0"></p>
+		                    </div>
 		                	<!-- 생년월일 -->
-		                    <div class="form_ele">
+		                    <!-- <div class="form_ele">
 		                        <div class="ele_tit">
 		                            <label for="birthday">생년월일</label>
 		                        </div>
@@ -58,7 +77,7 @@
 		                            <input type="text" name="ifmmDob" id="" placeholder="생년월일[8자리] 입력 (예.19990101)" title="생년월일 8자리 입력 예시 19990101" maxlength="8" data-bind-focus="birthday" data-bind-watch="birthday" data-bind-value="birthday" class="set_AutoComplete" autocomplete="off">
 		                        </div>
 		                        <p class="text_tip error" data-bind-lamp="birthday" style="display: none;" tabindex="0"></p>
-		                    </div>
+		                    </div> -->
 		                    <!-- /생년월일 -->
 							 <!-- 카드번호 -->
 		                    <div class="form_ele">

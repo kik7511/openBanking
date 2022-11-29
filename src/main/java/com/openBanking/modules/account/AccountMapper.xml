@@ -54,13 +54,17 @@
     			cardNumMasked
     			,cvc
     			,cardPw
+    			,ifmmSeq
+    			,cardName
     		)
     		VALUES(
     			#{cardNumMasked}
     			,#{cvc}
     			,#{cardPw}
+    			,#{ifmmSeq}
+    			,#{cardName}
     		)
-    		<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
+    		<selectKey resultType="String" keyProperty="cardSeq" order="AFTER">
 			SELECT last_insert_id()
 			</selectKey>
     	</insert>

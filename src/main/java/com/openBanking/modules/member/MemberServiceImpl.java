@@ -48,4 +48,28 @@ public class MemberServiceImpl implements MemberService{
 	public Member accountBookSelectOne(Member dto) throws Exception {
 		return dao.accountBookSelectOne(dto);
 	}
+	
+//	findId
+	@Override
+	public Member findId(Member dto) throws Exception {
+		
+		Member id = dao.findId(dto);
+		System.out.println("id : " + id.getIfmmId());
+		
+		String myId = id.getIfmmId().substring(0, id.getIfmmId().length()-3);
+		int starLength = id.getIfmmId().length() - myId.length();
+		
+		for (int i=0; i<starLength; i++) {
+			myId += "*";
+		}
+		
+		dto.setIfmmId(myId);
+		
+		return dto;
+	}
+//	findPw
+	@Override
+	public int findPw(Member dto) throws Exception{
+		return dao.findPw(dto);
+	}
 }

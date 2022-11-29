@@ -13,4 +13,8 @@ public interface MemberService {
 	
 	public List<Member> accountBookList(Member dto) throws Exception;
 	public Member accountBookSelectOne(Member dto) throws Exception;
+	
+//	find Id & Pw
+	public Member findId(Member dto) throws Exception;
+	public int findPw(Member dto) throws Exception;
 }

@@ -42,4 +42,11 @@ public class MemberDao {
 	public Member accountBookSelectOne(Member dto) {
 		return sqlSession.selectOne(namespace + ".accountBookSelectOne", dto); 
 	}
+//	find Id & Pw
+	public Member findId(Member dto) {
+		return sqlSession.selectOne(namespace + ".findId", dto);
+	}
+	public int findPw(Member dto) {
+		return sqlSession.selectOne(namespace + ".findPw", dto);
+	}
 }

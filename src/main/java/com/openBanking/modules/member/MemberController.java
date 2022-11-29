@@ -143,5 +143,21 @@ public class MemberController {
 	     httpSession.setAttribute("sessRefreshToken", dto.getIfmmRefreshToken());
 	     httpSession.setAttribute("sessUserSeqNo", dto.getIfmmUserSeqNo());
 	 }
-
+	
+	@ResponseBody
+	@RequestMapping(value = "findId")
+	public Map<String, Object> findId(Member dto) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		Member id = service.findId(dto);
+		
+		if (id != null) {
+			returnMap.put("rt", "success");
+			returnMap.put("id", id);
+		} else {
+			returnMap.put("rt", "fall");
+		}
+		
+		return returnMap; 
+	}
 }

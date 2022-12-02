@@ -41,6 +41,8 @@
 					  			<li><span class="spanInfo">비밀번호는 대문자 혹은 소문자 1개 이상으로 조합되어야 합니다.</span></li>
 					  		</ul>
 					  	</div>
+					  	<input type="hidden" name="ifmmId" value="${dto.ifmmId}">
+					  	<input type="hidden" name="ifmmName" value="${dto.ifmmName}">
 					  	<div class="passwordMod">
 						  	<div class="passwordtext">
 						  		<span class="passwordSpan">새 비밀번호</span>

@@ -175,7 +175,7 @@
 		if($("#phoneCodeSms").val() == $("#phoneCode").val()){
 			alert("인증되었습니다")
 			$('#changePw').on("click", function(){
-				window.location.href="/member/passwordModForm";				
+				form.attr("action", "/member/passwordModForm").submit();
 			})
 		} else {
 			alert("인증번호가 틀립니다")

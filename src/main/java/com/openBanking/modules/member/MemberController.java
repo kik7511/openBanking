@@ -164,6 +164,22 @@ public class MemberController {
 		return returnMap; 
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "changePw")
+	public Map<String, Object> changePw(Member dto) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		int ifmmPassword = service.changePw(dto);
+		
+		if ( ifmmPassword == 1) {
+			returnMap.put("rt", "success");
+			service.changePw(dto);
+		} else {
+			returnMap.put("rt", "fall");
+		}
+		return returnMap;
+	}
+	
 //	SMS인증
 	@ResponseBody
 	@RequestMapping(value = "checkSms")
@@ -182,7 +198,7 @@ public class MemberController {
 		DefaultMessageService messageService = NurigoApp.INSTANCE.initialize("NCSYVT9ORKBGVGLB", "ZETBEMRL5VCDOBYJJPORUJRLMMZHB17I", "https://api.solapi.com");
 //		Message 패키지가 중복될 경우 net.nurigo.sdk.message.model.Message로 치환하여 주세요
 		Message message = new Message();
-		message.setFrom("1033919715");
+		message.setFrom("01033919715");
 		message.setTo(dto.getIfmmTel().toString());
 		message.setText("안녕하세요. openBanking 인증번호는 ["+ rndNo + ") 입니다. ");
 		

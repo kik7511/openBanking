@@ -72,7 +72,7 @@
 	
 	function numComma(str) {
 	    return str.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	}
+	} 
 	
 	$(document).ready(function(){
 		//사용자조회

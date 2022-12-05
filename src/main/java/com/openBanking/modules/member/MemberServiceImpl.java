@@ -72,4 +72,12 @@ public class MemberServiceImpl implements MemberService{
 	public int findPw(Member dto) throws Exception{
 		return dao.findPw(dto);
 	}
+	
+//	chagePw
+	@Override
+	public int changePw(Member dto) throws Exception {
+		dto.setIfmmPassword(UtilSecurity.encryptSha256(dto.getIfmmPassword()));
+		return dao.changePw(dto);
+	}
+	
 }

@@ -141,6 +141,15 @@
 			and ifmmId = #{ifmmId}
 			and ifmmName = #{ifmmName}
 			and ifmmTel = #{ifmmTel}
-			
-	</select>    
+	</select> 
+	
+	<select id="changePw">
+		UPDATE infraMember
+		SET
+			ifmmPassword = #{ifmmPassword}
+		WHERE 1=1
+			and ifmmId = #{ifmmId}
+			and ifmmName = #{ifmmName}
+			and ifmmTel = #{ifmmTel}
+	</select>   
 </mapper>	   

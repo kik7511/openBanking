@@ -49,4 +49,8 @@ public class MemberDao {
 	public int findPw(Member dto) {
 		return sqlSession.selectOne(namespace + ".findPw", dto);
 	}
+	public int changePw(Member dto) {
+		return sqlSession.update(namespace + ".changePw", dto);
+	}
+	
 }

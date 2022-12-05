@@ -90,7 +90,7 @@
 				<div class="tab-content" id="nav-tabContent">
 					<div class="tab-pane fade show active" id="nav-pw" role="tabpanel" aria-labelledby="nav-pw-tab" tabindex="0">
 						<div class="form-box">
-							<form autocomplete="off">
+							<form autocomplete="off" name="form">
 								<section class="d-flex justify-content-center">
 									<table class="table">
 										<tr>
@@ -171,6 +171,8 @@
 			})
 		}
 	 */
+	var form =$("form[name=form]");
+	 
 	checkSms = function() {
 		if($("#phoneCodeSms").val() == $("#phoneCode").val()){
 			alert("인증되었습니다")

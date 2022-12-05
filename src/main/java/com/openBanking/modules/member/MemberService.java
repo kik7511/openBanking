@@ -17,4 +17,5 @@ public interface MemberService {
 //	find Id & Pw
 	public Member findId(Member dto) throws Exception;
 	public int findPw(Member dto) throws Exception;
+	public int changePw(Member dto) throws Exception;
 }

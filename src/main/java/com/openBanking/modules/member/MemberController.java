@@ -1,7 +1,6 @@
 package com.openBanking.modules.member;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +9,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
+import net.nurigo.sdk.NurigoApp;
+import net.nurigo.sdk.message.exception.NurigoMessageNotReceivedException;
+import net.nurigo.sdk.message.model.Message;
+import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @Controller
 @RequestMapping(value= "/member/")
@@ -59,7 +62,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="passwordModForm")
-	public String passwordModForm() throws Exception {
+	public String passwordModForm(@ModelAttribute("dto") Member dto) throws Exception {
 		
 		return "infra/member/user/passwordModForm";
 	}
@@ -143,5 +146,59 @@ public class MemberController {
 	     httpSession.setAttribute("sessRefreshToken", dto.getIfmmRefreshToken());
 	     httpSession.setAttribute("sessUserSeqNo", dto.getIfmmUserSeqNo());
 	 }
-
+	
+	@ResponseBody
+	@RequestMapping(value = "findId")
+	public Map<String, Object> findId(Member dto) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		Member id = service.findId(dto);
+		
+		if (id != null) {
+			returnMap.put("rt", "success");
+			returnMap.put("id", id);
+		} else {
+			returnMap.put("rt", "fall");
+		}
+		
+		return returnMap; 
+	}
+	
+//	SMS인증
+	@ResponseBody
+	@RequestMapping(value = "checkSms")
+	public Map<String, Object> checkSms(Member dto) throws Exception {
+		System.out.println("핸도폰 번호 : " + dto.getIfmmTel());
+		Map<String, Object> result = new HashMap<String,Object>();
+		
+		//4자리 난수 생성
+		String rndNo = "";
+		
+		for(int i=0; i < 4; i++) {
+			rndNo += (int)(Math.random()*10-1) + 1;
+			System.out.println("난수: " + rndNo);
+		}
+		
+		DefaultMessageService messageService = NurigoApp.INSTANCE.initialize("NCSYVT9ORKBGVGLB", "ZETBEMRL5VCDOBYJJPORUJRLMMZHB17I", "https://api.solapi.com");
+//		Message 패키지가 중복될 경우 net.nurigo.sdk.message.model.Message로 치환하여 주세요
+		Message message = new Message();
+		message.setFrom("1033919715");
+		message.setTo(dto.getIfmmTel().toString());
+		message.setText("안녕하세요. openBanking 인증번호는 ["+ rndNo + ") 입니다. ");
+		
+		try {
+			// send 메소드로 ArrayList<message> 객체를 넣어도 동작합니다!
+			messageService.send(message);
+		} catch (NurigoMessageNotReceivedException exception) {
+			// 발송에 실패한 메시지 목록을 확인할 수 있습니다!
+			System.out.println(exception.getFailedMessageList());
+			System.out.println(exception.getMessage());
+		} catch (Exception exception) {
+			System.out.println(exception.getMessage());
+		}
+		
+		result.put("code", rndNo);
+		
+		return result;
+	}
 }

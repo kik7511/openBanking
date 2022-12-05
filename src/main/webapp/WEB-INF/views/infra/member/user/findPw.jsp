@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="/resources/css/member.css">
-
+  
 <title>비밀번호 찾기</title>
 <%@include file = "../../common/link.jsp" %>	
 <%@include file = "../../common/font.jsp" %>
@@ -102,8 +105,10 @@
 											<th>휴대폰 번호</th>
 											<td>
 												<div class="d-flex">
-													<input type="text" class="text-input mr-2">
-													<button type="button" id="" class="btn btn-sm">인증요청</button>
+													<input type="text" class="text-input mr-2" id="ifmmTel">
+													<input type="hidden" id="phoneCode" value="">
+													<div class="msg" id="phone_msg" name="phone_msg" style="display: none;"></div>
+													<button type="button" id="" class="btn btn-sm" onclick="sendSms()">인증요청</button>
 												</div>
 											</td>
 										</tr>									
@@ -111,15 +116,15 @@
 											<th>인증 번호</th>
 											<td>
 												<div class="d-flex">
-													<input type="text" class="text-input mr-2">
-													<button type="button" id="" class="btn btn-sm">인증확인</button>
+													<input type="text" id="phoneCodeSms" class="text-input mr-2">
+													<button type="button" id="" class="btn btn-sm" onclick="checkSms()">인증확인</button>
 												</div>
 											</td>
 										</tr>	
 									</table>
 								</section>
 								<section class="d-flex justify-content-center">
-									<button type="button" class="btn next-btn" onclick="location.href=''">비밀번호 찾기</button>
+									<button type="button" class="btn next-btn" id="changePw">비밀번호 찾기</button>
 								</section>
 							</form>
 						</div>
@@ -133,6 +138,50 @@
 	<%@include file = "../../common/footer.jsp" %>
 	
 	<script>
+	/* 인증번호 s */
+	sendSms = function() {
+		alert("test");
+		$.ajax({
+			async: true
+			,cache: false
+			,type: 'post'
+			,url: '/member/checkSms'
+			,data: {
+				ifmmTel : $("#ifmmTel").val()
+			},
+			success:function(response) {
+				$("#phoneCode").val(response.code);
+			},
+			error:function(){
+				alert("ajax error..!");
+			}
+		});
+	};
+	/* 
+	 function swAlert(title, text, icon) {
+			swal({
+				title: title
+				,text: text
+				,icon: icon
+				,buttons: "확인"
+			}).then((value) => {
+				if (value) {
+					loaction.href = "/member/passwordModForm";
+				}
+			})
+		}
+	 */
+	checkSms = function() {
+		if($("#phoneCodeSms").val() == $("#phoneCode").val()){
+			alert("인증되었습니다")
+			$('#changePw').on("click", function(){
+				form.attr("action", "/member/passwordModForm").submit();
+			})
+		} else {
+			alert("인증번호가 틀립니다")
+		}
+	};
+	/* 인증번호 e */
 	</script>
 	
 

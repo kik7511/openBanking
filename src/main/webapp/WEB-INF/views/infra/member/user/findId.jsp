@@ -89,37 +89,93 @@
 							<form autocomplete="off">
 								<section class="d-flex justify-content-center">
 									<table class="table">
+										<!--  <tr id="idHidden" style="display: none;">
+	                                    	<td colspan="2" style="border:none; text-align: center;">
+	                                    		<h4>회원님의 아이디는 <strong class="personerId"></strong> 입니다. </h4>
+	                                    	</td>
+	                                    	<td></td>
+	                                    </tr> -->
 										<tr>
 											<th class="col-5">이름</th>
-											<td><input type="text" class=text-input name="name" id="name" autocomplete="off"></td>
+											<td><input type="text" class=text-input name="ifmmName" id="ifmmName" autocomplete="off"></td>
 										</tr>
 										<tr>
 											<th>생년월일</th>
-											<td><input type="text" class="text-input" name="birth" id="birth" placeholder="YYYYMMDD"></td>
+											<td><input type="text" class="text-input" name="ifmmDob" id="ifmmDob" placeholder="YYYYMMDD"></td>
 										</tr>
 										<tr>
 											<th>휴대폰 번호</th>
 											<td>
-												<input type="text" class="text-input mr-2">
+												<input type="text" class="text-input mr-2" name="ifmmTel" id="ifmmTel">
 											</td>
 										</tr>									
 									</table>
 								</section>
 								<section class="d-flex justify-content-center">
-									<button type="button" class="btn next-btn" onclick="location.href=''">아이디 찾기</button>
+									<!-- <button type="button" class="btn next-btn" id="findId">아이디 찾기</button> -->
+									<button type="button" class="btn next-btn" id="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+								  아이디 찾기
+								</button> 
 								</section>
 							</form>
 						</div>
 					</div>
 				</div>
-			
-			
 			</div>	
 		</div>
 	</div>
 	<%@include file = "../../common/footer.jsp" %>
 	
+    <!-- modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-5" id="exampleModalLabel">아이디 확인</h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <div id="idHidden">
+	        	<h4>회원님의 아이디는 <strong class="personerId"></strong> 입니다. </h4>
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+	        <button type="button" class="btn btn-primary" onclick="location.href='login'">로그인</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+    <!-- modal -->
+	
 	<script>
+	/* id찾기 */
+	$("#modal").on("click", function() {
+		$.ajax({
+			async: true
+			,cache: false
+			,type:"POST"
+			,url: "/member/findId"
+			,data: {"ifmmName": $("#ifmmName").val(), "ifmmDob": $("#ifmmDob").val(), "ifmmTel" : $("#ifmmTel").val()}
+			,success : function(response) {
+				if (response.rt == "success") {
+					console.log(response);
+					$("#idHidden").css("display", "")
+					$(".personerId").html(response.id.ifmmId);
+					
+				} else {
+					alert("정확한 정보를 입력해주세요!!!");
+				}
+			},
+			/* error : function(jqXHR, status, error) {
+				alert("알 수 없는 에러 [ " + error + " ]");
+			} */
+			error : function(jqXHR, status, error) {
+				$(".personerId").html("없는 정보");
+				alert("등록된 회원 정보가 없습니다.!!");
+			}
+		});
+	})
 	</script>
 	
 

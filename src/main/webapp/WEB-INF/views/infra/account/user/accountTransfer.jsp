@@ -106,11 +106,27 @@
 			<div style="margin : 20px 0 40px 0;">
 				<div style="margin-bottom: 15px;"><i class="fa-solid fa-wallet"></i>출금계좌</div>
 				<div class="row underLine">
-					<div class="col"><input type="text" class="inputBox_myAccount" placeholder="My 입출금 통장 100-133-242800"></div>
+					<div class="col">
+						<c:choose>
+							<c:when test="${not empty account_num_masked}">
+								<input type="text" class="inputBox_myAccount" value="${account_num_masked}" readonly="readonly">	
+							</c:when>
+							<c:otherwise>
+								<input type="text" class="inputBox_myAccount" placeholder="My 입출금 통장 100-133-242800">
+							</c:otherwise>
+						</c:choose>
+					</div>
 				</div>
 				<div style="display: flex; justify-content: space-between;">
-					<input type="text" class="input_box inputBox_possible" value="" placeholder="입금가능금액 0원">
-					<a href="#" style="color:#757575; margin-top: 5px;">잔액/한도</a>
+						<c:choose>
+							<c:when test="${not empty balance_amt}">
+								<input type="text" class="input_box inputBox_possible" value="<fmt:formatNumber value="${balance_amt}" pattern="#,###"/>원" readonly="readonly">	
+							</c:when>
+							<c:otherwise>
+								<input type="text" class="input_box inputBox_possible" value="" placeholder="입금가능금액 0원">
+							</c:otherwise>
+						</c:choose>
+					<a href="#" style="color:#757575; margin-top: 5px;">잔액확인</a>
 				</div>
 			</div>
 			<form name = "form">
@@ -123,11 +139,11 @@
 				<div style="margin-bottom: 15px;"><i class="fa-solid fa-user"></i>받는사람</div>
 				<div class="row underLine">
 					<div class="col-3" style="padding: 0px;">
-						<select class="form-select" style="border-style:none; display: inline-block;">
+						<select class="form-select" style="border-style:none; display: inline-block;" name="req_client_bank_code">
 							<option>::은행::</option>
 							<c:forEach items="${listCodebankName}" var="listbankName" varStatus="statusbankName">
-								<option value="${listbankName.ccSeq} ">
-									<c:if test="${list.bankName eq listbankName.ccSeq}">selected</c:if>${listbankName.ccName}
+								<option value="${listbankName.ccOrder}" <c:if test="${list.bankName eq listbankName.ccOrder}">selected</c:if>>
+									${listbankName.ccName}
 								</option>
 							</c:forEach>
 						</select>
@@ -181,8 +197,31 @@
 			return bankId;
 	}
 	
-	var finNum = $('input:hidden[name=fintech_use_num]').val(); 
+	function getCurrentDate()
+    {
+        var date = new Date();
+        var year = date.getFullYear().toString();
+
+        var month = date.getMonth() + 1;
+        month = month < 10 ? '0' + month.toString() : month.toString();
+
+        var day = date.getDate();
+        day = day < 10 ? '0' + day.toString() : day.toString();
+
+        var hour = date.getHours();
+        hour = hour < 10 ? '0' + hour.toString() : hour.toString();
+
+        var minites = date.getMinutes();
+        minites = minites < 10 ? '0' + minites.toString() : minites.toString();
+
+        var seconds = date.getSeconds();
+        seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
+
+        return year + month + day + hour + minites + seconds;
+    }
 	
+	var finNum = $('input:hidden[name=fintech_use_num]').val(); 
+	var req_client_bank_code = $('select[name=req_client_bank_code]').val();
 	var jsonData = { // Body에 첨부할 json 데이터
 			  "bank_tran_id": getBankId(),
 			  "cntr_account_type": "N",
@@ -190,10 +229,10 @@
 			  "dps_print_content": "이용료 (김대겸)",
 			  "fintech_use_num": finNum,  
 			  "tran_amt": "21000",
-			  "tran_dtime": "20221124150133",
+			  "tran_dtime": getCurrentDate(),
 			  "req_client_name": "김무겸",
 			  "req_client_account_num": "111334778713",
-			  "req_client_bank_code": "097",  
+			  "req_client_bank_code": req_client_bank_code,  
 			  "req_client_num": "M202201824U000000071",
 			  "transfer_purpose": "TR",
 			  "sub_frnc_name": "하위가맹점",
@@ -206,6 +245,7 @@
 	
 	
 	$('#transfer_btn').click(function(){
+		console.log(req_client_bank_code);
 		$.ajax({
 			type : "POST",
 			async: true,

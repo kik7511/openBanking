@@ -142,7 +142,7 @@
 						resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
 						}
 						
-						var bankId = "M202201828U" + resultNum;
+						var bankId = "M202201824U" + resultNum;
 						console.log(bankId);
 						return bankId;
 	        	}

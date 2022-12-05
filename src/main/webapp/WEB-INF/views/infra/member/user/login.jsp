@@ -36,11 +36,11 @@
 					<div class="input-box">
 						<div style="display: flex;">
 							<span style="width:30%; margin-top:9px; text-align: center;">아이디</span>
-							<input type="text" name="ifmmId" id="ifmmId" class="text-input" style="margin-bottom: 10px;">
+							<input type="text" name="ifmmId" id="ifmmId" class="text-input" style="margin-bottom: 10px;" value="kik7511">
 						</div>
 						<div style="display: flex;">
 							<span style="width:30%; margin-top:9px; text-align: center;">비밀번호</span>
-							<input type="password" name="ifmmPassword" id="ifmmPassword" class="text-input">
+							<input type="password" name="ifmmPassword" id="ifmmPassword" class="text-input" value="peter7511">
 						</div>
 					</div>
 					<div>

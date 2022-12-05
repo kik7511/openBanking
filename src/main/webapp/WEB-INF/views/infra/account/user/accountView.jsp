@@ -121,7 +121,7 @@
 	}
 	
 	
-	$(document).ready(function(){
+	$('document').ready(function(){
 		
 		function getBankId()
     	{
@@ -132,7 +132,7 @@
 				resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
 				}
 				
-				var bankId = "M202201828U" + resultNum;
+				var bankId = "M202201824U" + resultNum;
 				console.log(bankId);
 				return bankId;
     	}
@@ -242,7 +242,8 @@
 	        	//pagination
 	        	const paginationNumbers = document.getElementById("pagination-numbers");
 	        	const paginatedList = document.getElementById("paginated-list");
-	        	const listItems = paginatedList.querySelectorAll("li");
+	        	const listItems = paginatedList.que
+	        	rySelectorAll("li");
 	        	const nextButton = document.getElementById("next-button");
 	        	const prevButton = document.getElementById("prev-button");
 
@@ -351,7 +352,6 @@
 		var goTransfer = "/account/accountTransfer"
 		
 		$('#next-btn').click(function(){
-			alert('작동');
 			$('form[name=form]').attr("action", goTransfer).submit();
 		})
 	</script>

@@ -22,7 +22,7 @@
     		,ifmmAddressDetail
     		,ifmmGender
     		,ifmmPrivacyNy
-    		,ifmmMarketingNy
+    		,ifmmMarketingNy 
     		,ifmmEmail
     		,ifmmEmailAddress
     		,ifmmTel

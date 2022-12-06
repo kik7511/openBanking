@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class CodeGroupDao {
 	
@@ -17,9 +18,8 @@ public class CodeGroupDao {
 	
 	private static String namespace = "com.openBanking.modules.codegroup.CodeGroupMapper";
 	
-	public List<CodeGroup> select(CodeGroupVo vo){
-		List<CodeGroup> list = sqlSession.selectList(namespace + ".select", "vo");
+	public List<CodeGroup> selectList(CodeGroupVo vo){
+		List<CodeGroup> list = sqlSession.selectList(namespace + ".selectList", "vo");
 		return list;
 	}
-	
 }

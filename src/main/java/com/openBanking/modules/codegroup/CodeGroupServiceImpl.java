@@ -18,4 +18,10 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 		return list;
 	}
 	
+	@Override
+	public CodeGroup selectOne(CodeGroupVo vo) throws Exception {
+		CodeGroup codeGroup = dao.selectOne(vo);
+		
+		return codeGroup;
+	}
 }

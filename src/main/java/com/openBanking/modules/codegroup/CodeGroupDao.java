@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 
+
+
 @Repository
 public class CodeGroupDao {
 	
@@ -22,4 +24,10 @@ public class CodeGroupDao {
 		List<CodeGroup> list = sqlSession.selectList(namespace + ".selectList", "vo");
 		return list;
 	}
+	
+	public CodeGroup selectOne(CodeGroupVo vo) {
+		CodeGroup codeGroup = sqlSession.selectOne(namespace + ".selectOne", vo);
+		return codeGroup;
+	}
+	
 }

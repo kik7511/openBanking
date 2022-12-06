@@ -7,11 +7,21 @@
 <mapper namespace="com.openBanking.modules.codegroup.CodeGroupMapper">
 
 <resultMap id="resultMapObj" type="com.openBanking.modules.codegroup.CodeGroup"></resultMap>
+
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			*
 		FROM CCG
 		WHERE 1=1	
+	</select>
+	
+   	<select id="selectOne" resultMap="resultMapObj">
+		SELECT 
+			*
+		FROM
+			CCG
+		WHERE 1=1
+			AND ccgSeq = #{ccgSeq};
 	</select>
 	
 </mapper>	

@@ -14,6 +14,12 @@ public class MemberServiceImpl implements MemberService{
 	MemberDao dao;
 	
 //	selectList
+	public List<Member> selectList() throws Exception {
+		List<Member> list = dao.selectList();
+		return list;
+	}
+	
+//	Insert
 	@Override
 	public int memberInst(Member dto) throws Exception {
 		dto.setIfmmPassword(UtilSecurity.encryptSha256(dto.getIfmmPassword()));

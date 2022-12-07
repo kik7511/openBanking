@@ -18,6 +18,12 @@ public class MemberDao {
 	
 	private static String namespace = "com.openBanking.modules.member.MemberMapper";
 	
+//	memberList
+	public List<Member> selectList() {
+		List<Member> list = sqlSession.selectList(namespace + ".selectList");
+		return list;
+	}
+	
 	public int memberInst(Member dto) {
 		return sqlSession.insert(namespace + ".memberInst", dto);
 	}
@@ -52,5 +58,6 @@ public class MemberDao {
 	public int changePw(Member dto) {
 		return sqlSession.update(namespace + ".changePw", dto);
 	}
+	
 	
 }

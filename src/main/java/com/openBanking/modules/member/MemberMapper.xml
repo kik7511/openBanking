@@ -8,6 +8,13 @@
 
     <resultMap id="resultMapObj" type="com.openBanking.modules.member.Member"></resultMap>
     
+    <select id="selectList" resultMap="resultMapObj">
+    	SELECT
+    		*
+   		FROM infraMember
+   		WHERE 1=1
+    </select>
+    
     <insert id="memberInst">
     	INSERT INTO infraMember (
     		ifmmName

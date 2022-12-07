@@ -1,6 +1,7 @@
 package com.openBanking.modules.member;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,12 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
+	@RequestMapping(value = "memberList")
+	public String memberList(Model model) throws Exception {
+		List<Member> list = service.selectList();
+		model.addAttribute("list", list);
+		return "infra/member/xdmin/memberList";
+	}
 	@RequestMapping(value="login")
 	public String loginView() throws Exception {
 		

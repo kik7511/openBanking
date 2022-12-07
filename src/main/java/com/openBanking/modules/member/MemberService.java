@@ -3,7 +3,10 @@ package com.openBanking.modules.member;
 import java.util.List;
 
 public interface MemberService {
-
+//	List
+	public List<Member> selectList() throws Exception;
+	
+//	login
 	public int checkId(Member dto) throws Exception;
 	public Member login(Member dto) throws Exception;
 	

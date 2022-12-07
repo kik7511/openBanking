@@ -14,11 +14,12 @@ public class CodeController {
 	@Autowired
 	CodeServiceImpl service;
 	
-	@RequestMapping(value = "code")
-	public String buy(Model model) throws Exception {
+	@RequestMapping
+	public String codeList(Model model) throws Exception {
 		List<Code> list = service.selectList();
-		model.addAttribute("list",list);
-		return "infra/buy/xdmin";
+		model.addAttribute("list", list);
+		return "infra/code/codeList";
+		
 	}
 	
 }

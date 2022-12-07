@@ -23,11 +23,15 @@ public class CodeGroupController {
 		return "infra/codeGroup/codeGroupList";
 	}
 	
-	@RequestMapping(value = "codeGroupForm")
-	public String codeGroupForm(CodeGroup dto, @ModelAttribute("Vo") CodeGroupVo vo, Model model) throws Exception {
-		CodeGroup result = service.selectOne(vo);
-		System.out.println("vo.getCcgSeq(): " + vo.getCcgSeq());
-		model.addAttribute("item", result);
-		return "infra/codeGorup/codeGroupForm";
+	/*
+	 * @RequestMapping(value = "codeGroupForm") public String
+	 * codeGroupForm(CodeGroup dto, @ModelAttribute("Vo") CodeGroupVo vo, Model
+	 * model) throws Exception { CodeGroup result = service.selectOne(vo);
+	 * System.out.println("vo.getCcgSeq(): " + vo.getCcgSeq());
+	 * model.addAttribute("item", result); return "infra/codeGorup/codeGroupForm"; }
+	 */
+	@RequestMapping( value = "codeGroupForm")
+	public String codeGroupForm() {
+		return "infra/codeGroup/codeGroupForm";
 	}
 }

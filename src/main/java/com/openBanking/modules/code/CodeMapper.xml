@@ -10,7 +10,7 @@
 
 	<select id="selectList" resultMap="resultMapObj">
 		select
-			a.ccSeq
+			ccSeq
 			,ccgSeq
 			,ccName
 			,ccUseNy

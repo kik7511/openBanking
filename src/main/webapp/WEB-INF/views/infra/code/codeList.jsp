@@ -125,23 +125,23 @@
 									</c:when>
 									<c:otherwise>
 										<c:forEach items="${list }" var="list" varStatus="status">
-											<tr class="memberView" onclick="javascript:goForm(<c:out value="${list.seq }"/>)">
-												<th scope="col"><input type="checkbox" class="chk" data-seq="${list.seq }"></th>
+											<tr class="memberView" onclick="javascript:goForm(<c:out value="${list.ccSeq }"/>)">
+												<th scope="col"><input type="checkbox" class="chk" data-seq="${list.ccSeq }"></th>
 												<th scope="row">${status.count }</th>
-												<td>${list.cgSeq }</td>
-												<td>${list.cgName }</td>
-												<td>${list.seq }</td>
+												<td>${list.ccgSeq }</td>
+												<td>${list.ccgName }</td>
+												<td>${list.ccSeq }</td>
 												<td>${list.ccAnother }</td>
 												<td>${list.ccName }</td>
 												<td>${list.ccNameEng }</td>
 												<td>
 													<c:choose>
-														<c:when test="${list.useNy eq 1 }">Y</c:when>
+														<c:when test="${list.ccUseNy eq 1 }">Y</c:when>
 														<c:otherwise>N</c:otherwise>
 													</c:choose>
 												</td>
-												<td><fmt:formatDate value="${list.createdAt}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-												<td><fmt:formatDate value="${list.updatedAt}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+												<td><fmt:formatDate value="${list.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+												<td><fmt:formatDate value="${list.modDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 											</tr>
 										</c:forEach>
 									</c:otherwise>

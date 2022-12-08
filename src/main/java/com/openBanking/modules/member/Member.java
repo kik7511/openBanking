@@ -17,7 +17,7 @@ public class Member {
 	private Integer ifmmMarketingNy;
 	private String ifmmEmail;
 	private Integer ifmmEmailAddress;
-	private Integer ifmmTel;
+	private String ifmmTel;
 	private String  ifmmAccessToken;
 	private String  ifmmRefreshToken;
 	private String  ifmmUserSeqNo;
@@ -129,10 +129,10 @@ public class Member {
 	public void setIfmmEmailAddress(Integer ifmmEmailAddress) {
 		this.ifmmEmailAddress = ifmmEmailAddress;
 	}
-	public Integer getIfmmTel() {
+	public String getIfmmTel() {
 		return ifmmTel;
 	}
-	public void setIfmmTel(Integer ifmmTel) {
+	public void setIfmmTel(String ifmmTel) {
 		this.ifmmTel = ifmmTel;
 	}
 	public String getIfmmAccessToken() {

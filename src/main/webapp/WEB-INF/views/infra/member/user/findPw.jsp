@@ -140,7 +140,6 @@
 	<script>
 	/* 인증번호 s */
 	sendSms = function() {
-		alert("test");
 		$.ajax({
 			async: true
 			,cache: false

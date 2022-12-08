@@ -223,7 +223,7 @@ public class MemberController {
 		Message message = new Message();
 		message.setFrom("01033919715");
 		message.setTo(dto.getIfmmTel().toString());
-		message.setText("안녕하세요. openBanking 인증번호는 ["+ rndNo + ") 입니다. ");
+		message.setText("안녕하세요. openBanking 인증번호는 ["+ rndNo + "] 입니다. ");
 		
 		try {
 			// send 메소드로 ArrayList<message> 객체를 넣어도 동작합니다!

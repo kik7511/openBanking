@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import net.nurigo.sdk.NurigoApp;
 import net.nurigo.sdk.message.exception.NurigoMessageNotReceivedException;
 import net.nurigo.sdk.message.model.Message;
@@ -32,6 +33,22 @@ public class MemberController {
 		model.addAttribute("list", list);
 		return "infra/member/xdmin/memberList";
 	}
+	
+	/*
+	 * @RequestMapping(value = "memberAjaxList") public String
+	 * memberAjaxList(@ModelAttribute("vo") MemberVo vo, Model model) throws
+	 * Exception { setSearchAndPaging(vo); return
+	 * "infra/member/xdmin/memberAjaxList"; }
+	 * 
+	 * @RequestMapping(value = "memberAjaxLita") public String
+	 * memberAjaxLita(@ModelAttribute("vo") MemberVo vo, Model model) throws
+	 * Exception { vo.setParamsPaging(service.selectOneCount(vo));
+	 * 
+	 * if (vo.getTotalRows() > 0) { List<Member> list = service.selectList(vo);
+	 * model.addAttribute("list", list); } return
+	 * "infra/member/xdmin/memberAjaxLita"; }
+	 */
+	
 	@RequestMapping(value="login")
 	public String loginView() throws Exception {
 		
@@ -171,12 +188,11 @@ public class MemberController {
 		return returnMap; 
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "changePw")
-	public Map<String, Object> changePw(Member dto) throws Exception {
+	public String changePw(Member dto) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		int ifmmPassword = service.changePw(dto);
+		int ifmmPassword = service.findPw(dto);
 		
 		if ( ifmmPassword == 1) {
 			returnMap.put("rt", "success");
@@ -184,7 +200,7 @@ public class MemberController {
 		} else {
 			returnMap.put("rt", "fall");
 		}
-		return returnMap;
+		return "redirect:/member/login";
 	}
 	
 //	SMS인증

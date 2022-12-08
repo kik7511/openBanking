@@ -47,13 +47,11 @@
 					  	<div class="passwordMod">
 						  	<div class="passwordtext">
 						  		<span class="passwordSpan">새 비밀번호</span>
-						  		<input type="password" class="input_text" id="ifmmPassword" name="ifmmPassword" onekeypress="validationUpdt()" placeholder="변경할 비밀번호를 입력하세요" autocomplete="off">
-						  		<div class="msg" id="pwd_msg" name="pwd_msg" style="display: none;"></div>
+						  		<input type="password" class="input_text" id="ifmmPassword" name="ifmmPassword" placeholder="변경할 비밀번호를 입력하세요" autocomplete="off">
 						  	</div>
 						  	<div class="passwordtext">
 						  		<span class="passwordSpan">비밀번호 확인</span>
-						  		<input type="password" class="input_text" id="pwdCheck" onkeypress="validationUpdt()" placeholder="변경할 비밀번호를 입력하세요" autocomplete="off">
-						  		<div class="msg" id="pwCheck_msg" name="pwCheck_msg" style="display: none;"></div>
+						  		<input type="password" class="input_text" id="pwdCheck" placeholder="변경할 비밀번호를 입력하세요" autocomplete="off">
 						  	</div>	
 				  		</div> 
 				 	 </div>
@@ -69,12 +67,12 @@
 			
 		<script type="text/javascript">
 			var goUrlUpdt = "/member/changePw";
-			var form = $("form[name=form]");
+			var form = $('form[name=form]');
 			
-        ${'#btnUdate'}.on("click", function() {
-        	alert("돌아라"):
+        $('#btnUdate').on("click", function() {
+        	alert("돌아라");
         	form.attr("action", goUrlUpdt).submit();
-        	alert("돌아라"):
+        	alert("돌아라");
         })
 		</script>	
 	</body>

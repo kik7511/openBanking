@@ -95,11 +95,11 @@
 									<table class="table">
 										<tr>
 											<th class="col-5">아이디</th>
-											<td><input type="text" class=text-input name="name" id="name" autocomplete="off"></td>
+											<td><input type="text" class=text-input name="ifmmId" id="name" autocomplete="off"></td>
 										</tr>
 										<tr>
 											<th class="col-5">이름</th>
-											<td><input type="text" class=text-input name="name" id="name" autocomplete="off"></td>
+											<td><input type="text" class=text-input name="ifmmName" id="name" autocomplete="off"></td>
 										</tr>
 										<tr>
 											<th>휴대폰 번호</th>
